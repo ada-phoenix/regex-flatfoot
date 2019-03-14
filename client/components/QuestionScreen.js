@@ -8,6 +8,7 @@ import Problem from './Problem'
  * COMPONENT
  */
 export const QuestionScreen = props => {
+  console.log('question screen props ', props)
   return (
     <div>
       <div className="container">
@@ -15,7 +16,7 @@ export const QuestionScreen = props => {
         <Prompt />
       </div>
       <div className="container">
-        <Problem />
+        <Problem history={props.history} />
       </div>
     </div>
   )
