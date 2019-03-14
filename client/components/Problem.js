@@ -11,7 +11,10 @@ class Problem extends React.Component {
   }
 
   changeHandler(evt) {
-    const re = new RegExp(evt.target.value)
+    const re = new RegExp(evt.target.value, 'i')
+    console.log('RE: ', re)
+    const splitStr = re.exec(this.state.regStr)
+    console.log(splitStr)
 
     this.setState({input: evt.target.value})
   }
