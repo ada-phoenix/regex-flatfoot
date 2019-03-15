@@ -8,7 +8,7 @@ class Problem extends React.Component {
     this.state = {
       input: '',
       regStr: 'Crimes are afoot!',
-      goal: 'Crimes',
+      goal: 'crime',
       result: ['']
     }
     this.changeHandler = this.changeHandler.bind(this)
