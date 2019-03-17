@@ -36,8 +36,7 @@ const Game = db.define('game', {
     allowNull: false
   },
   clue: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.STRING
   }
 })
 

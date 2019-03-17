@@ -1,7 +1,7 @@
 const gameData = [
   {
     haystack: 'Crimes are afoot!',
-    needle: 'crime',
+    needle: ['crime'],
     lesson: 'This is how you do the thing.',
     question: " Write a regular expression that matches with the word 'crime'.",
     level: 1,
@@ -11,7 +11,7 @@ const gameData = [
   },
   {
     haystack: 'Crimes are afoot!',
-    needle: 'foot',
+    needle: ['foot'],
     lesson: 'This is how you do the thing.',
     question: " Write a regular expression that matches with the word 'foot'.",
     level: 1,
@@ -21,7 +21,7 @@ const gameData = [
   },
   {
     haystack: "I'm watching you. I can see you.",
-    needle: 'you',
+    needle: ['you'],
     lesson: 'This is how you do all of the things.',
     question:
       " Write a regular expression that matches with each instance of the word 'you'.",
