@@ -30,11 +30,6 @@ const Game = db.define('game', {
     type: Sequelize.TEXT,
     allowNull: false
   },
-  played: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false,
-    allowNull: false
-  },
   clue: {
     type: Sequelize.STRING
   }

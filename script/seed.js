@@ -9,18 +9,23 @@ async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
-  const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
+  await Game.bulkCreate(gameData)
+  await Cluster.bulkCreate(clusterData)
+  await User.bulkCreate([
+    {name: 'cody', email: 'cody@email.com', password: '123'},
+    {name: 'murphy', email: 'murphy@email.com', password: '123'}
   ])
 
-  const clusters = await Promise.all([Cluster.bulkCreate(clusterData)])
+  const cody = await User.findById(1)
+  const murphy = await User.findById(2)
+  const ourGame = await Game.findById(1)
 
-  const games = await Promise.all([Game.bulkCreate(gameData)])
+  await cody.setGames(ourGame)
+  await murphy.setGames(ourGame)
 
-  console.log(`seeded ${games.length} games`)
-  console.log(`seeded ${clusters.length} clusters`)
-  console.log(`seeded ${users.length} users`)
+  // console.log(`seeded ${games.length} games`)
+  // console.log(`seeded ${clusters.length} clusters`)
+  // console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
 }
 
