@@ -3,6 +3,20 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const User = db.define('user', {
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  level: {
+    type: Sequelize.INTEGER,
+    defaultValue: 1,
+    allowNull: false
+  },
+  levelstage: {
+    type: Sequelize.INTEGER,
+    defaultValue: 1,
+    allowNull: false
+  },
   email: {
     type: Sequelize.STRING,
     unique: true,
