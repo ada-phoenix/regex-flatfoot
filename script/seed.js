@@ -9,8 +9,9 @@ async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
-  await Game.bulkCreate(gameData)
   await Cluster.bulkCreate(clusterData)
+  await Game.bulkCreate(gameData)
+
   await User.bulkCreate([
     {name: 'cody', email: 'cody@email.com', password: '123'},
     {name: 'murphy', email: 'murphy@email.com', password: '123'}
