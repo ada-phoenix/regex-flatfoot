@@ -42,7 +42,7 @@ class Routes extends Component {
       </Switch>
     )
   }
-}}
+}
 
 
 /**
