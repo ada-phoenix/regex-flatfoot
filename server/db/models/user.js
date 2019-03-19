@@ -21,6 +21,9 @@ const User = db.define('user', {
     defaultValue: 1,
     allowNull: false
   },
+  casefile: {
+    type: Sequelize.ARRAY(Sequelize.STRING)
+  },
   email: {
     type: Sequelize.STRING,
     unique: true,
