@@ -14,7 +14,7 @@ const Prompt = () => {
           <h1>Do you know about REGULAR EXPRESSIONS (aka RegEx)? </h1>
           <h1>Let me bring you up to speed...</h1>
           <h1>
-            Write a regular expression to find the word "crime" in the text
+            Write a regular expression to find the word "Crime" in the text
             block below:{' '}
           </h1>
         </div>
