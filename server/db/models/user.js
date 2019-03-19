@@ -7,6 +7,10 @@ const User = db.define('user', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  clusterId: {
+    type: Sequelize.INTEGR,
+    defaultValue: 1
+  },
   level: {
     type: Sequelize.INTEGER,
     defaultValue: 1,

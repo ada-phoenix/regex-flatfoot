@@ -32,6 +32,12 @@ const Game = db.define('game', {
   },
   clue: {
     type: Sequelize.STRING
+  },
+  correct: {
+    type: Sequelize.TEXT
+  },
+  incorrect: {
+    type: Sequelize.TEXT
   }
 })
 
