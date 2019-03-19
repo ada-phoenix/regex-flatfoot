@@ -8,7 +8,7 @@ const User = db.define('user', {
     allowNull: false
   },
   clusterId: {
-    type: Sequelize.INTEGR,
+    type: Sequelize.INTEGER,
     defaultValue: 1
   },
   level: {
