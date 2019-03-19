@@ -8,6 +8,10 @@ const User = db.define('user', {
     allowNull: false,
     defaultValue: 'cody'
   },
+  clusterId: {
+    type: Sequelize.INTEGER,
+    defaultValue: 1
+  },
   level: {
     type: Sequelize.INTEGER,
     defaultValue: 1,
@@ -17,6 +21,9 @@ const User = db.define('user', {
     type: Sequelize.INTEGER,
     defaultValue: 1,
     allowNull: false
+  },
+  casefile: {
+    type: Sequelize.ARRAY(Sequelize.STRING)
   },
   email: {
     type: Sequelize.STRING,

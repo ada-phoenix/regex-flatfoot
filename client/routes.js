@@ -7,7 +7,7 @@ import {
   Signup,
   UserHome,
   QuestionScreen,
-  Wrong,
+  Incorrect,
   Correct
 } from './components'
 import {me} from './store'
@@ -26,22 +26,24 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
-        <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/correct" component={Correct} />
-        <Route path="/wrong" component={Wrong} />
+        <Route path="/login" component={Login} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
-            <Route path="/home" component={QuestionScreen} />
+            <Route path="/" component={QuestionScreen} />
+            <Route path="/question" component={QuestionScreen} />
+            <Route path="/correct" component={Correct} />
+            <Route path="/incorrect" component={Incorrect} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
-        <Route component={QuestionScreen} />
+        <Route path="/login" component={Login} />
       </Switch>
     )
   }
-}
+}}
+
 
 /**
  * CONTAINER

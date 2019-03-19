@@ -42,7 +42,7 @@ class Problem extends React.Component {
       this.props.history.push(`/correct`)
     } else {
       console.log('you lose loser!')
-      this.props.history.push(`/wrong`)
+      this.props.history.push(`/incorrect`)
     }
   }
 

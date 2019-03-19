@@ -17,6 +17,7 @@ router.post('/login', async (req, res, next) => {
     } else {
       const gamesVisted = await user.getGames({raw: true})
       const userData = {
+        clusterId: user.clusterId,
         email: user.email,
         name: user.name,
         level: user.level,
