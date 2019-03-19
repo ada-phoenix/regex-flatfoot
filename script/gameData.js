@@ -8,7 +8,9 @@ const gameData = [
     levelstage: 1,
     clusterId: 1,
     hint: 'Hit your head against the wall.',
-    clue: 'A seagull winks at you. He knows something.'
+    clue: 'A seagull winks at you. He knows something.',
+    correct: 'you got it right! Heres some plot!',
+    incorrect: 'better luck next time. Heres some plot'
   },
   {
     haystack: 'Crimes are afoot!',
@@ -19,7 +21,9 @@ const gameData = [
     levelstage: 2,
     clusterId: 1,
     hint: 'Phone a friend.',
-    clue: 'A seagull winks at you. He knows something.'
+    clue: 'A seagull winks at you. He knows something.',
+    correct: 'you got it right! Heres some plot!',
+    incorrect: 'better luck next time. Heres some plot'
   },
   {
     haystack: "I'm watching you. I can see you.",
@@ -31,7 +35,9 @@ const gameData = [
     levelstage: 1,
     clusterId: 1,
     hint: 'Think globally, not locally, but always shop local.',
-    clue: 'Is that a deep-fried Oreo I smell? Yum.'
+    clue: 'Is that a deep-fried Oreo I smell? Yum.',
+    correct: 'you got it right! Heres some plot!',
+    incorrect: 'better luck next time. Heres some plot'
   }
 ]
 

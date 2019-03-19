@@ -19,11 +19,12 @@ router.get('/', async (req, res, next) => {
 router.put('/:userId', async (req, res, next) => {
   try {
     let id = parseInt(req.params.userId)
-    let {level, clusterId} = req.body
+    let {level, levelstage, clusterId} = req.body
     console.log('level clusterId ', level, clusterId)
     const user = await User.findById(id)
     const updatedUser = await user.update({
       level,
+      levelstage,
       clusterId
     })
     res.json(updatedUser)
