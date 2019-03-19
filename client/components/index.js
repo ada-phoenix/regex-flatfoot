@@ -5,7 +5,7 @@
  */
 export {default as Navbar} from './navbar'
 export {default as UserHome} from './user-home'
-export {default as Wrong} from './Wrong'
+export {default as Incorrect} from './Incorrect'
 export {default as Correct} from './Correct'
 export {Login, Signup} from './auth-form'
 export {QuestionScreen} from './QuestionScreen'
