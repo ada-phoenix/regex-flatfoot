@@ -17,7 +17,12 @@ class Problem extends React.Component {
   }
 
   showResult() {
-    let regEx = new RegExp(this.state.input, 'i')
+    let inputArr = this.state.input.split('/')
+    let regInput = inputArr[1]
+    let flags = inputArr[2]
+    console.log('input arr ', inputArr)
+    let regEx = new RegExp(regInput, flags)
+    console.log('regEx is ', regEx)
     const result = regEx.exec(this.state.regStr)
     if (result) {
       this.setState({result})
@@ -27,17 +32,22 @@ class Problem extends React.Component {
   }
 
   changeHandler(evt) {
-    const re = new RegExp(evt.target.value, 'i')
+    const re = new RegExp(evt.target.value)
     const splitStr = re.exec(this.state.regStr)
     this.setState({input: evt.target.value})
   }
 
   submitReg(evt) {
     evt.preventDefault()
-    let regEx = new RegExp(this.state.input, 'i')
+    let inputArr = this.state.input.split('/')
+    let regInput = inputArr[1]
+    let flags = inputArr[2]
+    let regEx = new RegExp(regInput, flags)
     const result = regEx.exec(this.state.regStr)
-    console.log('props are ', this.props)
-    if (result[0] === this.state.goal) {
+    if (!result) {
+      console.log('you lose loser!')
+      this.props.history.push(`/wrong`)
+    } else if (result[0] === this.state.goal) {
       console.log('you got it!')
       this.props.history.push(`/correct`)
     } else {
