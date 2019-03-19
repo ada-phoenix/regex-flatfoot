@@ -6,6 +6,7 @@ const gameData = [
     question: " Write a regular expression that matches with the word 'crime'.",
     level: 1,
     levelstage: 1,
+    clusterId: 1,
     hint: 'Hit your head against the wall.'
   },
   {
@@ -15,6 +16,7 @@ const gameData = [
     question: " Write a regular expression that matches with the word 'foot'.",
     level: 1,
     levelstage: 2,
+    clusterId: 1,
     hint: 'Phone a friend.'
   },
   {
@@ -25,6 +27,7 @@ const gameData = [
       " Write a regular expression that matches with each instance of the word 'you'.",
     level: 2,
     levelstage: 1,
+    clusterId: 1,
     hint: 'Think globally, not locally, but always shop local.'
   }
 ]
