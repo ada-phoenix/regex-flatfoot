@@ -47,7 +47,6 @@ class Problem extends React.Component {
   }
 
   render() {
-    console.log('THE STATE INSIDE RENDER: ', this.state)
     return this.props.haystack ? (
       <div>
         <div className="container">

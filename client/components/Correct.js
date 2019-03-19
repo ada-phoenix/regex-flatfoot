@@ -1,14 +1,59 @@
 import React from 'react'
 import history from '../history'
+import {connect} from 'react-redux'
+import {updateUser} from '../store/user'
 
-const Correct = () => {
-  return (
-    <div className="correctDiv">
-      <h1>You Did it! Way to go super sleuth</h1>
-      <p>Here are some plot details to keep things interesting.</p>
-      <button onClick={() => history.push(`/question`)}>Continue</button>
-    </div>
-  )
+class Correct extends React.Component {
+  constructor() {
+    super()
+  }
+
+  componentDidMount() {
+    function updater(level, clusterId) {
+      if (level === 3) {
+        console.log('clusterId ', clusterId)
+        clusterId++
+      }
+      if (level < 3) {
+        level++
+      } else {
+        level = 1
+      }
+      console.log('updated ', {level, clusterId})
+      return {level, clusterId}
+    }
+
+    let nextGame = updater(this.props.level, this.props.clusterId)
+
+    this.props.updateUser(this.props.userId, nextGame)
+  }
+
+  render() {
+    let story = this.props.game.correct || ''
+    return (
+      <div className="correctDiv">
+        <h1>{story}</h1>
+        <p>Here are some plot details to keep things interesting.</p>
+        <button onClick={() => history.push(`/question`)}>Continue</button>
+      </div>
+    )
+  }
 }
 
-export default Correct
+const mapState = state => {
+  return {
+    level: state.user.level || 1,
+    stage: state.user.levelstage || 1,
+    clusterId: state.user.cluster || 1,
+    game: state.game || {},
+    userId: state.user.id
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    updateUser: (userId, nextGame) => dispatch(updateUser(userId, nextGame))
+  }
+}
+
+export default connect(mapState, mapDispatch)(Correct)
