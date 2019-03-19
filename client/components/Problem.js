@@ -1,20 +1,22 @@
 import React from 'react'
-import {Route} from 'react-router-dom'
-import history from '../history'
 
 class Problem extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       input: '',
-      regStr: 'Crimes are afoot!',
-      goal: 'Crime',
+      regStr: '',
+      goal: '',
       result: [''],
       preview: ['']
     }
     this.changeHandler = this.changeHandler.bind(this)
     this.showResult = this.showResult.bind(this)
     this.submitReg = this.submitReg.bind(this)
+  }
+
+  componentDidMount() {
+    this.setState({regStr: this.props.haystack, goal: this.props.needle[0]})
   }
 
   showResult() {
@@ -45,7 +47,8 @@ class Problem extends React.Component {
   }
 
   render() {
-    return (
+    console.log('THE STATE INSIDE RENDER: ', this.state)
+    return this.props.haystack ? (
       <div>
         <div className="container">
           <div className="typewriter">
@@ -70,6 +73,8 @@ class Problem extends React.Component {
           <p>The Result of your regEx is: {this.state.preview}</p>
         </div>
       </div>
+    ) : (
+      <div>Hold on one moment...</div>
     )
   }
 }

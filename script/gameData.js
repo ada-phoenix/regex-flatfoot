@@ -1,7 +1,7 @@
 const gameData = [
   {
     haystack: 'Crimes are afoot!',
-    needle: ['crime'],
+    needle: ['Crime'],
     lesson: 'This is how you do the thing.',
     question: " Write a regular expression that matches with the word 'crime'.",
     level: 1,

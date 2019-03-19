@@ -10,7 +10,7 @@ import {getGame} from '../store/game'
  */
 class QuestionScreen extends React.Component {
   componentDidMount() {
-    this.props.fetchLevel({
+    this.props.fetchGame({
       cluster: 1,
       level: this.props.level,
       stage: this.props.stage
@@ -19,11 +19,14 @@ class QuestionScreen extends React.Component {
 
   render() {
     console.log('question screen props ', this.props)
-    return this.props.game && this.props.level ? (
+    return this.props.game.haystack && this.props.level ? (
       <div>
         <div className="container">
           <img src="https://m.media-amazon.com/images/M/MV5BMTY0ODk2NDY5MV5BMl5BanBnXkFtZTgwNTE4MTg3MjE@._V1_.jpg" />
-          <Prompt lesson={this.props.game.lesson} />
+          <Prompt
+            lesson={this.props.game.lesson}
+            question={this.props.game.question}
+          />
         </div>
         <div className="container">
           <Problem
@@ -58,7 +61,7 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    fetchLevel: currLevel => dispatch(getGame(currLevel))
+    fetchGame: currGame => dispatch(getGame(currGame))
   }
 }
 
