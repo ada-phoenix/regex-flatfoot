@@ -27,7 +27,6 @@ const updatedUser = user => ({type: UPDATED_USER, user})
 export const updateUser = (userId, nextGame) => async dispatch => {
   try {
     const {data} = await axios.put(`/api/users/${userId}`, nextGame)
-    console.log('route ', `/api/users/${userId}`)
     dispatch(updatedUser(data))
   } catch (err) {
     console.log(err)

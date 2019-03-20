@@ -30,6 +30,7 @@ class Correct extends React.Component {
       }
       if (level < 3) {
         level++
+        levelstage = 1
       } else {
         level = 1
       }
@@ -49,7 +50,10 @@ class Correct extends React.Component {
       this.props.levelstage,
       this.props.clusterId
     )
-    this.props.updateUser(this.props.userId, nextGame)
+    this.props.updateUser(this.props.userId, {
+      ...nextGame,
+      clue: this.props.game.clue
+    })
   }
 
   render() {
@@ -57,6 +61,10 @@ class Correct extends React.Component {
     return (
       <div className="correctDiv">
         <p>{story}</p>
+        <h1>You found a clue! This clue has been added to your casefile!</h1>
+        <div className="typewriter">
+          <h1>{this.props.game.clue}</h1>
+        </div>
         <button onClick={() => history.push(`/question`)}>Continue</button>
       </div>
     )

@@ -8,10 +8,10 @@ import {
   UserHome,
   QuestionScreen,
   Incorrect,
-  Correct
+  Correct,
+  Casefile
 } from './components'
 import {me} from './store'
-
 /**
  * COMPONENT
  */
@@ -35,6 +35,7 @@ class Routes extends Component {
             <Route exact path="/question" component={QuestionScreen} />
             <Route exact path="/correct" component={Correct} />
             <Route exact path="/incorrect" component={Incorrect} />
+            <Route exact path="/casefile" component={Casefile} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
