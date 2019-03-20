@@ -13,12 +13,20 @@ class Boss extends React.Component {
       result: [''],
       preview: [''],
       elapsed: 0,
-      start: new Date()
+      start: new Date(),
+      hideButton: 'visible',
+      hideContent: 'hidden'
     }
     this.changeHandler = this.changeHandler.bind(this)
     this.submitReg = this.submitReg.bind(this)
     this.isSame = this.isSame.bind(this)
     this.tick = this.tick.bind(this)
+    this.isHidden = this.isHidden.bind(this)
+  }
+
+  isHidden() {
+    let date = new Date()
+    this.setState({start: date, hideButton: 'hidden', hideContent: 'visible'})
   }
 
   isSame(arr1, arr2) {
@@ -35,7 +43,7 @@ class Boss extends React.Component {
   }
 
   componentDidMount() {
-    this.timer = setInterval(this.tick, 50)
+    this.timer = setInterval(this.tick, 60)
   }
 
   componentWillUnmount() {
@@ -46,10 +54,9 @@ class Boss extends React.Component {
     let currentTime = new Date() - this.state.start
     this.setState({elapsed: currentTime})
 
-    if (currentTime > 90000) {
+    if (currentTime > 60000) {
       history.push(`/incorrect`)
     }
-    // this.elapsed = new Date() - this.props.start
   }
 
   changeHandler(evt) {
@@ -80,31 +87,35 @@ class Boss extends React.Component {
   render() {
     let elapsed = Math.round(this.state.elapsed / 100)
     let seconds = (elapsed / 10).toFixed(1)
-    console.log('THE STATE INSIDE RENDER: ', this.state)
     return this.state.regStr ? (
       <div className="typewriter">
         <div className="bossContainer">
           <h2>You've found me you scoundrel!</h2>
-          {/* <img src="https://i.pinimg.com/236x/f8/75/7f/f8757f1aae1b4dc7a3eeced04eb51c94--men-portrait-bowties.jpg" /> */}
+          <img src="https://i.pinimg.com/236x/f8/75/7f/f8757f1aae1b4dc7a3eeced04eb51c94--men-portrait-bowties.jpg" />
           <p>
             Good thing for me I have a failsafe. A bomb! Unless you can decode
-            the instructions for disarming the bomb within 90 seconds it will
+            the instructions for disarming the bomb within 60 seconds it will
             explode and I will make my escape!
-          </p>{' '}
-          <b>{seconds} seconds</b>{' '}
-          <p>
-            find every instance of 'string' in the folowing message upper and
-            lowercase.
           </p>
-          <h1>{this.state.regStr}</h1>
-          <input
-            type="text"
-            onChange={this.changeHandler}
-            value={this.state.input}
-            placeholder="/write your regEx here/"
-          />
+          <div className={this.state.hideButton}>
+            <button onClick={this.isHidden}>Begin</button>
+          </div>
+          <div className={this.state.hideContent}>
+            <b>{seconds} seconds</b>
+            <p>
+              find every instance of 'string' in the folowing message upper and
+              lowercase.
+            </p>
+            <h1>{this.state.regStr}</h1>
+            <input
+              type="text"
+              onChange={this.changeHandler}
+              value={this.state.input}
+              placeholder="/write your regEx here/"
+            />
+            <button onClick={this.submitReg}>Decode!</button>
+          </div>
         </div>
-        <button onClick={this.submitReg}>Decode!</button>
       </div>
     ) : (
       <div>hang on</div>
