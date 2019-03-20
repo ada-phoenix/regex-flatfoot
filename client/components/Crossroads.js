@@ -30,7 +30,8 @@ class Crossroads extends React.Component {
 
   render() {
     const locations = this.props.cluster.locations
-    return (
+    console.log('cluster ', this.props.cluster)
+    return this.state.gotCluster ? (
       <div>
         <div className="container">clues go here</div>
         <div className="container">
@@ -45,6 +46,13 @@ class Crossroads extends React.Component {
               </button>
             )
           })}
+        </div>
+      </div>
+    ) : (
+      <div>
+        <div className="container">
+          <img src="https://m.media-amazon.com/images/M/MV5BMTY0ODk2NDY5MV5BMl5BanBnXkFtZTgwNTE4MTg3MjE@._V1_.jpg" />
+          <h1>Hold on...</h1>
         </div>
       </div>
     )
