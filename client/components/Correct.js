@@ -6,42 +6,22 @@ import {updateUser} from '../store/user'
 class Correct extends React.Component {
   constructor() {
     super()
+    this.whichScreen = this.whichScreen.bind(this)
   }
 
-  updater(level, levelstage, clusterId) {
-    if (level === 3) {
-      console.log('clusterId ', clusterId)
-      clusterId++
-    }
-    if (level < 3) {
-      level++
+  whichScreen() {
+    if (this.state.level === 4) {
+      history.push(`/crossroads`)
     } else {
-      level = 1
+      history.push(`/question`)
     }
-    console.log('updated ', {level, clusterId})
-    return {level, levelstage, clusterId}
   }
 
   componentDidMount() {
     function updater(level, levelstage, clusterId) {
-      if (level === 3) {
-        console.log('clusterId ', clusterId)
-        clusterId++
-      }
-      if (level < 3) {
-        level++
-        levelstage = 1
-      } else {
-        level = 1
-      }
-      console.log(
-        'level ',
-        level,
-        'levelstage ',
-        levelstage,
-        'clusterId ',
-        clusterId
-      )
+      level++
+      levelstage = 1
+
       return {level, levelstage, clusterId}
     }
 
@@ -61,11 +41,9 @@ class Correct extends React.Component {
     return (
       <div className="correctDiv">
         <p>{story}</p>
-        <h1>You found a clue! This clue has been added to your casefile!</h1>
-        <div className="typewriter">
-          <h1>{this.props.game.clue}</h1>
-        </div>
-        <button onClick={() => history.push(`/question`)}>Continue</button>
+        <button type="button" onClick={this.whichScreen}>
+          Continue
+        </button>
       </div>
     )
   }

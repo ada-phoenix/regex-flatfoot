@@ -24,8 +24,6 @@ const gotGame = game => ({
  */
 export const getGame = currGame => async dispatch => {
   const {cluster, level, stage} = currGame
-  console.log(currGame)
-  console.log(`/api/game/${cluster}/${level}/${stage}`)
   const {data} = await axios.get(`/api/game/${cluster}/${level}/${stage}`)
   dispatch(gotGame(data))
 }
