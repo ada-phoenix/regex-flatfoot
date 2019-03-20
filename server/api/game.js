@@ -4,12 +4,6 @@ module.exports = router
 
 router.get('/:cluster/:level/:stage', async (req, res, next) => {
   try {
-    console.log(
-      'Req.params: cluster, level, stage',
-      typeof req.params.cluster,
-      typeof req.params.level,
-      typeof req.params.stage
-    )
     const level = parseInt(req.params.level)
     const levelstage = parseInt(req.params.stage)
     const clusterId = parseInt(req.params.cluster)

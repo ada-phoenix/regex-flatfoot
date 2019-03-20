@@ -23,7 +23,8 @@ const User = db.define('user', {
     allowNull: false
   },
   casefile: {
-    type: Sequelize.ARRAY(Sequelize.STRING)
+    type: Sequelize.ARRAY(Sequelize.STRING),
+    defaultValue: []
   },
   email: {
     type: Sequelize.STRING,
