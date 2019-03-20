@@ -30,6 +30,7 @@ class Problem extends React.Component {
   }
 
   componentDidMount() {
+
     // let needle
     // console.log('needle ', this.props.needle)
     // if(this.props.needle.length === 1){
@@ -37,6 +38,7 @@ class Problem extends React.Component {
     // } else {
     //   needle = this.props.needle
     // }
+
     this.setState({regStr: this.props.haystack, goal: this.props.needle})
   }
 
@@ -91,7 +93,7 @@ class Problem extends React.Component {
             />
           </div>
           <button onClick={this.showResult}>Try It!</button>
-          <button onClick={this.submitReg}>Submit</button>
+          <button onClick={this.submitReg}>Follow that lead!</button>
         </div>
         <div>
           <p>The Result of your regEx is: {this.state.preview}</p>
