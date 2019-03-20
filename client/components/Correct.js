@@ -8,31 +8,14 @@ class Correct extends React.Component {
     super()
   }
 
-  updater(level, levelstage, clusterId) {
-    if (level === 3) {
-      console.log('clusterId ', clusterId)
-      clusterId++
-    }
-    if (level < 3) {
-      level++
-    } else {
-      level = 1
-    }
-    console.log('updated ', {level, clusterId})
-    return {level, levelstage, clusterId}
-  }
-
   componentDidMount() {
     function updater(level, levelstage, clusterId) {
-      if (level === 3) {
-        console.log('clusterId ', clusterId)
-        clusterId++
-      }
       if (level < 3) {
         level++
       } else {
         level = 1
       }
+      levelstage = 1
       console.log(
         'level ',
         level,
