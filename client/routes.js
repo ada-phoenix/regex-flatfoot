@@ -8,6 +8,7 @@ import {
   UserHome,
   QuestionScreen,
   Incorrect,
+  Boss,
   Correct
 } from './components'
 import {me} from './store'
@@ -35,6 +36,7 @@ class Routes extends Component {
             <Route exact path="/question" component={QuestionScreen} />
             <Route exact path="/correct" component={Correct} />
             <Route exact path="/incorrect" component={Incorrect} />
+            <Route exact path="/boss" component={Boss} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
