@@ -37,7 +37,9 @@ class Correct extends React.Component {
     return (
       <div className="correctDiv">
         <p>{story}</p>
-        <button onClick={this.whichScreen}>Continue</button>
+        <button type="button" onClick={this.whichScreen}>
+          Continue
+        </button>
       </div>
     )
   }
