@@ -14,7 +14,7 @@ const gotCluster = cluster => ({
 
 // THUNK CREATORS
 export const getCluster = clusterId => async dispatch => {
-  const {data} = await axios.get(`/api/cluster/${clusterId}`)
+  const {data} = await axios.get(`/api/clusters/${clusterId}`)
   dispatch(gotCluster(data))
 }
 
