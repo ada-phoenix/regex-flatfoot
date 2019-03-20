@@ -1,4 +1,5 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
 class Problem extends React.Component {
   constructor(props) {
@@ -30,16 +31,17 @@ class Problem extends React.Component {
   }
 
   componentDidMount() {
-
-    // let needle
-    // console.log('needle ', this.props.needle)
-    // if(this.props.needle.length === 1){
-    //   needle = this.props.needle.length[0]
-    // } else {
-    //   needle = this.props.needle
-    // }
-
     this.setState({regStr: this.props.haystack, goal: this.props.needle})
+  }
+
+  componentWillUnmount() {
+    this.setState({
+      input: '',
+      regStr: '',
+      goal: [''],
+      result: [''],
+      preview: ['']
+    })
   }
 
   showResult() {
@@ -73,7 +75,6 @@ class Problem extends React.Component {
   }
 
   render() {
-    console.log('THE STATE INSIDE RENDER: ', this.state)
     return this.props.haystack ? (
       <div>
         <div className="container">
@@ -105,4 +106,10 @@ class Problem extends React.Component {
   }
 }
 
-export default Problem
+//Container
+const mapState = state => ({
+  haystack: state.game.haystack,
+  needle: state.game.needle
+})
+
+export default connect(mapState)(Problem)
