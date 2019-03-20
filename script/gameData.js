@@ -23,7 +23,7 @@ const gameData = [
   },
   {
     haystack: "I'm watching you. I can see you.",
-    needle: ['you'],
+    needle: ['you', 'you'],
     lesson: 'This is how you do all of the things.',
     question:
       " Write a regular expression that matches with each instance of the word 'you'.",
