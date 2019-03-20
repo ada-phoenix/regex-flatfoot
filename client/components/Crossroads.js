@@ -22,7 +22,7 @@ const mapState = state => {
     stage: state.user.levelstage || 1,
     cluster: state.user.cluster || 1,
     game: state.game || {},
-    clues: state.user.clues
+    casefile: state.user.casefile
   }
 }
 
