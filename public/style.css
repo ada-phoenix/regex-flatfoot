@@ -48,6 +48,14 @@ input {
   padding: 2%;
 }
 
+div.hidden {
+  visibility: hidden;
+}
+
+div.visible {
+  visibility: visible;
+}
+
 /* The typing effect
 @keyframes typing {
   from { width: 0 }
