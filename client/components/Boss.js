@@ -1,5 +1,4 @@
 import React from 'react'
-import Timer from './Timer'
 import history from '../history'
 import {connect} from 'react-redux'
 
@@ -12,11 +11,14 @@ class Boss extends React.Component {
         "This is a very tricky string isn't it? We're talking about String Theory or something here!",
       goal: ['string', 'String'],
       result: [''],
-      preview: ['']
+      preview: [''],
+      elapsed: 0,
+      start: new Date()
     }
     this.changeHandler = this.changeHandler.bind(this)
     this.submitReg = this.submitReg.bind(this)
     this.isSame = this.isSame.bind(this)
+    this.tick = this.tick.bind(this)
   }
 
   isSame(arr1, arr2) {
@@ -32,7 +34,23 @@ class Boss extends React.Component {
     return same
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.timer = setInterval(this.tick, 50)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer)
+  }
+
+  tick() {
+    let currentTime = new Date() - this.state.start
+    this.setState({elapsed: currentTime})
+
+    if (currentTime > 90000) {
+      history.push(`/incorrect`)
+    }
+    // this.elapsed = new Date() - this.props.start
+  }
 
   changeHandler(evt) {
     this.setState({input: evt.target.value})
@@ -60,6 +78,8 @@ class Boss extends React.Component {
   }
 
   render() {
+    let elapsed = Math.round(this.state.elapsed / 100)
+    let seconds = (elapsed / 10).toFixed(1)
     console.log('THE STATE INSIDE RENDER: ', this.state)
     return this.state.regStr ? (
       <div className="typewriter">
@@ -70,8 +90,8 @@ class Boss extends React.Component {
             Good thing for me I have a failsafe. A bomb! Unless you can decode
             the instructions for disarming the bomb within 90 seconds it will
             explode and I will make my escape!
-          </p>
-          <Timer start={Date.now()} />
+          </p>{' '}
+          <b>{seconds} seconds</b>{' '}
           <p>
             find every instance of 'string' in the folowing message upper and
             lowercase.
