@@ -23,9 +23,9 @@ router.post('/login', async (req, res, next) => {
         level: user.level,
         levelstage: user.levelstage,
         id: user.id,
-        gamesVisted
+        gamesVisted,
+        casefile: user.casefile
       }
-      console.log('GAMES_VISTED', userData)
       req.login(user, err => (err ? next(err) : res.json(userData)))
     }
   } catch (err) {

@@ -1,5 +1,7 @@
 const router = require('express').Router()
 const {User} = require('../db/models')
+const Game = require('../db/models/game')
+
 module.exports = router
 
 router.get('/', async (req, res, next) => {
@@ -19,15 +21,48 @@ router.get('/', async (req, res, next) => {
 router.put('/:userId', async (req, res, next) => {
   try {
     let id = parseInt(req.params.userId)
-    let {level, levelstage, clusterId} = req.body
-    console.log('level clusterId ', level, clusterId)
+    let {level, levelstage, clusterId, clue} = req.body
+
     const user = await User.findById(id)
-    const updatedUser = await user.update({
-      level,
-      levelstage,
-      clusterId
+
+    const updatedInfo = clue
+      ? {
+          level,
+          levelstage,
+          clusterId,
+          casefile: [...user.casefile, clue]
+        }
+      : {
+          level,
+          levelstage,
+          clusterId
+        }
+
+    const updatedUser = await user.update(updatedInfo)
+
+    const getGame = await Game.findOne({
+      where: {
+        level,
+        levelstage,
+        clusterId
+      }
     })
-    res.json(updatedUser)
+
+    await updatedUser.addGame(getGame)
+
+    const gamesVisted = await updatedUser.getGames({raw: true})
+
+    const userData = {
+      clusterId: updatedUser.clusterId,
+      email: updatedUser.email,
+      name: updatedUser.name,
+      level: updatedUser.level,
+      levelstage: updatedUser.levelstage,
+      id: updatedUser.id,
+      gamesVisted,
+      casefile: updatedUser.casefile
+    }
+    res.json(userData)
   } catch (err) {
     next(err)
   }

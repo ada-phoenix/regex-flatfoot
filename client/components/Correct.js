@@ -21,6 +21,7 @@ class Correct extends React.Component {
     function updater(level, levelstage, clusterId) {
       level++
       levelstage = 1
+
       return {level, levelstage, clusterId}
     }
 
@@ -29,7 +30,10 @@ class Correct extends React.Component {
       this.props.levelstage,
       this.props.clusterId
     )
-    this.props.updateUser(this.props.userId, nextGame)
+    this.props.updateUser(this.props.userId, {
+      ...nextGame,
+      clue: this.props.game.clue
+    })
   }
 
   render() {
