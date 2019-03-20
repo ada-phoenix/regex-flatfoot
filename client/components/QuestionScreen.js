@@ -9,17 +9,29 @@ import {getGame} from '../store/game'
  * COMPONENT
  */
 class QuestionScreen extends React.Component {
-  componentDidMount() {
-    this.props.fetchGame({
-      cluster: 1,
+  constructor() {
+    super()
+    this.state = {
+      gotGame: false
+    }
+  }
+
+  async componentDidMount() {
+    await this.props.fetchGame({
+      cluster: this.props.cluster,
       level: this.props.level,
       stage: this.props.stage
     })
+    this.setState({gotGame: true})
+  }
+
+  componentWillUnmount() {
+    this.setState({gotGame: false})
   }
 
   render() {
-    console.log('question screen props ', this.props)
-    return this.props.game.haystack && this.props.level ? (
+    // console.log('question screen props ', this.props)
+    return this.state.gotGame ? (
       <div>
         <div className="container">
           <img src="https://m.media-amazon.com/images/M/MV5BMTY0ODk2NDY5MV5BMl5BanBnXkFtZTgwNTE4MTg3MjE@._V1_.jpg" />
@@ -29,11 +41,7 @@ class QuestionScreen extends React.Component {
           />
         </div>
         <div className="container">
-          <Problem
-            haystack={this.props.game.haystack}
-            needle={this.props.game.needle}
-            history={this.props.history}
-          />
+          <Problem history={this.props.history} />
         </div>
       </div>
     ) : (
