@@ -31,20 +31,22 @@ class Crossroads extends React.Component {
   render() {
     const locations = this.props.cluster.locations
     return (
-      //   <div>
-      //     <div className="container" >
-      //     clues go here
-      //     </div>
-      //     // <div className="container" >
-      //     // {locations.map(location => {
-      //     //   return(
-      //     //   <button key={location[0]} type="button" onClick={() => this.clickHandler(location[0])} >
-      //     //     {location[0]}
-      //     //   </button>
-      //     // )}}
-      //     // </div>
-      // </div>
-      <h1>hi</h1>
+      <div>
+        <div className="container">clues go here</div>
+        <div className="container">
+          {locations.map(location => {
+            return (
+              <button
+                key={location[0]}
+                type="button"
+                onClick={() => this.clickHandler(location[0])}
+              >
+                {location[0]}
+              </button>
+            )
+          })}
+        </div>
+      </div>
     )
   }
 }

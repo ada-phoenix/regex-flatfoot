@@ -10,7 +10,7 @@ class Correct extends React.Component {
   }
 
   whichScreen() {
-    if (this.state.level === 4) {
+    if (this.props.level === 4) {
       history.push(`/crossroads`)
     } else {
       history.push(`/question`)
