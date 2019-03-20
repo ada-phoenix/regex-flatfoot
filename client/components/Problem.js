@@ -30,6 +30,15 @@ class Problem extends React.Component {
   }
 
   componentDidMount() {
+
+    // let needle
+    // console.log('needle ', this.props.needle)
+    // if(this.props.needle.length === 1){
+    //   needle = this.props.needle.length[0]
+    // } else {
+    //   needle = this.props.needle
+    // }
+
     this.setState({regStr: this.props.haystack, goal: this.props.needle})
   }
 
