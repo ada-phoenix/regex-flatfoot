@@ -9,7 +9,9 @@ class Problem extends React.Component {
       regStr: '',
       goal: [''],
       result: [''],
-      preview: ['']
+      preview: [''],
+      notAllowed: new RegExp('[A-Z]', 'g'),
+      message: ''
     }
     this.changeHandler = this.changeHandler.bind(this)
     this.showResult = this.showResult.bind(this)
@@ -46,17 +48,25 @@ class Problem extends React.Component {
 
   showResult() {
     this.setState({preview: this.state.result})
-    console.log('preview now ', this.state.result)
   }
 
   changeHandler(evt) {
     this.setState({input: evt.target.value})
+    this.setState({message: ''})
+
     let inputArr = evt.target.value.split('/')
     let regInput = inputArr[1]
     let flags = inputArr[2]
     let regEx = new RegExp(regInput, flags)
-    const result = this.state.regStr.match(regEx)
-    console.log('result is ', result)
+    let result = this.state.regStr.match(regEx)
+    // if(this.state.notAllowed.test(evt.target.value)){
+    //   this.setState({message: 'Hey! That\'s not allowed!'})
+    //   result = ''
+    // } else {
+    //   console.log('target ', evt.target.value)
+    //   this.setState({message: ''})
+    // }
+    // console.log('result is ', result)
     if (result) {
       this.setState({result})
     }
@@ -64,8 +74,10 @@ class Problem extends React.Component {
 
   submitReg(evt) {
     evt.preventDefault()
-    console.log('result ', this.state.result, 'goal ', this.state.goal)
-    if (this.isSame(this.state.result, this.state.goal)) {
+    if (this.state.notAllowed.test(this.state.input)) {
+      this.setState({message: "Hey! That's not allowed!"})
+      this.setState({input: ''})
+    } else if (this.isSame(this.state.result, this.state.goal)) {
       console.log('you got it!')
       this.props.history.push(`/correct`)
     } else {
@@ -83,6 +95,7 @@ class Problem extends React.Component {
             <h1>{this.state.regStr}</h1>
           </div>
           <div>
+            <h2>{this.state.message}</h2>
             <label>
               Remember to wrap your regEx in forward slashes. Ex: /regex/
             </label>
