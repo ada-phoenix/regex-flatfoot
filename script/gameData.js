@@ -95,7 +95,8 @@ const gameData = [
     hint: 'Think globally, not locally, but always shop local.',
     clue: 'Ooph, look at all this water damage.',
     correct: 'you got it right! Heres some plot!',
-    incorrect: 'better luck next time. Heres some plot'
+    incorrect: 'better luck next time. Heres some plot',
+    notallowed: ['[A-Z]', 'g']
   },
   {
     haystack: 'PONDer, ponDeR, ponDER, POND',
@@ -109,7 +110,8 @@ const gameData = [
     hint: 'Think globally, not locally, but always shop local.',
     clue: 'Ooph, look at all this water damage.',
     correct: 'you got it right! Heres some plot!',
-    incorrect: 'better luck next time. Heres some plot'
+    incorrect: 'better luck next time. Heres some plot',
+    notallowed: ['[A-Z]', 'g']
   },
   {
     haystack: 'RumiNATE, rumINate, RUMinATE, rumINate',
@@ -123,7 +125,8 @@ const gameData = [
     hint: 'Think globally, not locally, but always shop local.',
     clue: 'Ooph, look at all this water damage.',
     correct: 'you got it right! Heres some plot!',
-    incorrect: 'better luck next time. Heres some plot'
+    incorrect: 'better luck next time. Heres some plot',
+    notallowed: ['[A-Z]', 'g']
   }
 ]
 

@@ -10,7 +10,6 @@ class Problem extends React.Component {
       goal: [''],
       result: [''],
       preview: [''],
-      notAllowed: new RegExp('[A-Z]', 'g'),
       message: ''
     }
     this.changeHandler = this.changeHandler.bind(this)
@@ -59,14 +58,6 @@ class Problem extends React.Component {
     let flags = inputArr[2]
     let regEx = new RegExp(regInput, flags)
     let result = this.state.regStr.match(regEx)
-    // if(this.state.notAllowed.test(evt.target.value)){
-    //   this.setState({message: 'Hey! That\'s not allowed!'})
-    //   result = ''
-    // } else {
-    //   console.log('target ', evt.target.value)
-    //   this.setState({message: ''})
-    // }
-    // console.log('result is ', result)
     if (result) {
       this.setState({result})
     }
@@ -74,10 +65,25 @@ class Problem extends React.Component {
 
   submitReg(evt) {
     evt.preventDefault()
-    if (this.state.notAllowed.test(this.state.input)) {
-      this.setState({message: "Hey! That's not allowed!"})
-      this.setState({input: ''})
-    } else if (this.isSame(this.state.result, this.state.goal)) {
+    let notEx = false
+    if (this.props.notallowed.length) {
+      notEx = new RegExp(this.props.notallowed[0], this.props.notallowed[1])
+    }
+    if (notEx) {
+      if (notEx.test(this.state.input)) {
+        console.log('netEx ', notEx)
+        console.log('input ', this.state.input)
+        this.setState({message: "Hey! That's not allowed!"})
+        this.setState({input: ''})
+      } else if (this.isSame(this.state.result, this.state.goal)) {
+          console.log('you got it!')
+          this.props.history.push(`/correct`)
+        } else {
+          console.log('you lose loser!')
+          this.props.history.push(`/incorrect`)
+        }
+    }
+    if (this.isSame(this.state.result, this.state.goal)) {
       console.log('you got it!')
       this.props.history.push(`/correct`)
     } else {
@@ -122,7 +128,8 @@ class Problem extends React.Component {
 //Container
 const mapState = state => ({
   haystack: state.game.haystack,
-  needle: state.game.needle
+  needle: state.game.needle,
+  notallowed: state.game.notallowed
 })
 
 export default connect(mapState)(Problem)
