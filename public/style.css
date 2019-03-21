@@ -56,6 +56,11 @@ div.visible {
   visibility: visible;
 }
 
+.clues {
+  background-color: rgb(204, 204, 204);
+  width: 70vw;
+}
+
 /* The typing effect
 @keyframes typing {
   from { width: 0 }

@@ -6,8 +6,13 @@ class Casefile extends React.Component {
   render() {
     return (
       <div>
-        {this.props.casefile.map(clue => {
-          return <h1>{clue}</h1>
+        {this.props.casefile.map((clue, i) => {
+          return (
+            <h1>
+              {`${i + 1}) `}
+              {clue}
+            </h1>
+          )
         })}
         <Link to="/question">Make with the Questions!</Link>
       </div>
