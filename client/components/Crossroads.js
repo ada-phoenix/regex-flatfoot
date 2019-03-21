@@ -19,13 +19,10 @@ class Crossroads extends React.Component {
     this.setState({gotCluster: false})
   }
 
-  clickHandler(location) {
+  clickHandler(location, story) {
     const correctLocation = this.props.cluster.correctlocation
-    if (location === correctLocation) {
-      console.log('YOU PICKED THE RIGHT LOCATION')
-    } else {
-      console.log('TRY AGAIN')
-    }
+    const trail = location === correctLocation ? 'hot' : 'cold'
+    this.props.history.push('/chase', {location, story, trail})
   }
 
   render() {
@@ -40,7 +37,7 @@ class Crossroads extends React.Component {
               <button
                 key={location[0]}
                 type="button"
-                onClick={() => this.clickHandler(location[0])}
+                onClick={() => this.clickHandler(location[0], location[1])}
               >
                 {location[0]}
               </button>
