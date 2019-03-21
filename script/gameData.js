@@ -1,17 +1,22 @@
 const gameData = [
   {
-    haystack: 'Crimes are afoot!',
-    needle: ['Crime'],
-    lesson: 'This is how you do the thing.',
-    question: " Write a regular expression that matches with the word 'Crime'.",
+    haystack:
+      'kajdymrpULoDYtlspnsbbwgghhqqqrnekoqwpeoriUTlkahsDKHtrenmlskoshdtGDLDYmtrkodytrenKoqkkshdjjkkdenkokodytrenKoqkkshdjjkkdDYMTrnkenkoDYtlspqrnekoqwpeoriUriUTlkahsDKHtrendmytrenkomlskoshdtGDLDYmtrkovbnnsbbwgghhqqWDOLqqbbwgghhULoDYtlspnsbbwgnekoqwpeoriUriUTlkahsDKHtrenmleoriUTlkahsDKHtrenmlskoshdt',
+    needle: ['dmytrenko'],
+    lesson:
+      "Welcome, Rookie. Bletchley Academy of Decryption tells us that you're their best new grad, and we need your help. We've intercepted an encoded message from the Grepino crime family. They are famous for their complex codes, but we think you can decode their messages using regular expressions.\n\nHave you heard of regular expressions - aka regEx?\n\nClever programmers use Regular Expressions to match character combinations in text.\n\nThe simplest regular expression is just the character or word you want to match. For example, /Crimes/ would match the word \"Crimes\" in the sentence, \"Crimes are afoot.\"\n\nNow let's get crackin'!\n\nDon't forget to wrap your regular expressions in forward slashes /like this/!",
+    question:
+      'We might have a lead on a shady character we\'ve been watching downtown. His name is Dmytrenko. Can you use a regular expression to find out if his name is mentioned in this note we intercepted?\n\nWrite a regular expression to match the word "dmytrenko".',
     level: 1,
     levelstage: 1,
     clusterId: 1,
-    hint: 'Hit your head against the wall.',
-    clue: 'A seagull winks at you. He knows something.',
-    correct: 'you got it right! Heres some plot!',
+    hint:
+      'Are you using the back slashes? No need to worry about capitalization for now.',
+    clue: 'At the parking lot, a seagull winked at me. He knows something.',
+    correct:
+      "Good work, Rookie. The boys picked up Dmytrenko and he's singing like a canary! Go checkout the parking lot behind the hotdog stand on Ninth and Grand. He said it's one of their drop off points.",
     incorrect:
-      'You scan the crowded train station. Is that the mob boss over there?! No, just a well dressed commuter. Keep looking.'
+      "What happened there, Rookie? I thought you were the best. Let's head back to HQ and see if the boys have anything new for us."
   },
   {
     haystack: 'Crimes are afoot!',
@@ -22,8 +27,9 @@ const gameData = [
     levelstage: 2,
     clusterId: 1,
     hint: 'Phone a friend.',
-    clue: 'A seagull winks at you. He knows something.',
-    correct: 'you got it right! Heres some plot!',
+    clue: 'At the parking lot, a seagull winked at me. He knows something.',
+    correct:
+      "Good work, Rookie. The boys picked up Dmytrenko and he's singing like a canary! Go checkout the parking lot behind the hotdog stand on Ninth and Grand. He said it's one of their drop off points.",
     incorrect:
       'You wander through the street fair almost tripping over a small child. That kid is a public nuisance and you should arrest him! But not now, you have bigger fish to fry. Keep searching.'
   },
@@ -36,8 +42,9 @@ const gameData = [
     levelstage: 3,
     clusterId: 1,
     hint: 'Phone a friend.',
-    clue: 'A seagull winks at you. He knows something.',
-    correct: 'you got it right! Heres some plot!',
+    clue: 'At the parking lot, a seagull winked at me. He knows something.',
+    correct:
+      "Good work, Rookie. The boys picked up Dmytrenko and he's singing like a canary! Go checkout the parking lot behind the hotdog stand on Ninth and Grand. He said it's one of their drop off points.",
     incorrect:
       "You search the laundromat but all you find is socks. Do you have time to do a quick load of unmentionables? No! You must keep searching for the criminals! (plus you don't have any quarters)"
   },
