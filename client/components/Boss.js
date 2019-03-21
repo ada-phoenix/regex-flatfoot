@@ -62,7 +62,7 @@ class Boss extends React.Component {
     this.setState({elapsed: currentTime})
 
     if (currentTime > this.state.timer) {
-      history.push(`/incorrect`)
+      history.push(`/death`)
     }
   }
 
@@ -86,7 +86,7 @@ class Boss extends React.Component {
       history.push(`/correct`)
     } else {
       console.log('you lose loser!')
-      history.push(`/incorrect`)
+      history.push(`/death`)
     }
   }
 

@@ -51,7 +51,77 @@ const gameData = [
     levelstage: 1,
     clusterId: 1,
     hint: 'Think globally, not locally, but always shop local.',
-    clue: 'Is that a deep-fried Oreo I smell? Yum.',
+    clue: "A burly man elbows you out of the way. He's carrying a heavy load.",
+    correct: 'you got it right! Heres some plot!',
+    incorrect: 'better luck next time. Heres some plot'
+  },
+  {
+    haystack: 'I am watching you. I can see you.',
+    needle: ['I', 'I'],
+    lesson: 'This is how you do all of the things.',
+    question:
+      " Write a regular expression that matches with each instance of the word 'I'.",
+    level: 2,
+    levelstage: 2,
+    clusterId: 1,
+    hint: 'Think globally, not locally, but always shop local.',
+    clue: "A burly man elbows you out of the way. He's carrying a heavy load.",
+    correct: 'you got it right! Heres some plot!',
+    incorrect: 'better luck next time. Heres some plot'
+  },
+  {
+    haystack: "Put you're thinking cap on. Put you're back into it.",
+    needle: ['Put', 'Put'],
+    lesson: 'This is how you do all of the things.',
+    question:
+      " Write a regular expression that matches with each instance of the word 'Put'.",
+    level: 2,
+    levelstage: 3,
+    clusterId: 1,
+    hint: 'Think globally, not locally, but always shop local.',
+    clue: "A burly man elbows you out of the way. He's carrying a heavy load.",
+    correct: 'you got it right! Heres some plot!',
+    incorrect: 'better luck next time. Heres some plot'
+  },
+  {
+    haystack: 'THINKing thInkIng THiNkInG THUNK',
+    needle: ['THINKing'],
+    lesson: 'This is how you do all of the things.',
+    question:
+      " Write a regular expression that matches with the word 'thinking'.",
+    level: 3,
+    levelstage: 1,
+    clusterId: 1,
+    hint: 'Think globally, not locally, but always shop local.',
+    clue: 'Ooph, look at all this water damage.',
+    correct: 'you got it right! Heres some plot!',
+    incorrect: 'better luck next time. Heres some plot'
+  },
+  {
+    haystack: 'PONDer, ponDeR, ponDER, POND',
+    needle: ['PONDer'],
+    lesson: 'This is how you do all of the things.',
+    question:
+      " Write a regular expression that matches with the word 'ponder'.",
+    level: 3,
+    levelstage: 2,
+    clusterId: 1,
+    hint: 'Think globally, not locally, but always shop local.',
+    clue: 'Ooph, look at all this water damage.',
+    correct: 'you got it right! Heres some plot!',
+    incorrect: 'better luck next time. Heres some plot'
+  },
+  {
+    haystack: 'RumiNATE, rumINate, RUMinATE, rumINate',
+    needle: ['RumiNATE'],
+    lesson: 'This is how you do all of the things.',
+    question:
+      " Write a regular expression that matches with the word 'ponder'.",
+    level: 3,
+    levelstage: 3,
+    clusterId: 1,
+    hint: 'Think globally, not locally, but always shop local.',
+    clue: 'Ooph, look at all this water damage.',
     correct: 'you got it right! Heres some plot!',
     incorrect: 'better luck next time. Heres some plot'
   }
