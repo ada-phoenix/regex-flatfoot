@@ -2,6 +2,7 @@ import React from 'react'
 import history from '../history'
 import {connect} from 'react-redux'
 import {updateUser} from '../store/user'
+import {correctUpdater} from '../util'
 
 class Correct extends React.Component {
   constructor() {
@@ -18,14 +19,7 @@ class Correct extends React.Component {
   }
 
   componentDidMount() {
-    function updater(level, levelstage, clusterId) {
-      level++
-      levelstage = 1
-
-      return {level, levelstage, clusterId}
-    }
-
-    let nextGame = updater(
+    let nextGame = correctUpdater(
       this.props.level,
       this.props.levelstage,
       this.props.clusterId

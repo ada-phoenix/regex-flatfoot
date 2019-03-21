@@ -2,6 +2,7 @@ import React from 'react'
 import history from '../history'
 import {connect} from 'react-redux'
 import {updateUser} from '../store/user'
+import {incorrectUpdater} from '../util'
 
 class Incorrect extends React.Component {
   constructor() {
@@ -23,24 +24,7 @@ class Incorrect extends React.Component {
   }
 
   componentDidMount() {
-    function updater(level, levelstage, clusterId) {
-      if (levelstage < 3) {
-        levelstage++
-      } else {
-        levelstage = 1
-      }
-      console.log(
-        'level ',
-        level,
-        'levelstage ',
-        levelstage,
-        'clusterId ',
-        clusterId
-      )
-      return {level, levelstage, clusterId}
-    }
-
-    let nextGame = updater(
+    let nextGame = incorrectUpdater(
       this.props.level,
       this.props.levelstage,
       this.props.clusterId

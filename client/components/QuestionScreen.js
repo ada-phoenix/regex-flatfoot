@@ -62,7 +62,7 @@ const mapState = state => {
   return {
     level: state.user.level || 1,
     stage: state.user.levelstage || 1,
-    cluster: state.user.cluster || 1,
+    cluster: state.user.clusterId || 1,
     game: state.game || {}
   }
 }
