@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {getCluster} from '../store/cluster'
+import {Casefile} from '.'
 
 class Crossroads extends React.Component {
   constructor() {
@@ -30,7 +31,20 @@ class Crossroads extends React.Component {
     console.log('cluster ', this.props.cluster)
     return this.state.gotCluster ? (
       <div>
-        <div className="container">clues go here</div>
+        <div className="container">
+          <h1>Let's review the clues</h1>
+        </div>
+        <div className="clues">
+          {this.props.casefile.map((clue, i) => {
+            return (
+              <h2>
+                {`${i + 1}) `}
+                {clue}
+              </h2>
+            )
+          })}
+        </div>
+        <h1>Now, where to go...</h1>
         <div className="container">
           {locations.map(location => {
             return (
