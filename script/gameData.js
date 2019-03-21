@@ -4,7 +4,7 @@ const gameData = [
       'kajdymrpULoDYtlspnsbbwgghhqqqrnekoqwpeoriUTlkahsDKHtrenmlskoshdtGDLDYmtrkodytrenKoqkkshdjjkkdenkokodytrenKoqkkshdjjkkdDYMTrnkenkoDYtlspqrnekoqwpeoriUriUTlkahsDKHtrendmytrenkomlskoshdtGDLDYmtrkovbnnsbbwgghhqqWDOLqqbbwgghhULoDYtlspnsbbwgnekoqwpeoriUriUTlkahsDKHtrenmleoriUTlkahsDKHtrenmlskoshdt',
     needle: ['dmytrenko'],
     lesson:
-      "Welcome, Rookie. Bletchley Academy of Decryption tells us that you're their best new grad, and we need your help. We've intercepted an encoded message from the Grepino crime family. They are famous for their complex codes, but we think you can decode their messages using regular expressions.\n\nHave you heard of regular expressions - aka regEx?\n\nClever programmers use Regular Expressions to match character combinations in text.\n\nThe simplest regular expression is just the character or word you want to match. For example, /Crimes/ would match the word \"Crimes\" in the sentence, \"Crimes are afoot.\"\n\nNow let's get crackin'!\n\nDon't forget to wrap your regular expressions in forward slashes /like this/!",
+      "Welcome, Rookie. Bletchley Academy of Decryption tells us that you're their best new grad, and we need your help. We've intercepted an encoded message from the Grepino crime family. They are famous for their complex codes, but we think you can decode their messages using regular expressions.\n\nHave you heard of regular expressions - aka regEx?\n\nClever programmers use Regular Expressions to match character combinations in text.\n\nThe simplest regular expression is just the character or word you want to match. For example, /doughnut/ would match the word \"doughnut\" in the sentence, \"I'd love a doughnut.\"\n\nNow let's get crackin'!\n\nDon't forget to wrap your regular expressions in forward slashes /like this/!",
     question:
       'We might have a lead on a shady character we\'ve been watching downtown. His name is Dmytrenko. Can you use a regular expression to find out if his name is mentioned in this note we intercepted?\n\nWrite a regular expression to match the word "dmytrenko".',
     level: 1,
@@ -19,34 +19,42 @@ const gameData = [
       "What happened there, Rookie? I thought you were the best. Let's head back to HQ and see if the boys have anything new for us."
   },
   {
-    haystack: 'Crimes are afoot!',
-    needle: ['foot'],
-    lesson: 'This is how you do the thing.',
-    question: " Write a regular expression that matches with the word 'foot'.",
+    haystack:
+      "lv u 2 babe lol be there soon you up? sry im gonnabe late OMW lol you got eats? sry busy gotta committ somecrimes 2night lol head'n ovr now lol he's like that guy in diners drive ins and dives yeah bro can we leave now sweet!",
+    needle: ['crime'],
+    lesson:
+      'The simplest regular expression is just the character or word you want to match. For example, /doughnut/ would match the word "doughnut" in the sentence, "I\'d love a doughnut."',
+    question:
+      'You\'re in luck. Dmytrenko is sloppy and he left his phone on the bus. Let\'s use a regular expression to see if he mentions the word "crime" in any of his text messages.\n\nWrite a regular expression to match the word "crime".',
     level: 1,
     levelstage: 2,
     clusterId: 1,
-    hint: 'Phone a friend.',
+    hint:
+      'Are you using the back slashes? No need to worry about capitalization for now.',
     clue: 'At the parking lot, a seagull winked at me. He knows something.',
     correct:
       "Good work, Rookie. The boys picked up Dmytrenko and he's singing like a canary! Go checkout the parking lot behind the hotdog stand on Ninth and Grand. He said it's one of their drop off points.",
     incorrect:
-      'You wander through the street fair almost tripping over a small child. That kid is a public nuisance and you should arrest him! But not now, you have bigger fish to fry. Keep searching.'
+      'He slipped through our fingers again!? Get it together Rookie! Grab your self a cup of coffee and head back to the station.'
   },
   {
-    haystack: 'Crimes are afoot!',
-    needle: ['are'],
-    lesson: 'This is how you do the thing.',
-    question: " Write a regular expression that matches with the word 'are'.",
+    haystack:
+      "I wanna commit\nbut I chose the life of crime\nThe law is gonna catch up with me\nWhen i'm in the clink\nill do some hard time\nbut loving you is not a Crime\nmy heart is like a bus map\nconfusing and funny\nsometimes i wish I hadn't stollen that money$$$$\nin  my mind I'll always be free\nwait for me",
+    needle: ['money'],
+    lesson:
+      'The simplest regular expression is just the character or word you want to match. For example, /doughnut/ would match the word "doughnut" in the sentence, "I\'d love a doughnut."',
+    question:
+      "We found Dmytrenko's poetry journal at the reptile zoo. Turns out the guy has a rich inner life and loves lizards. Use a regular expression to see if he mentions the stolen money anywhere in this awful poem.",
     level: 1,
     levelstage: 3,
     clusterId: 1,
-    hint: 'Phone a friend.',
+    hint:
+      'Are you using the back slashes? No need to worry about capitalization for now.',
     clue: 'At the parking lot, a seagull winked at me. He knows something.',
     correct:
       "Good work, Rookie. The boys picked up Dmytrenko and he's singing like a canary! Go checkout the parking lot behind the hotdog stand on Ninth and Grand. He said it's one of their drop off points.",
     incorrect:
-      "You search the laundromat but all you find is socks. Do you have time to do a quick load of unmentionables? No! You must keep searching for the criminals! (plus you don't have any quarters)"
+      "Damnit Rookie! You're on desk duty. Maybe these trails haven't gone completely cold. Go back to the beginning and review the evidence."
   },
   {
     haystack: "I'm watching you. I can see you.",
