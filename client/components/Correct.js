@@ -8,6 +8,18 @@ class Correct extends React.Component {
   constructor() {
     super()
     this.whichScreen = this.whichScreen.bind(this)
+    this.state = {
+      displayPopUp: false
+    }
+    this.displayPopUp = this.displayPopUp.bind(this)
+  }
+
+  displayPopUp() {
+    this.setState({displayPopUp: true}, () => {
+      setTimeout(() => {
+        this.setState({displayPopUp: false})
+      }, 800)
+    })
   }
 
   whichScreen() {
@@ -28,12 +40,16 @@ class Correct extends React.Component {
       ...nextGame,
       clue: this.props.game.clue
     })
+    this.displayPopUp()
   }
 
   render() {
     let story = this.props.game.correct || ''
     return (
       <div className="correctDiv">
+        {this.state.displayPopUp && (
+          <div className="popup">A clue has been added to your casefile!</div>
+        )}
         <p>{story}</p>
         <button type="button" onClick={this.whichScreen}>
           Continue
