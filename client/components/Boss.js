@@ -11,7 +11,6 @@ class Boss extends React.Component {
       needle: ['string', 'String'],
       question:
         "find every instance of 'string' in the folowing message upper and lowercase.",
-      timer: 30000,
       story:
         'Good thing for me I have a failsafe. A bomb! Unless you can decode the instructions for disarming the bomb within 30 seconds it will explode and I will make my escape!',
       picture:
