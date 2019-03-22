@@ -100,12 +100,12 @@ const gameData = [
   },
   {
     haystack:
-      "Weight WEIGHT! Don't tell me! Someone else is COMPLAINING about my perfectly good Yoga mats?\n I mean C'MON, everybody knows YOU GET WHAT YOU PAY FOR! Sure they're made out of old subway sandwiches but I thought these YOGIs were all about REduce REuse REcycle?! \n\nDon't even get me STARTED on the gym rats. These rats are worse than snitches. Complain complain COMPLAIN just because the 50LB DUMBELL I sold only weighs 5LBs. THOSE dummies should thank me for making them feel like superstars! I'm so unappreciated.",
-    needle: ['DUMBELL'],
+      "Weight WEIGHT! Don't tell me! Someone else is COMPLAINING about my perfectly good Yoga mats?\n I mean C'MON, everybody knows YOU GET WHAT YOU PAY FOR! Sure they're made out of old subway sandwiches but I thought these YOGIs were all about REduce REuse REcycle?! \n\nDon't even get me STARTED on the gym rats. These rats are worse than snitches. Complain complain COMPLAIN just because the 50LB DUMBBELL I sold only weighs 5LBs. THOSE dummies should thank me for making them feel like superstars! I'm so unappreciated.",
+    needle: ['DUMBBELL'],
     lesson:
       "Remember the g flag? What a tricky little minx. Well g has an associate, the i flag. i stands for ignore case. Wait! Stop! Where are you going? The i flag doesn't mean ignore your important casework. It means ignore case sensitivity in your searches (get your head on straight kid, yikes). \n\n\nWhile the regEx /knife/ would only match the exact word 'knife', adding the i flag like so, /knife/i, matches the word with any combination of upper and lowercase letters  such as 'KNIFE, Knife, knife or kNiFe.' Look at all those knives! I'd better get them down to the evidence locker and you'd better get back to work!",
     question:
-      "Our next culprit is no smalltime crook. Dominique Gold runs the Grepino family's entire counterfeit exercise equipment operation. Lucky for us even pros occasionally make mistakes. She left her journal on the bench press at the YMCA. Write a regular expression that matches the word 'dumbell' and by the way, I spilled coffee on your keyboard this morning so the shift and caps lock keys are broken, I guess you can't use any capital letters. My Bad!",
+      "Our next culprit is no small-time crook. Dominique Gold runs the Grepino family's entire counterfeit exercise equipment operation. Lucky for us even pros occasionally make mistakes. She left her journal on the bench press at the YMCA. Write a regular expression that matches the word 'dumbbell' and by the way, I spilled coffee on your keyboard this morning so the shift and caps lock keys are broken, I guess you can't use any capital letters. My Bad!",
     level: 3,
     levelstage: 1,
     clusterId: 1,
@@ -116,7 +116,7 @@ const gameData = [
     correct:
       'Good work Rookie! We caught up with Gold on her way to the bodybuilding convention. Just think about all the unsatisfactory workouts that were prevented with your sleuthing. Everyone is going to get so swole! Anyway, Dominique gave us a hot tip on The Grepinos. She said to check out the abandoned subway station on the north side of town.',
     incorrect:
-      "What's this? The hotshot rookie can't work around an equitment failure? Back in my day we did everything with pen and paper so that excuse ain't gonna fly with me bub! Head back to the station and see if there are any new leads.",
+      "What's this? The hotshot rookie can't work around an equipment failure? Back in my day we did everything with pen and paper so that excuse ain't gonna fly with me bub! Head back to the station and see if there are any new leads.",
     notallowed: ['[A-Z]', 'g']
   },
   {
@@ -142,7 +142,7 @@ const gameData = [
   },
   {
     haystack:
-      "Mr Grepino, I'm so tired of working with these MEATHEADS! I'm sure by now I've proven myself a VALUABLE asset to your crime family. How about I take over the bodega shakedown division of your crime syndicate? Or EVEN the illegal dachshund racing division? I honestly can't take another fitness freak complaining that our jumpropes are too short.",
+      "Mr Grepino, I'm so tired of working with these MEATHEADS! I'm sure by now I've proven myself a VALUABLE asset to your crime family. How about I take over the bodega shakedown division of your crime syndicate? Or EVEN the illegal dachshund racing division? I honestly can't take another fitness freak complaining that our jump ropes are too short.",
     needle: ['Meathead'],
     lesson:
       'If you need to match any case, use the i flag after your second forward slash. For example /knife/i would match "KNIFE, knife or KnIfE."',
