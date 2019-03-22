@@ -38,6 +38,10 @@ const Game = db.define('game', {
   },
   incorrect: {
     type: Sequelize.TEXT
+  },
+  notallowed: {
+    type: Sequelize.ARRAY(Sequelize.STRING),
+    defaultValue: []
   }
 })
 

@@ -9,12 +9,14 @@ class Problem extends React.Component {
       regStr: '',
       goal: [''],
       result: [''],
-      preview: ['']
+      preview: [''],
+      message: ''
     }
     this.changeHandler = this.changeHandler.bind(this)
     this.showResult = this.showResult.bind(this)
     this.submitReg = this.submitReg.bind(this)
     this.isSame = this.isSame.bind(this)
+    this.pushToNext = this.pushToNext.bind(this)
   }
 
   isSame(arr1, arr2) {
@@ -46,31 +48,42 @@ class Problem extends React.Component {
 
   showResult() {
     this.setState({preview: this.state.result})
-    console.log('preview now ', this.state.result)
   }
 
   changeHandler(evt) {
     this.setState({input: evt.target.value})
+    this.setState({message: ''})
+
     let inputArr = evt.target.value.split('/')
     let regInput = inputArr[1]
     let flags = inputArr[2]
     let regEx = new RegExp(regInput, flags)
-    const result = this.state.regStr.match(regEx)
-    console.log('result is ', result)
+    let result = this.state.regStr.match(regEx)
     if (result) {
       this.setState({result})
     }
   }
 
-  submitReg(evt) {
-    evt.preventDefault()
-    console.log('result ', this.state.result, 'goal ', this.state.goal)
+  pushToNext() {
     if (this.isSame(this.state.result, this.state.goal)) {
-      console.log('you got it!')
       this.props.history.push(`/correct`)
     } else {
-      console.log('you lose loser!')
       this.props.history.push(`/incorrect`)
+    }
+  }
+
+  submitReg(evt) {
+    evt.preventDefault()
+    if (this.props.notallowed.length) {
+      let notEx = new RegExp(this.props.notallowed[0], this.props.notallowed[1])
+      if (notEx.test(this.state.input)) {
+        this.setState({message: "Hey! That's not allowed!"})
+        this.setState({input: ''})
+      } else {
+        this.pushToNext()
+      }
+    } else {
+      this.pushToNext()
     }
   }
 
@@ -85,6 +98,7 @@ class Problem extends React.Component {
             </div>
           </div>
           <div>
+            <h2 className="message">{this.state.message}</h2>
             <label>
               Remember to wrap your regEx in forward slashes. Ex: /regex/
             </label>
@@ -111,7 +125,8 @@ class Problem extends React.Component {
 //Container
 const mapState = state => ({
   haystack: state.game.haystack,
-  needle: state.game.needle
+  needle: state.game.needle,
+  notallowed: state.game.notallowed
 })
 
 export default connect(mapState)(Problem)

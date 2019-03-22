@@ -67,12 +67,15 @@ div.visible {
   width: 50%;
 }
 
+.message {
+  color: red;
+}
+
 /* The typing effect
 @keyframes typing {
   from { width: 0 }
   to { width: 100% }
 }
-
 /* The typewriter cursor effect */
 /* @keyframes blink-caret {
   from, to { border-color: transparent }
