@@ -78,9 +78,11 @@ class Problem extends React.Component {
     return this.props.haystack ? (
       <div>
         <div className="container">
-          <div className="typewriter">
-            <label>Text block:</label>
-            <h1>{this.state.regStr}</h1>
+          <div className="haystack">
+            <div className="typewriter">
+              <label>Text block:</label>
+              <div>{this.state.regStr}</div>
+            </div>
           </div>
           <div>
             <label>

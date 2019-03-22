@@ -40,9 +40,7 @@ class QuestionScreen extends React.Component {
             question={this.props.game.question}
           />
         </div>
-        <div className="container">
-          <Problem history={this.props.history} />
-        </div>
+        <Problem history={this.props.history} />
       </div>
     ) : (
       <div>
