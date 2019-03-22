@@ -74,11 +74,8 @@ class Problem extends React.Component {
 
   submitReg(evt) {
     evt.preventDefault()
-    let notEx = false
     if (this.props.notallowed.length) {
-      notEx = new RegExp(this.props.notallowed[0], this.props.notallowed[1])
-    }
-    if (notEx) {
+      let notEx = new RegExp(this.props.notallowed[0], this.props.notallowed[1])
       if (notEx.test(this.state.input)) {
         this.setState({message: "Hey! That's not allowed!"})
         this.setState({input: ''})
