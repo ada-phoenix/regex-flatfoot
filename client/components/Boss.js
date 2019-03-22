@@ -6,16 +6,7 @@ class Boss extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      heystack:
-        "This is a very tricky string isn't it? We're talking about String Theory or something here!",
-      needle: ['string', 'String'],
-      question:
-        "find every instance of 'string' in the folowing message upper and lowercase.",
       timer: 30000,
-      story:
-        'Good thing for me I have a failsafe. A bomb! Unless you can decode the instructions for disarming the bomb within 30 seconds it will explode and I will make my escape!',
-      picture:
-        'https://i.pinimg.com/236x/f8/75/7f/f8757f1aae1b4dc7a3eeced04eb51c94--men-portrait-bowties.jpg',
       result: [''],
       preview: [''],
       elapsed: 0,
@@ -50,18 +41,18 @@ class Boss extends React.Component {
   }
 
   componentDidMount() {
-    this.timer = setInterval(this.tick, 60)
+    this.incrementer = setInterval(this.tick, 60)
   }
 
   componentWillUnmount() {
-    clearInterval(this.timer)
+    clearInterval(this.incrementer)
   }
 
   tick() {
     let currentTime = new Date() - this.state.start
     this.setState({elapsed: currentTime})
 
-    if (currentTime > this.state.timer) {
+    if (currentTime > this.props.time) {
       history.push(`/postboss`, {won: false})
     }
   }
@@ -72,8 +63,7 @@ class Boss extends React.Component {
     let regInput = inputArr[1]
     let flags = inputArr[2]
     let regEx = new RegExp(regInput, flags)
-    const result = this.state.heystack.match(regEx)
-    console.log('result is ', result)
+    const result = this.props.haystack.match(regEx)
     if (result) {
       this.setState({result})
     }
@@ -81,11 +71,9 @@ class Boss extends React.Component {
 
   submitReg(evt) {
     evt.preventDefault()
-    if (this.isSame(this.state.result, this.state.needle)) {
-      console.log('you got it!')
+    if (this.isSame(this.state.result, this.props.needle)) {
       history.push(`/postboss`, {won: true})
     } else {
-      console.log('you lose loser!')
       history.push(`/postboss`, {won: false})
     }
   }
@@ -93,19 +81,19 @@ class Boss extends React.Component {
   render() {
     let elapsed = Math.round(this.state.elapsed / 100)
     let seconds = (elapsed / 10).toFixed(1)
-    return this.state.heystack ? (
+    return this.props.haystack ? (
       <div className="typewriter">
         <div className="bossContainer">
           <h2>You've found me you scoundrel!</h2>
-          <img src={this.state.picture} />
-          <p>{this.state.story}</p>
+          <img src={this.props.picture} />
+          <p>{this.props.story}</p>
           <div className={this.state.hideButton}>
             <button onClick={this.isHidden}>Begin</button>
           </div>
           <div className={this.state.hideContent}>
             <b>{seconds} seconds</b>
-            <p>{this.state.question}</p>
-            <h1>{this.state.heystack}</h1>
+            <p>{this.props.question}</p>
+            <h1>{this.props.haystack}</h1>
             <input
               type="text"
               onChange={this.changeHandler}
@@ -122,4 +110,18 @@ class Boss extends React.Component {
   }
 }
 
-export default connect()(Boss)
+const mapState = state => {
+  return {
+    cluster: state.cluster || {},
+    haystack: state.cluster.boss.haystack || '',
+    needle: state.cluster.boss.needle || '',
+    question: state.cluster.boss.question || '',
+    time: state.cluster.boss.time || 1,
+    story: state.cluster.boss.story || '',
+    picture: state.cluster.boss.picture || '',
+    correct: state.cluster.boss.correct || '',
+    incorrect: state.cluster.boss.incorrect || ''
+  }
+}
+
+export default connect(mapState)(Boss)

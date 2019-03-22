@@ -5,13 +5,15 @@ bossData = [
     needle: ['string', 'String'],
     question:
       "find every instance of 'string' in the folowing message upper and lowercase.",
-    timer: 30000,
+    time: 30000,
     story:
       'Good thing for me I have a failsafe. A bomb! Unless you can decode the instructions for disarming the bomb within 60 seconds it will explode and I will make my escape!',
     picture:
       'https://i.pinimg.com/236x/f8/75/7f/f8757f1aae1b4dc7a3eeced04eb51c94--men-portrait-bowties.jpg',
-    correct: "I'm text telling you how smart you are",
-    incorrect: "I'm text telling you to try harder next time.",
+    correct:
+      'Another monster behind bars! But this low level ruffian was just a pawn. Stay on the case, ace!',
+    incorrect:
+      "You died. You're a ghost now. But your spirit won't rest until you bring the Grepino Crime Family to justice. Go back to the beginning and try again.",
     clusterId: 1
   }
 ]

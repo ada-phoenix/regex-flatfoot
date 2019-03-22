@@ -30,10 +30,7 @@ class PostBoss extends React.Component {
   render() {
     return this.state.updatedUser && this.props.location.state.won ? (
       <div>
-        <h1>
-          Another monster behind bars! But this low level ruffian was just a
-          pawn. Stay on the case, ace!
-        </h1>
+        <h1>{this.props.correct}</h1>
         <button
           type="button"
           onClick={() => this.props.history.push('/question')}
@@ -43,11 +40,7 @@ class PostBoss extends React.Component {
       </div>
     ) : (
       <div>
-        <h1>
-          You died. You're a ghost now. But your spirit won't rest until you
-          bring the Grepino Crime Family to justice. Go back to the beginning
-          and try again.
-        </h1>
+        <h1>{this.props.incorrect}</h1>
         <button
           type="button"
           onClick={() => this.props.history.push('/question')}
@@ -64,7 +57,9 @@ const mapState = state => ({
   level: state.user.level || 1,
   levelstage: state.user.levelstage || 1,
   clusterId: state.user.clusterId || 1,
-  userId: state.user.id
+  userId: state.user.id,
+  correct: state.cluster.boss.correct,
+  incorrect: state.cluster.boss.incorrect
 })
 
 const mapDispatch = dispatch => ({

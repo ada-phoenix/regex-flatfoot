@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, Cluster, Game} = require('../server/db/models')
+const {User, Cluster, Game, Boss} = require('../server/db/models')
 const clusterData = require('./clusterData')
 const gameData = require('./gameData')
 const bossData = require('./bossData')

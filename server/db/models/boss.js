@@ -20,7 +20,7 @@ const Boss = db.define('boss', {
   incorrect: {
     type: Sequelize.TEXT
   },
-  timer: {
+  time: {
     type: Sequelize.INTEGER
   },
   story: {
