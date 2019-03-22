@@ -1,6 +1,8 @@
 h1 {
   margin: 10px;
   padding: 0px;
+  font-weight: lighter;
+  line-height: 50px;
 }
 
 label {
@@ -49,10 +51,11 @@ input {
 div.typewriter {
   width: 700px;
   /* overflow: hidden; Ensures the content is not revealed until the animation */
-  background-color: black;
-  color: white;
+  background-color: rgb(204, 204, 204);
+  color: black;
   border-right: 0.15em solid orange; /* The typwriter cursor */
-  font-family: monospace;
+  /* font-family: monospace; */
+  font-family: sans-serif;
   white-space: normal; /* Keeps the content on a single line */
   /* margin: 0 auto; Gives that scrolling effect as the typing happens */
   margin: 5%;
@@ -89,6 +92,10 @@ div.visible {
 
 .playground {
   display: flex;
+}
+
+.message {
+  color: red;
 }
 
 ::placeholder {
