@@ -47,7 +47,7 @@ const mapState = state => {
   return {
     level: state.user.level || 1,
     levelstage: state.user.levelstage || 1,
-    clusterId: state.user.cluster || 1,
+    clusterId: state.user.clusterId || 1,
     game: state.game || {},
     userId: state.user.id
   }

@@ -18,7 +18,7 @@ class QuestionScreen extends React.Component {
 
   async componentDidMount() {
     await this.props.fetchGame({
-      cluster: this.props.cluster,
+      clusterId: this.props.clusterId,
       level: this.props.level,
       stage: this.props.stage
     })
@@ -60,7 +60,7 @@ const mapState = state => {
   return {
     level: state.user.level || 1,
     stage: state.user.levelstage || 1,
-    cluster: state.user.clusterId || 1,
+    clusterId: state.user.clusterId || 1,
     game: state.game || {}
   }
 }

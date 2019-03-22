@@ -71,7 +71,7 @@ class Crossroads extends React.Component {
 
 const mapState = state => {
   return {
-    clusterId: state.user.cluster || 1,
+    clusterId: state.user.clusterId || 1,
     game: state.game || {},
     casefile: state.user.casefile || [],
     cluster: state.cluster || {}

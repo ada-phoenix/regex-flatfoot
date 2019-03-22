@@ -23,8 +23,8 @@ const gotGame = game => ({
  * THUNK CREATORS
  */
 export const getGame = currGame => async dispatch => {
-  const {cluster, level, stage} = currGame
-  const {data} = await axios.get(`/api/game/${cluster}/${level}/${stage}`)
+  const {clusterId, level, stage} = currGame
+  const {data} = await axios.get(`/api/game/${clusterId}/${level}/${stage}`)
   dispatch(gotGame(data))
 }
 

@@ -2,11 +2,11 @@ const router = require('express').Router()
 const {Game} = require('../db/models')
 module.exports = router
 
-router.get('/:cluster/:level/:stage', async (req, res, next) => {
+router.get('/:clusterId/:level/:stage', async (req, res, next) => {
   try {
     const level = parseInt(req.params.level)
     const levelstage = parseInt(req.params.stage)
-    const clusterId = parseInt(req.params.cluster)
+    const clusterId = parseInt(req.params.clusterId)
 
     const currLevel = await Game.findOne({
       where: {
