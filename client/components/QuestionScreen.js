@@ -34,7 +34,10 @@ class QuestionScreen extends React.Component {
     return this.state.gotGame ? (
       <div>
         <div className="container">
-          <img src="https://m.media-amazon.com/images/M/MV5BMTY0ODk2NDY5MV5BMl5BanBnXkFtZTgwNTE4MTg3MjE@._V1_.jpg" />
+          <img
+            className="commish"
+            src="https://m.media-amazon.com/images/M/MV5BMTY0ODk2NDY5MV5BMl5BanBnXkFtZTgwNTE4MTg3MjE@._V1_.jpg"
+          />
           <Prompt
             lesson={this.props.game.lesson}
             question={this.props.game.question}

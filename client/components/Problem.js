@@ -16,6 +16,7 @@ class Problem extends React.Component {
     this.showResult = this.showResult.bind(this)
     this.submitReg = this.submitReg.bind(this)
     this.isSame = this.isSame.bind(this)
+    this.pushToNext = this.pushToNext.bind(this)
   }
 
   isSame(arr1, arr2) {
@@ -63,6 +64,14 @@ class Problem extends React.Component {
     }
   }
 
+  pushToNext() {
+    if (this.isSame(this.state.result, this.state.goal)) {
+      this.props.history.push(`/correct`)
+    } else {
+      this.props.history.push(`/incorrect`)
+    }
+  }
+
   submitReg(evt) {
     evt.preventDefault()
     let notEx = false
@@ -71,49 +80,42 @@ class Problem extends React.Component {
     }
     if (notEx) {
       if (notEx.test(this.state.input)) {
-        console.log('netEx ', notEx)
-        console.log('input ', this.state.input)
         this.setState({message: "Hey! That's not allowed!"})
         this.setState({input: ''})
-      } else if (this.isSame(this.state.result, this.state.goal)) {
-          console.log('you got it!')
-          this.props.history.push(`/correct`)
-        } else {
-          console.log('you lose loser!')
-          this.props.history.push(`/incorrect`)
-        }
-    }
-    if (this.isSame(this.state.result, this.state.goal)) {
-      console.log('you got it!')
-      this.props.history.push(`/correct`)
+      } else {
+        this.pushToNext()
+      }
     } else {
-      console.log('you lose loser!')
-      this.props.history.push(`/incorrect`)
+      this.pushToNext()
     }
   }
 
   render() {
     return this.props.haystack ? (
       <div>
-        <div className="container">
+        <div className="container" className="playground">
           <div className="typewriter">
-            <label>Text block:</label>
-            <h1>{this.state.regStr}</h1>
+            <label>Text block:</label>{' '}
+            <div className="haystack">
+              <h1>{this.state.regStr}</h1>{' '}
+            </div>
           </div>
-          <div>
-            <h2>{this.state.message}</h2>
-            <label>
-              Remember to wrap your regEx in forward slashes. Ex: /regex/
-            </label>
-            <input
-              type="text"
-              onChange={this.changeHandler}
-              value={this.state.input}
-              placeholder="/write your regEx here/"
-            />
+          <div className="inputArea">
+            <div>
+              <h2 className="message">{this.state.message}</h2>
+              <label>
+                Remember to wrap your regEx in forward slashes. Ex: /regex/
+              </label>
+              <input
+                type="text"
+                onChange={this.changeHandler}
+                value={this.state.input}
+                placeholder="/write your regEx here/"
+              />
+            </div>
+            <button onClick={this.showResult}>Try It!</button>
+            <button onClick={this.submitReg}>Follow that lead!</button>
           </div>
-          <button onClick={this.showResult}>Try It!</button>
-          <button onClick={this.submitReg}>Follow that lead!</button>
         </div>
         <div>
           <p>The Result of your regEx is: {this.state.preview}</p>
