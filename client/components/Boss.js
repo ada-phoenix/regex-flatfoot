@@ -62,7 +62,7 @@ class Boss extends React.Component {
     this.setState({elapsed: currentTime})
 
     if (currentTime > this.state.timer) {
-      history.push(`/death`)
+      history.push(`/postboss`, {won: false})
     }
   }
 
@@ -83,10 +83,10 @@ class Boss extends React.Component {
     evt.preventDefault()
     if (this.isSame(this.state.result, this.state.needle)) {
       console.log('you got it!')
-      history.push(`/correct`)
+      history.push(`/postboss`, {won: true})
     } else {
       console.log('you lose loser!')
-      history.push(`/death`)
+      history.push(`/postboss`, {won: false})
     }
   }
 

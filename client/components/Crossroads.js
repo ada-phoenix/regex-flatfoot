@@ -1,7 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {getCluster} from '../store/cluster'
-import {Casefile} from '.'
 
 class Crossroads extends React.Component {
   constructor() {
