@@ -71,6 +71,21 @@ div.visible {
   color: red;
 }
 
+.popup {
+  position: absolute;
+  top: 25%;
+  left: 30%;
+  padding: 40px 60px;
+  background-color: black;
+  font-size: 25px;
+  /* border: 1px solid #000; */
+  color: white;
+  z-index: 10;
+  -webkit-box-shadow: 0px 0px 60px -4px rgba(6, 11, 73, 0.56);
+  -moz-box-shadow: 0px 0px 60px -4px rgba(6, 11, 73, 0.56);
+  box-shadow: 0px 0px 60px -4px rgba(6, 11, 73, 0.56);
+}
+
 /* The typing effect
 @keyframes typing {
   from { width: 0 }
