@@ -34,18 +34,13 @@ class QuestionScreen extends React.Component {
     return this.state.gotGame ? (
       <div>
         <div className="container">
-          <img
-            className="commish"
-            src="https://m.media-amazon.com/images/M/MV5BMTY0ODk2NDY5MV5BMl5BanBnXkFtZTgwNTE4MTg3MjE@._V1_.jpg"
-          />
+          <img src="https://m.media-amazon.com/images/M/MV5BMTY0ODk2NDY5MV5BMl5BanBnXkFtZTgwNTE4MTg3MjE@._V1_.jpg" />
           <Prompt
             lesson={this.props.game.lesson}
             question={this.props.game.question}
           />
         </div>
-        <div className="container">
-          <Problem history={this.props.history} />
-        </div>
+        <Problem history={this.props.history} />
       </div>
     ) : (
       <div>
@@ -65,7 +60,7 @@ const mapState = state => {
   return {
     level: state.user.level || 1,
     stage: state.user.levelstage || 1,
-    cluster: state.user.cluster || 1,
+    cluster: state.user.clusterId || 1,
     game: state.game || {}
   }
 }

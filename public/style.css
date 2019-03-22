@@ -1,17 +1,5 @@
-h1 {
-  margin: 10px;
-  padding: 0px;
-  font-weight: lighter;
-  line-height: 50px;
-}
-
-label {
-  margin: 5px;
-}
-
 body {
   font-family: sans-serif;
-  width: 100vw;
 }
 
 a {
@@ -42,25 +30,24 @@ input {
 .container {
   display: flex;
   flex: 1;
-  /* padding-left: 10px;
-  padding-top: 10px; */
+  padding-left: 1%;
+  padding-top: 2%;
   justify-content: space-evenly;
   align-items: 'center';
 }
 
-div.typewriter {
-  width: 700px;
+.typewriter div {
   /* overflow: hidden; Ensures the content is not revealed until the animation */
-  background-color: rgb(204, 204, 204);
-  color: black;
+  background-color: black;
+  color: white;
+  font-size: 1.5em;
   border-right: 0.15em solid orange; /* The typwriter cursor */
-  /* font-family: monospace; */
-  font-family: sans-serif;
-  white-space: normal; /* Keeps the content on a single line */
+  font-family: monospace;
+  white-space: pre-wrap;
+  word-break: break-word;
   /* margin: 0 auto; Gives that scrolling effect as the typing happens */
-  margin: 5%;
-  /* padding-bottom: 3%;
-  padding: 2%; */
+  padding-bottom: 3%;
+  padding: 2%;
 }
 
 div.hidden {
@@ -76,38 +63,18 @@ div.visible {
   width: 70vw;
 }
 
-.commish {
-  height: 400px;
-}
-
 .haystack {
-  overflow-wrap: break-word;
-  padding: 5px;
-}
-
-.inputArea {
-  margin: 15px;
-  width: 400px;
-}
-
-.playground {
-  display: flex;
+  width: 50%;
 }
 
 .message {
   color: red;
 }
-
-::placeholder {
-  font-size: 15px;
-}
-
 /* The typing effect
 @keyframes typing {
   from { width: 0 }
   to { width: 100% }
 }
-
 /* The typewriter cursor effect */
 /* @keyframes blink-caret {
   from, to { border-color: transparent }

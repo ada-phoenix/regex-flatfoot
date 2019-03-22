@@ -90,29 +90,27 @@ class Problem extends React.Component {
   render() {
     return this.props.haystack ? (
       <div>
-        <div className="container" className="playground">
-          <div className="typewriter">
-            <label>Text block:</label>{' '}
-            <div className="haystack">
-              <h1>{this.state.regStr}</h1>{' '}
+        <div className="container">
+          <div className="haystack">
+            <div className="typewriter">
+              <label>Text block:</label>
+              <div>{this.state.regStr}</div>
             </div>
           </div>
-          <div className="inputArea">
-            <div>
-              <h2 className="message">{this.state.message}</h2>
-              <label>
-                Remember to wrap your regEx in forward slashes. Ex: /regex/
-              </label>
-              <input
-                type="text"
-                onChange={this.changeHandler}
-                value={this.state.input}
-                placeholder="/write your regEx here/"
-              />
-            </div>
-            <button onClick={this.showResult}>Try It!</button>
-            <button onClick={this.submitReg}>Follow that lead!</button>
+          <div>
+            <h2 className="message">{this.state.message}</h2>
+            <label>
+              Remember to wrap your regEx in forward slashes. Ex: /regex/
+            </label>
+            <input
+              type="text"
+              onChange={this.changeHandler}
+              value={this.state.input}
+              placeholder="/write your regEx here/"
+            />
           </div>
+          <button onClick={this.showResult}>Try It!</button>
+          <button onClick={this.submitReg}>Follow that lead!</button>
         </div>
         <div>
           <p>The Result of your regEx is: {this.state.preview}</p>

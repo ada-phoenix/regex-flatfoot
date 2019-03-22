@@ -5,8 +5,8 @@ const Prompt = props => {
     <div>
       <div className="container">
         <div className="typewriter">
-          <h1>{props.lesson}</h1>
-          <h1>{props.question}</h1>
+          <div>{props.lesson}</div>
+          <div>{props.question}</div>
         </div>
       </div>
     </div>
