@@ -10,7 +10,7 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 
 const styles = theme => ({})
 
-class Casefile extends React.Component {
+class CheatSheet extends React.Component {
   state = {
     open: false
   }
@@ -31,25 +31,29 @@ class Casefile extends React.Component {
           color="primary"
           onClick={this.handleClickOpen}
         >
-          Open Casefile
+          Open CheatSheet
         </Button>
         <Dialog
           fullWidth={true}
-          maxWidth="md"
+          maxWidth="sm"
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="open-casefile"
         >
-          <DialogTitle>Casefile</DialogTitle>
+          <DialogTitle>CheatSheet</DialogTitle>
           <DialogContent>
-            {this.props.casefile.map((clue, i) => {
-              return (
-                <DialogContentText key={clue} color="primary">
-                  {`${i + 1}) `}
-                  {clue}
-                </DialogContentText>
-              )
-            })}
+            <DialogContentText color="primary">
+              /a/ : matches the string a
+            </DialogContentText>
+            <DialogContentText color="primary">
+              i : case insensitive flag
+            </DialogContentText>
+            <DialogContentText color="primary">
+              g : global flag matches every instance
+            </DialogContentText>
+            <DialogContentText color="primary">
+              \d : matches any digit
+            </DialogContentText>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
@@ -66,4 +70,4 @@ const mapState = state => ({
   casefile: state.user.casefile
 })
 
-export default connect(mapState)(withStyles(styles)(Casefile))
+export default connect(mapState)(withStyles(styles)(CheatSheet))

@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
 import Casefile from './Casefile'
+import CheatSheet from './CheatSheet'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
@@ -15,7 +16,8 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <a href="#" onClick={handleClick}>
             Logout
           </a>
-          <Link to="/casefile">Casefile</Link>
+          <Casefile />
+          <CheatSheet />
         </div>
       ) : (
         <div>

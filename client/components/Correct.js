@@ -18,7 +18,7 @@ class Correct extends React.Component {
     this.setState({displayPopUp: true}, () => {
       setTimeout(() => {
         this.setState({displayPopUp: false})
-      }, 800)
+      }, 2000)
     })
   }
 
