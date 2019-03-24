@@ -81,7 +81,17 @@ class Problem extends React.Component {
           </span>
         )
       )
-      return highlightedHaystack
+
+      const sliced = highlightedHaystack.slice(0, 2)
+      const lengthtoSlice = sliced[0].length + 3
+      const end = this.state.regStr.slice(lengthtoSlice)
+      const whole = [...sliced, end]
+
+      if (flags.includes('g')) {
+        return highlightedHaystack
+      } else {
+        return whole
+      }
     } catch (err) {
       console.log(err)
       return this.state.regStr
