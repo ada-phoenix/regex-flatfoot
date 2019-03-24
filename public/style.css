@@ -21,13 +21,6 @@ form div {
   display: inline-block;
 }
 
-input {
-  padding: 2%;
-  flex: 1;
-  height: 50px;
-  font-size: 2em;
-}
-
 .container {
   display: flex;
   flex: 1;
