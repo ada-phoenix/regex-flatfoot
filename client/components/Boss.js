@@ -1,40 +1,41 @@
 import React from 'react'
 import history from '../history'
 import {connect} from 'react-redux'
+import {
+  withStyles,
+  Button,
+  Typography,
+  Paper,
+  Avatar,
+  TextField
+} from '@material-ui/core'
+import {blueGrey} from 'material-ui/styles/colors'
 
 class Boss extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      heystack:
+      haystack:
         "This is a very tricky string isn't it? We're talking about String Theory or something here!",
       needle: ['string', 'String'],
       question:
         "find every instance of 'string' in the folowing message upper and lowercase.",
       story:
-        'Good thing for me I have a failsafe. A bomb! Unless you can decode the instructions for disarming the bomb within 30 seconds it will explode and I will make my escape!',
+        "You've found me you scoundrel!\nGood thing for me I have a failsafe. A bomb! Unless you can decode the instructions for disarming the bomb within 30 seconds it will explode and I will make my escape!",
       picture:
         'https://i.pinimg.com/236x/f8/75/7f/f8757f1aae1b4dc7a3eeced04eb51c94--men-portrait-bowties.jpg',
       result: [''],
       preview: [''],
       elapsed: 0,
-      time: 10000,
+      time: 30000,
       start: new Date(),
-      hideButton: 'visible',
-      hideContent: 'hidden',
       input: ''
     }
     this.changeHandler = this.changeHandler.bind(this)
     this.submitReg = this.submitReg.bind(this)
     this.isSame = this.isSame.bind(this)
     this.tick = this.tick.bind(this)
-    this.isHidden = this.isHidden.bind(this)
-  }
-
-  isHidden() {
-    let date = new Date()
-    this.setState({start: date, hideButton: 'hidden', hideContent: 'visible'})
-    this.timer = setInterval(this.tick, 60)
+    this.continueFunc = this.continueFunc.bind(this)
   }
 
   isSame(arr1, arr2) {
@@ -63,13 +64,20 @@ class Boss extends React.Component {
     }
   }
 
+  continueFunc() {
+    this.setState({continue: true})
+    let date = new Date()
+    this.setState({start: date})
+    this.timer = setInterval(this.tick, 60)
+  }
+
   changeHandler(evt) {
     this.setState({input: evt.target.value})
     let inputArr = evt.target.value.split('/')
     let regInput = inputArr[1]
     let flags = inputArr[2]
     let regEx = new RegExp(regInput, flags)
-    const result = this.state.heystack.match(regEx)
+    const result = this.state.haystack.match(regEx)
     console.log('result is ', result)
     if (result) {
       this.setState({result})
@@ -88,35 +96,129 @@ class Boss extends React.Component {
   }
 
   render() {
+    console.log('verynew')
+    const {classes} = this.props
+    let splitStory = this.state.story.split('\n')
     let elapsed = Math.round(this.state.elapsed / 100)
     let seconds = (elapsed / 10).toFixed(1)
-    return this.state.heystack ? (
-      <div className="typewriter">
-        <div className="bossContainer">
-          <h2>You've found me you scoundrel!</h2>
-          <img src={this.state.picture} />
-          <p>{this.state.story}</p>
-          <div className={this.state.hideButton}>
-            <button onClick={this.isHidden}>Begin</button>
-          </div>
-          <div className={this.state.hideContent}>
-            <b>{seconds} seconds</b>
-            <p>{this.state.question}</p>
-            <h1>{this.state.heystack}</h1>
-            <input
-              type="text"
-              onChange={this.changeHandler}
-              value={this.state.input}
-              placeholder="/write your regEx here/"
-            />
-            <button onClick={this.submitReg}>Decode!</button>
-          </div>
-        </div>
-      </div>
+    return this.state.haystack ? (
+      this.state.continue ? (
+        <Paper className={classes.root}>
+          <Typography variant="h2" className={classes.h2}>
+            Countdown: {seconds} seconds
+          </Typography>
+          <Typography variant="h3" className={classes.h3}>
+            {this.state.question}
+          </Typography>
+          <Typography variant="h4" className={classes.h4}>
+            {this.state.haystack}
+          </Typography>
+          <TextField value={this.state.input} onChange={this.changeHandler} />
+          <Button
+            className={classes.button}
+            variant="contained"
+            color="secondary"
+            type="button"
+            onClick={this.submitReg}
+          >
+            Decode!
+          </Button>
+        </Paper>
+      ) : (
+        <Paper className={classes.root}>
+          <Avatar
+            alt="A man seated looking smug"
+            src={this.state.picture}
+            className={classes.bigAvatar}
+          />
+          <Typography variant="h2" className={classes.h2}>
+            {splitStory[0]}
+          </Typography>
+          <Typography variant="body2" className={classes.type}>
+            {splitStory[1]}
+          </Typography>
+          <Button
+            className={classes.button}
+            variant="contained"
+            color="secondary"
+            type="button"
+            onClick={this.continueFunc}
+          >
+            Continue
+          </Button>
+        </Paper>
+      )
     ) : (
-      <div>hang on</div>
+      <div>wait </div>
     )
   }
 }
 
-export default connect()(Boss)
+const styles = theme => ({
+  root: {
+    margin: 50,
+    padding: 50,
+    maxWidth: 700,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: theme.palette.primary.light
+  },
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    padding: 10,
+    alignItems: 'center'
+  },
+  button: {
+    padding: 15,
+    margin: 50
+  },
+  type: {
+    fontFamily: 'Cutive',
+    padding: 10
+  },
+  h4: {
+    padding: 10,
+    margin: 10,
+    backgroundColor: 'black',
+    color: 'white'
+  },
+  bigAvatar: {
+    margin: 10,
+    width: 200,
+    height: 300,
+    borderRadius: 0
+  },
+  h2: {
+    fontFamily: 'Cutive',
+    padding: 10,
+    margin: 10,
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '30px'
+    },
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '50px'
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '60px'
+    }
+  },
+  h3: {
+    fontFamily: 'Cutive',
+    padding: 10,
+    margin: 10,
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '20px'
+    },
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '30px'
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '40px'
+    }
+  }
+})
+
+export default connect()(withStyles(styles)(Boss))

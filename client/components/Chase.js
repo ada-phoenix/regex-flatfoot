@@ -13,7 +13,7 @@ const styles = theme => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: theme.palette.primary.main
+    backgroundColor: theme.palette.primary.light
   },
   button: {
     margin: 50,
@@ -21,6 +21,9 @@ const styles = theme => ({
   },
   subtitle2: {
     margin: 25
+  },
+  type: {
+    fontFamily: 'Cutive'
   },
   h2: {
     textAlign: 'center',
