@@ -1,17 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import {withStyles} from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
 import Prompt from './Prompt'
 import Problem from './Problem'
 import {getGame} from '../store/game'
-
-import Console from './Console'
-import PaperConsole from './PaperConsole'
 import ConsoleIcon from './ConsoleIcon'
 
-/**
- * COMPONENT
- */
+const styles = theme => ({
+  root: {
+    flexGrow: 1
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: 'center',
+    color: theme.palette.text.secondary
+  }
+})
+
 class QuestionScreen extends React.Component {
   constructor() {
     super()
@@ -34,15 +42,22 @@ class QuestionScreen extends React.Component {
   }
 
   render() {
-    // console.log('question screen props ', this.props)
+    const {classes} = this.props
+
     return this.state.gotGame ? (
-      <div>
-        <div className="container">
-          <Console />
-          <PaperConsole />
-          <ConsoleIcon />
-        </div>
-        <Problem history={this.props.history} />
+      <div className={classes.root}>
+        <Grid container spacing={24}>
+          <Grid item xs={3} className={classes.paper}>
+            <ConsoleIcon />
+          </Grid>
+          <Grid item xs={9}>
+            <Prompt
+              className={classes.paper}
+              lesson={this.props.game.lesson}
+              question={this.props.game.question}
+            />
+          </Grid>
+        </Grid>
       </div>
     ) : (
       <div>
@@ -55,9 +70,10 @@ class QuestionScreen extends React.Component {
   }
 }
 
-/**
- * CONTAINER
- */
+QuestionScreen.propTypes = {
+  classes: PropTypes.object.isRequired
+}
+
 const mapState = state => {
   return {
     level: state.user.level || 1,
@@ -69,15 +85,18 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    fetchGame: currGame => dispatch(getGame(currGame))
+    fetchGame: currentGame => dispatch(getGame(currentGame))
   }
 }
 
-export default connect(mapState, mapDispatch)(QuestionScreen)
+export default connect(mapState, mapDispatch)(
+  withStyles(styles)(QuestionScreen)
+)
 
-/**
- * PROP TYPES
- */
-QuestionScreen.propTypes = {
-  // email: PropTypes.string
-}
+/*
+<Grid container spacing={12}>
+  <Grid item xs>
+    <Problem history={this.props.history} />
+  </Grid>
+</Grid>
+*/

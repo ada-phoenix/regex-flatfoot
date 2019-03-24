@@ -3,9 +3,6 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout} from '../store'
-import Casefile from './Casefile'
-import Notes from './Notes'
-import Lesson from './Lesson'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
@@ -17,9 +14,6 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <a href="#" onClick={handleClick}>
             Logout
           </a>
-          <Lesson />
-          <Casefile />
-          <Notes />
         </div>
       ) : (
         <div>
