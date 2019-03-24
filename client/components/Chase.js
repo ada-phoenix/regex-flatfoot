@@ -18,23 +18,12 @@ const styles = theme => ({
   button: {
     margin: 50,
     justifyContent: 'center'
-    // [theme.breakpoints.down('xs')]: {
-    //   backgroundColor: theme.palette.primary.main,
-    //   width: 100
-    // },
-    // [theme.breakpoints.up('sm')]: {
-    //   backgroundColor: red[500],
-    //   size: "medium"
-    // },
-    // [theme.breakpoints.up('md')]: {
-    //   backgroundColor: theme.palette.primary.main,
-    //   size: "large"
-    // }
   },
   subtitle2: {
     margin: 25
   },
   h2: {
+    textAlign: 'center',
     [theme.breakpoints.down('xs')]: {
       fontSize: '30px'
     },
@@ -72,10 +61,15 @@ class Chase extends React.Component {
         </Button>
       </Paper>
     ) : (
-      <div className={classes.root}>
-        <Typography variant="h2">You arrive at {location}</Typography>
-        <Typography variant="subtitle2">{story}</Typography>
+      <Paper className={classes.root}>
+        <Typography className={classes.h2} variant="h2">
+          You arrive at {location}
+        </Typography>
+        <Typography className={classes.subtitle2} variant="subtitle2">
+          {story}
+        </Typography>
         <Button
+          className={classes.button}
           variant="contained"
           color="secondary"
           onClick={() => {
@@ -84,7 +78,7 @@ class Chase extends React.Component {
         >
           Retrace Your Steps
         </Button>
-      </div>
+      </Paper>
     )
   }
 }

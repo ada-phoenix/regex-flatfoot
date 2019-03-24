@@ -36,7 +36,7 @@ class Crossroads extends React.Component {
         <div className="clues">
           {this.props.casefile.map((clue, i) => {
             return (
-              <h2>
+              <h2 key={i}>
                 {`${i + 1}) `}
                 {clue}
               </h2>
