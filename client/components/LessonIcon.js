@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withStyles} from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
@@ -7,10 +8,16 @@ import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
+import IconButton from '@material-ui/core/IconButton'
+import SubjectIcon from '@material-ui/icons/Subject'
 
-const styles = theme => ({})
+const styles = theme => ({
+  margin: {
+    margin: theme.spacing.unit
+  }
+})
 
-class Casefile extends React.Component {
+class LessonIcon extends React.Component {
   state = {
     open: false
   }
@@ -24,15 +31,18 @@ class Casefile extends React.Component {
   }
 
   render() {
+    const {classes} = this.props
+
     return (
       <React.Fragment>
-        <Button
-          variant="outlined"
-          color="primary"
+        <IconButton
+          aria-label="Lesson"
           onClick={this.handleClickOpen}
+          color="primary"
+          className={classes.margin}
         >
-          Open Casefile
-        </Button>
+          <SubjectIcon fontSize="large" />
+        </IconButton>
         <Dialog
           fullWidth={true}
           maxWidth="md"
@@ -40,16 +50,11 @@ class Casefile extends React.Component {
           onClose={this.handleClose}
           aria-labelledby="open-casefile"
         >
-          <DialogTitle>Casefile</DialogTitle>
+          <DialogTitle>Lesson</DialogTitle>
           <DialogContent>
-            {this.props.casefile.map((clue, i) => {
-              return (
-                <DialogContentText key={clue} color="primary">
-                  {`${i + 1}) `}
-                  {clue}
-                </DialogContentText>
-              )
-            })}
+            <DialogContentText color="primary">
+              {this.props.lesson}
+            </DialogContentText>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
@@ -62,8 +67,13 @@ class Casefile extends React.Component {
   }
 }
 
+LessonIcon.propTypes = {
+  classes: PropTypes.object.isRequired
+}
+
 const mapState = state => ({
-  casefile: state.user.casefile
+  game: state.game,
+  lesson: state.game.lesson
 })
 
-export default connect(mapState)(withStyles(styles)(Casefile))
+export default connect(mapState)(withStyles(styles)(LessonIcon))
