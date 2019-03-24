@@ -13,7 +13,8 @@ import {
   Correct,
   Casefile,
   Chase,
-  PostBoss
+  PostBoss,
+  Home
 } from './components'
 import {me} from './store'
 
@@ -48,7 +49,7 @@ class Routes extends Component {
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
-        <Route exact path="/login" component={Login} />
+        <Route exact path="/login" component={Home} />
       </Switch>
     )
   }
