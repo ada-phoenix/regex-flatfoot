@@ -18,6 +18,7 @@ class Boss extends React.Component {
       result: [''],
       preview: [''],
       elapsed: 0,
+      time: 10000,
       start: new Date(),
       hideButton: 'visible',
       hideContent: 'hidden',
@@ -33,6 +34,7 @@ class Boss extends React.Component {
   isHidden() {
     let date = new Date()
     this.setState({start: date, hideButton: 'hidden', hideContent: 'visible'})
+    this.timer = setInterval(this.tick, 60)
   }
 
   isSame(arr1, arr2) {
@@ -48,10 +50,6 @@ class Boss extends React.Component {
     return same
   }
 
-  componentDidMount() {
-    this.timer = setInterval(this.tick, 60)
-  }
-
   componentWillUnmount() {
     clearInterval(this.timer)
   }
@@ -60,7 +58,7 @@ class Boss extends React.Component {
     let currentTime = new Date() - this.state.start
     this.setState({elapsed: currentTime})
 
-    if (currentTime > this.state.timer) {
+    if (currentTime > this.state.time) {
       history.push(`/postboss`, {won: false})
     }
   }
