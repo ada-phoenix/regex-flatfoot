@@ -69,6 +69,7 @@ class Problem extends React.Component {
   highlighter() {
     try {
       let inputArr = this.state.input.split('/')
+      console.log('inputarr 1 ', inputArr[1])
       let groupedInput = `(${inputArr[1]})`
       let flags = inputArr[2]
       let groupedRegEx = new RegExp(groupedInput, flags)
@@ -83,12 +84,16 @@ class Problem extends React.Component {
       )
 
       const sliced = highlightedHaystack.slice(0, 2)
-      const lengthtoSlice = sliced[0].length + 3
+      const lengthtoSlice = sliced[0].length + inputArr[1].length
       const end = this.state.regStr.slice(lengthtoSlice)
       const whole = [...sliced, end]
 
-      if (flags.includes('g')) {
-        return highlightedHaystack
+      if (flags) {
+        if (flags.includes('g')) {
+          return highlightedHaystack
+        } else {
+          return whole
+        }
       } else {
         return whole
       }
