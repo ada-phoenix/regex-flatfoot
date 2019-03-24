@@ -1,7 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Button from '@material-ui/core/Button'
-import {withStyles, Typography, Paper} from '@material-ui/core'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
+import {withStyles} from '@material-ui/core'
 import {green, red, purple, blue} from '@material-ui/core/colors'
 
 const styles = theme => ({
@@ -13,7 +15,7 @@ const styles = theme => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: theme.palette.primary.main
+    backgroundColor: theme.palette.primary.light
   },
   button: {
     margin: 50,
@@ -21,6 +23,9 @@ const styles = theme => ({
   },
   subtitle2: {
     margin: 25
+  },
+  type: {
+    fontFamily: 'Cutive'
   },
   h2: {
     textAlign: 'center',

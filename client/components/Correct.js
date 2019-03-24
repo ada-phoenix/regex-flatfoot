@@ -1,16 +1,15 @@
 import React from 'react'
 import history from '../history'
 import {connect} from 'react-redux'
-import {
-  withStyles,
-  Button,
-  Typography,
-  Paper,
-  Snackbar
-} from '@material-ui/core'
+import {withStyles} from '@material-ui/core'
+import ArrowRightRounded from '@material-ui/icons/ArrowRightRounded'
+import FolderSpecial from '@material-ui/icons/FolderSpecial'
+import Button from '@material-ui/core/Button'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
+import Snackbar from '@material-ui/core/Snackbar'
 import {updateUser} from '../store/user'
 import {correctUpdater} from '../util'
-import {ArrowRightRounded, FolderSpecial} from '@material-ui/icons'
 
 class Correct extends React.Component {
   constructor() {

@@ -24,13 +24,13 @@ function Prompt(props) {
     <div className={classes.root}>
       <Grid container spacing={24} direction="column">
         <Paper className={classes.paper}>
-          <Grid item xs>
+          <Grid item xs className={classes.paper}>
             <Typography>{props.lesson}</Typography>
           </Grid>
-          <Grid item xs>
+          <Grid item xs className={classes.paper}>
             <Typography>{props.question}</Typography>
           </Grid>
-          <Grid item xs>
+          <Grid item xs className={classes.paper}>
             <Button variant="contained" color="secondary">
               Crack The Code!
             </Button>

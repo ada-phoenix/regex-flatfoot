@@ -3,14 +3,11 @@ import history from '../history'
 import {connect} from 'react-redux'
 import {updateUser} from '../store/user'
 import {incorrectUpdater} from '../util'
-import {
-  withStyles,
-  Button,
-  Typography,
-  Paper,
-  Snackbar
-} from '@material-ui/core'
-import {ArrowRightRounded, FolderSpecial} from '@material-ui/icons'
+import {withStyles} from '@material-ui/core'
+import Button from '@material-ui/core/Button'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
+import ArrowRightRounded from '@material-ui/icons/ArrowRightRounded'
 
 class Incorrect extends React.Component {
   constructor() {

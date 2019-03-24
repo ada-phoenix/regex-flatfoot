@@ -16,7 +16,7 @@ const App = props => {
   const {classes} = props
   return (
     <div className={classes.root}>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes />
     </div>
   )
