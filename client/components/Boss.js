@@ -1,15 +1,14 @@
 import React from 'react'
 import history from '../history'
 import {connect} from 'react-redux'
-import {
-  withStyles,
-  Button,
-  Typography,
-  Paper,
-  Avatar,
-  TextField
-} from '@material-ui/core'
+import PropTypes from 'prop-types'
 import {blueGrey} from 'material-ui/styles/colors'
+import {withStyles} from '@material-ui/core/styles'
+import Avatar from '@material-ui/core/Avatar'
+import Button from '@material-ui/core/Button'
+import Paper from '@material-ui/core/Paper'
+import TextField from '@material-ui/core/TextField'
+import Typography from '@material-ui/core/Typography'
 
 class Boss extends React.Component {
   constructor(props) {
