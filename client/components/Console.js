@@ -7,7 +7,6 @@ import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
 
 import Notes from './Notes'
 import Lesson from './Lesson'
@@ -33,9 +32,6 @@ function Console(props) {
       />
       <CardActions>
         <Casefile />
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
       </CardActions>
     </Card>
   )

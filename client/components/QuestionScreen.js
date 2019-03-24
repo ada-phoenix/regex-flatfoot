@@ -7,6 +7,7 @@ import {getGame} from '../store/game'
 
 import Console from './Console'
 import PaperConsole from './PaperConsole'
+import ConsoleIcon from './ConsoleIcon'
 
 /**
  * COMPONENT
@@ -39,6 +40,7 @@ class QuestionScreen extends React.Component {
         <div className="container">
           <Console />
           <PaperConsole />
+          <ConsoleIcon />
         </div>
         <Problem history={this.props.history} />
       </div>
