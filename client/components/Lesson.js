@@ -10,7 +10,7 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 
 const styles = theme => ({})
 
-class CheatSheet extends React.Component {
+class Lesson extends React.Component {
   state = {
     open: false
   }
@@ -31,28 +31,19 @@ class CheatSheet extends React.Component {
           color="primary"
           onClick={this.handleClickOpen}
         >
-          Open CheatSheet
+          Open Lesson
         </Button>
         <Dialog
           fullWidth={true}
-          maxWidth="sm"
+          maxWidth="md"
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="open-casefile"
         >
-          <DialogTitle>CheatSheet</DialogTitle>
+          <DialogTitle>Lesson</DialogTitle>
           <DialogContent>
             <DialogContentText color="primary">
-              /a/ : matches the string a
-            </DialogContentText>
-            <DialogContentText color="primary">
-              i : case insensitive flag
-            </DialogContentText>
-            <DialogContentText color="primary">
-              g : global flag matches every instance
-            </DialogContentText>
-            <DialogContentText color="primary">
-              \d : matches any digit
+              {this.props.lesson}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -67,7 +58,8 @@ class CheatSheet extends React.Component {
 }
 
 const mapState = state => ({
-  casefile: state.user.casefile
+  game: state.game,
+  lesson: state.game.lesson
 })
 
-export default connect(mapState)(withStyles(styles)(CheatSheet))
+export default connect(mapState)(withStyles(styles)(Lesson))

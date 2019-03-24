@@ -5,6 +5,9 @@ import Prompt from './Prompt'
 import Problem from './Problem'
 import {getGame} from '../store/game'
 
+import Console from './Console'
+import PaperConsole from './PaperConsole'
+
 /**
  * COMPONENT
  */
@@ -34,11 +37,8 @@ class QuestionScreen extends React.Component {
     return this.state.gotGame ? (
       <div>
         <div className="container">
-          <img src="https://m.media-amazon.com/images/M/MV5BMTY0ODk2NDY5MV5BMl5BanBnXkFtZTgwNTE4MTg3MjE@._V1_.jpg" />
-          <Prompt
-            lesson={this.props.game.lesson}
-            question={this.props.game.question}
-          />
+          <Console />
+          <PaperConsole />
         </div>
         <Problem history={this.props.history} />
       </div>
