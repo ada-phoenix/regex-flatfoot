@@ -135,7 +135,7 @@ class Problem extends React.Component {
           className={classes.consoleGrid}
         >
           <Grid item className={classes.consoleGridItem}>
-            <Typography className={classes.lessonText}>
+            <Typography className={classes.haystackText}>
               <label>Text block:</label>
               <div>{this.highlighter()}</div>
             </Typography>
@@ -180,6 +180,13 @@ const styles = theme => ({
     backgroundColor: '#000000',
     border: '4mm groove #424242',
     justifySelf: 'center'
+  },
+  haystackText: {
+    fontFamily: 'Cutive',
+    fontSize: '1em',
+    color: '#FFFFFF',
+    whiteSpace: 'pre-wrap',
+    wordBreak: 'break-word'
   }
 })
 
