@@ -20,6 +20,7 @@ class Problem extends React.Component {
     this.isSame = this.isSame.bind(this)
     this.pushToNext = this.pushToNext.bind(this)
     this.highlighter = this.highlighter.bind(this)
+    this.handleKeyPress = this.handleKeyPress.bind(this)
   }
 
   isSame(arr1, arr2) {
@@ -37,6 +38,7 @@ class Problem extends React.Component {
 
   componentDidMount() {
     this.setState({regStr: this.props.haystack, goal: this.props.needle})
+    document.addEventListener('keydown', this.handleKeyPress)
   }
 
   componentWillUnmount() {
@@ -47,6 +49,12 @@ class Problem extends React.Component {
       result: [''],
       preview: ['']
     })
+    document.removeEventListener('keydown', this.handleKeyPress)
+  }
+
+  handleKeyPress() {
+    let sound = new Audio('/single_key_press.mp3')
+    sound.play()
   }
 
   changeHandler(evt) {
