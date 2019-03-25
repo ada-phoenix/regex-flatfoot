@@ -7,6 +7,7 @@ Cluster.hasMany(Game)
 Game.belongsTo(Cluster)
 
 Boss.belongsTo(Cluster)
+Cluster.hasOne(Boss)
 
 Game.belongsToMany(User, {through: 'Visited'})
 User.belongsToMany(Game, {through: 'Visited'})
@@ -16,5 +17,6 @@ User.belongsToMany(User, {as: 'friend', through: 'Friendship'})
 module.exports = {
   User,
   Game,
-  Cluster
+  Cluster,
+  Boss
 }

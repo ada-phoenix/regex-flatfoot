@@ -62,11 +62,11 @@ class PostBoss extends React.Component {
 
   render() {
     const {classes} = this.props
+    const boss = this.props.boss
     return this.state.updatedUser && this.props.location.state.won ? (
       <Paper className={classes.root}>
         <Typography className={classes.h2} variant="h2">
-          Another monster behind bars! But this low level ruffian was just a
-          pawn. Stay on the case, ace!
+          {boss.correct}
         </Typography>
         <Button
           className={classes.button}
@@ -80,9 +80,7 @@ class PostBoss extends React.Component {
     ) : (
       <Paper className={classes.root}>
         <Typography className={classes.h2} variant="h2">
-          You died. You're a ghost now. But your spirit won't rest until you
-          bring the Grepino Crime Family to justice. Go back to the beginning
-          and try again.
+          {boss.incorrect}
         </Typography>
         <Button
           className={classes.button}
@@ -102,7 +100,8 @@ const mapState = state => ({
   level: state.user.level || 1,
   levelstage: state.user.levelstage || 1,
   clusterId: state.user.clusterId || 1,
-  userId: state.user.id
+  userId: state.user.id,
+  boss: state.cluster.boss
 })
 
 const mapDispatch = dispatch => ({
