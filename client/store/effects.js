@@ -1,15 +1,15 @@
 import axios from 'axios'
 
 // INITIAL STATE
-const defaultEffects = {}
+const defaultEffects = {caseFileBadgeInvisible: true}
 
 // ACTION TYPES
 const SET_CASEFILE_BADGE = 'SET_CASEFILE_BADGE'
 
 // ACTION CREATORS
-const setCasefileBadge = visibility => ({
+export const setCasefileBadge = boolean => ({
   type: SET_CASEFILE_BADGE,
-  visibility
+  boolean
 })
 
 // THUNK CREATORS
@@ -18,7 +18,7 @@ const setCasefileBadge = visibility => ({
 export default function(state = defaultEffects, action) {
   switch (action.type) {
     case SET_CASEFILE_BADGE: {
-      return {...state, caseFileBadge: visibility}
+      return {...state, caseFileBadgeInvisible: action.boolean}
     }
     default:
       return state
