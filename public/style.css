@@ -51,11 +51,11 @@ div.hidden {
 div.visible {
   visibility: visible;
 }
-
+/*
 .clues {
   background-color: rgb(204, 204, 204);
   width: 70vw;
-}
+} */
 
 .haystack {
   width: 50%;
