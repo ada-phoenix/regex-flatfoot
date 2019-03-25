@@ -4,7 +4,6 @@ import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import {withStyles} from '@material-ui/core'
-import {green, red, purple, blue} from '@material-ui/core/colors'
 
 const styles = theme => ({
   root: {
