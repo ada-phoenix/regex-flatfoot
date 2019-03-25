@@ -46,11 +46,11 @@ class QuestionScreen extends React.Component {
 
     return this.state.gotGame ? (
       <div className={classes.root}>
-        <Grid container spacing={24}>
-          <Grid item lg={3} className={classes.paper}>
-            <ConsoleIcon />
+        <Grid container wrap="wrap" spacing={16}>
+          <Grid item xs={12} md={3}>
+            <ConsoleIcon className={classes.paper} />
           </Grid>
-          <Grid item lg={9}>
+          <Grid item xs={12} md={9}>
             <Prompt
               className={classes.paper}
               lesson={this.props.game.lesson}
