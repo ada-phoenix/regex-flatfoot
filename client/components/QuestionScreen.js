@@ -64,14 +64,14 @@ class QuestionScreen extends React.Component {
           >
             <Typography
               paragraph={true}
-              headlingMapping="p"
+              headlineMapping="p"
               className={classes.lessonText}
             >
               {this.props.game.lesson}
             </Typography>
             <Typography
               paragraph={true}
-              headlingMapping="p"
+              headlineMapping="p"
               className={classes.lessonText}
             >
               {this.props.game.question}
@@ -110,12 +110,15 @@ const styles = theme => ({
     padding: '2%',
     backgroundColor: '#000000',
     border: '4mm groove #424242',
-    justifySelf: 'center'
+    justifySelf: 'center',
+    flexGrow: 2
   },
   lessonText: {
     fontFamily: 'Cutive',
     fontSize: '1em',
-    color: '#FFFFFF'
+    color: '#FFFFFF',
+    whiteSpace: 'pre-wrap',
+    wordBreak: 'break-word'
   }
 })
 
