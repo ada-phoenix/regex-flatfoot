@@ -4,10 +4,10 @@ import {connect} from 'react-redux'
 import Prompt from './Prompt'
 import Problem from './Problem'
 import {getGame} from '../store/game'
-
-import Console from './Console'
-import PaperConsole from './PaperConsole'
 import ConsoleIcon from './ConsoleIcon'
+import Grid from '@material-ui/core/Grid'
+import withStyles from '@material-ui/core/styles/withStyles'
+import Typography from '@material-ui/core/Typography'
 
 /**
  * COMPONENT
@@ -34,15 +34,58 @@ class QuestionScreen extends React.Component {
   }
 
   render() {
-    // console.log('question screen props ', this.props)
+    const {classes} = this.props
     return this.state.gotGame ? (
       <div>
-        <div className="container">
-          <Console />
-          <PaperConsole />
-          <ConsoleIcon />
-        </div>
-        <Problem history={this.props.history} />
+        <Grid
+          container
+          wrap="wrap"
+          spacing={24}
+          alignItems="flex-start"
+          className={classes.consoleGrid}
+        >
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md="auto"
+            lg={3}
+            className={classes.consoleGridItem}
+          >
+            <ConsoleIcon />
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            md="auto"
+            lg={9}
+            className={classes.consoleGridItem}
+          >
+            <Typography
+              paragraph={true}
+              headlingMapping="p"
+              className={classes.lessonText}
+            >
+              {this.props.game.lesson}
+            </Typography>
+            <Typography
+              paragraph={true}
+              headlingMapping="p"
+              className={classes.lessonText}
+            >
+              {this.props.game.question}
+            </Typography>
+          </Grid>
+        </Grid>
+        <Grid
+          container
+          wrap="wrap"
+          spacing={24}
+          className={classes.consoleGrid}
+        >
+          <Problem history={this.props.history} />
+        </Grid>
       </div>
     ) : (
       <div>
@@ -54,6 +97,27 @@ class QuestionScreen extends React.Component {
     )
   }
 }
+
+//STYLES
+const styles = theme => ({
+  consoleGrid: {
+    backgroundColor: 'pink',
+    padding: '1%',
+    border: '4mm groove #424242',
+    borderRadius: 5
+  },
+  consoleGridItem: {
+    padding: '2%',
+    backgroundColor: '#000000',
+    border: '4mm groove #424242',
+    justifySelf: 'center'
+  },
+  lessonText: {
+    fontFamily: 'Cutive',
+    fontSize: '1em',
+    color: '#FFFFFF'
+  }
+})
 
 /**
  * CONTAINER
@@ -73,7 +137,9 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default connect(mapState, mapDispatch)(QuestionScreen)
+export default connect(mapState, mapDispatch)(
+  withStyles(styles)(QuestionScreen)
+)
 
 /**
  * PROP TYPES
