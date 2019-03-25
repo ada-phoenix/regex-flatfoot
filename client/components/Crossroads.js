@@ -31,6 +31,7 @@ class Crossroads extends React.Component {
   }
 
   render() {
+    console.log(this.props.clusterId)
     const {classes} = this.props
     const locations = this.props.cluster.locations
     return this.state.gotCluster ? (
