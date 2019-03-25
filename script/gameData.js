@@ -1,7 +1,7 @@
 const gameData = [
   {
     haystack:
-      'kajdymrpULoDYtlspnsbbwgghhqqqrnekoqwpeoriUTlkahsDKHtrenmlskoshdtGDLDYmtrkodytrenKoqkkshdjjkkdenkokodytrenKoqkkshdjjkkdDYMTrnkenkoDYtlspqrnekoqwpeoriUriUTlkahsDKHtrendmytrenkomlskoshdtGDLDYmtrkovbnnsbbwgghhqqWDOLqqbbwgghhULoDYtlspnsbbwgnekoqwpeoriUriUTlkahsDKHtrenmleoriUTlkahsDKHtrenmlskoshdt',
+      'kajdymrpULoDYtlspnsbbwgghhqqqrnekoqwpeoriUT\nlkahsDKHtrenmlskoshdtGDLDYmtrkodytrenKoqkkshdjjkkd\nenkokodytrenKoqkkshdjjkkdDYMTrnkenk\noDYtlspqrnekoqwpeoriUriUTlkahsDKHtrendmytrenkomlsko\nshdtGDLDYmtrkovbnnsbbwgghhqqWDOLqqbbwgg\nhhULoDYtlspnsbbwgnekoqwpeoriUriUTlkahsDKHt\nrenmleoriUTlkahsDKHtrenmlskoshdt',
     needle: ['dmytrenko'],
     lesson:
       "Welcome, Rookie. \n\n Bletchley Academy of Decryption tells us that you're their best new grad, and we need your help.\n\nWe've intercepted an encoded message from the Grepino crime family. They are famous for their complex codes, but we think you can decode their messages using regular expressions.\n\nHave you heard of regular expressions - aka regEx?\n\nClever programmers use Regular Expressions to match character combinations in text.\n\nThe simplest regular expression is just the character or word you want to match. For example, /doughnut/ would match the word \"doughnut\" in the sentence, \"I'd love a doughnut.\"\n\nNow let's get crackin'!\n\nDon't forget to wrap your regular expressions in forward slashes /like this/!",
