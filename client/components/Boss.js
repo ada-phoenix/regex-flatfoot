@@ -45,6 +45,7 @@ class Boss extends React.Component {
   }
 
   tick() {
+    const boss = this.props.boss
     let currentTime = new Date() - this.state.start
     this.setState({elapsed: currentTime})
 
@@ -84,10 +85,10 @@ class Boss extends React.Component {
   render() {
     const {classes} = this.props
     const boss = this.props.boss
-    let splitStory = this.state.story.split('\n')
+    let splitStory = boss.story.split('\n')
     let elapsed = Math.round(this.state.elapsed / 100)
     let seconds = (elapsed / 10).toFixed(1)
-    return this.state.haystack ? (
+    return boss.haystack ? (
       this.state.continue ? (
         <Paper className={classes.root}>
           <Typography variant="h2" className={classes.h2}>
