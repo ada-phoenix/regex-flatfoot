@@ -51,14 +51,14 @@ class Boss extends React.Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this.timer)
+    clearInterval(this.incrementer)
   }
 
   tick() {
     let currentTime = new Date() - this.state.start
     this.setState({elapsed: currentTime})
 
-    if (currentTime > this.state.time) {
+    if (currentTime > boss.time) {
       history.push(`/postboss`, {won: false})
     }
   }
@@ -67,7 +67,7 @@ class Boss extends React.Component {
     this.setState({continue: true})
     let date = new Date()
     this.setState({start: date})
-    this.timer = setInterval(this.tick, 60)
+    this.incrementer = setInterval(this.tick, 60)
   }
 
   changeHandler(evt) {
@@ -76,8 +76,7 @@ class Boss extends React.Component {
     let regInput = inputArr[1]
     let flags = inputArr[2]
     let regEx = new RegExp(regInput, flags)
-    const result = this.state.haystack.match(regEx)
-    console.log('result is ', result)
+    const result = this.props.boss.haystack.match(regEx)
     if (result) {
       this.setState({result})
     }
@@ -85,18 +84,16 @@ class Boss extends React.Component {
 
   submitReg(evt) {
     evt.preventDefault()
-    if (this.isSame(this.state.result, this.state.needle)) {
-      console.log('you got it!')
+    if (this.isSame(this.state.result, this.props.boss.needle)) {
       history.push(`/postboss`, {won: true})
     } else {
-      console.log('you lose loser!')
       history.push(`/postboss`, {won: false})
     }
   }
 
   render() {
-    console.log('verynew')
     const {classes} = this.props
+    const boss = this.props.boss
     let splitStory = this.state.story.split('\n')
     let elapsed = Math.round(this.state.elapsed / 100)
     let seconds = (elapsed / 10).toFixed(1)
@@ -107,10 +104,10 @@ class Boss extends React.Component {
             Countdown: {seconds} seconds
           </Typography>
           <Typography variant="h3" className={classes.h3}>
-            {this.state.question}
+            {boss.question}
           </Typography>
           <Typography variant="h4" className={classes.h4}>
-            {this.state.haystack}
+            {boss.haystack}
           </Typography>
           <TextField value={this.state.input} onChange={this.changeHandler} />
           <Button
@@ -127,7 +124,7 @@ class Boss extends React.Component {
         <Paper className={classes.root}>
           <Avatar
             alt="A man seated looking smug"
-            src={this.state.picture}
+            src={boss.picture}
             className={classes.bigAvatar}
           />
           <Typography variant="h2" className={classes.h2}>
@@ -220,4 +217,8 @@ const styles = theme => ({
   }
 })
 
-export default connect()(withStyles(styles)(Boss))
+const mapState = state => ({
+  boss: state.cluster.boss
+})
+
+export default connect(mapState)(withStyles(styles)(Boss))
