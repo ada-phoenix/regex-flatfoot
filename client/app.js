@@ -1,15 +1,25 @@
 import React from 'react'
-
 import {Navbar} from './components'
 import Routes from './routes'
+import {withStyles} from '@material-ui/core'
 
-const App = () => {
+const styles = theme => ({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+})
+
+const App = props => {
+  const {classes} = props
   return (
-    <div>
-      <Navbar />
+    <div className={classes.root}>
+      {/* <Navbar /> */}
       <Routes />
     </div>
   )
 }
 
-export default App
+export default withStyles(styles)(App)
