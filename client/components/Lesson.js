@@ -10,7 +10,7 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 
 const styles = theme => ({})
 
-class Casefile extends React.Component {
+class Lesson extends React.Component {
   state = {
     open: false
   }
@@ -31,7 +31,7 @@ class Casefile extends React.Component {
           color="primary"
           onClick={this.handleClickOpen}
         >
-          Open Casefile
+          Open Lesson
         </Button>
         <Dialog
           fullWidth={true}
@@ -40,16 +40,11 @@ class Casefile extends React.Component {
           onClose={this.handleClose}
           aria-labelledby="open-casefile"
         >
-          <DialogTitle>Casefile</DialogTitle>
+          <DialogTitle>Lesson</DialogTitle>
           <DialogContent>
-            {this.props.casefile.map((clue, i) => {
-              return (
-                <DialogContentText key={clue} color="primary">
-                  {`${i + 1}) `}
-                  {clue}
-                </DialogContentText>
-              )
-            })}
+            <DialogContentText color="primary">
+              {this.props.lesson}
+            </DialogContentText>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
@@ -63,7 +58,8 @@ class Casefile extends React.Component {
 }
 
 const mapState = state => ({
-  casefile: state.user.casefile
+  game: state.game,
+  lesson: state.game.lesson
 })
 
-export default connect(mapState)(withStyles(styles)(Casefile))
+export default connect(mapState)(withStyles(styles)(Lesson))

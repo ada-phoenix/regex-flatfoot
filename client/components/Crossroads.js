@@ -1,6 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {getCluster} from '../store/cluster'
+import Button from '@material-ui/core/Button'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
+import Grid from '@material-ui/core/Grid'
+import {withStyles} from '@material-ui/core'
 
 class Crossroads extends React.Component {
   constructor() {
@@ -26,48 +31,108 @@ class Crossroads extends React.Component {
   }
 
   render() {
+    const {classes} = this.props
     const locations = this.props.cluster.locations
-    console.log('cluster ', this.props.cluster)
     return this.state.gotCluster ? (
-      <div>
-        <div className="container">
-          <h1>Let's review the clues</h1>
-        </div>
-        <div className="clues">
-          {this.props.casefile.map((clue, i) => {
+      <Paper className={classes.root}>
+        <Typography className={classes.h2} variant="h2">
+          Let's Review the Clues
+        </Typography>
+        {this.props.casefile.map((clue, i) => {
+          return (
+            <Typography className={classes.h6} variant="h6" key={i}>
+              {`${i + 1}) `}
+              {clue}
+            </Typography>
+          )
+        })}
+        <Typography className={classes.type} variant="h5">
+          Now, where to go...
+        </Typography>
+        {/* <div className="container"> */}
+        <Grid container justify="center" alignItems="center">
+          {locations.map((location, i) => {
             return (
-              <h2 key={i}>
-                {`${i + 1}) `}
-                {clue}
-              </h2>
-            )
-          })}
-        </div>
-        <h1>Now, where to go...</h1>
-        <div className="container">
-          {locations.map(location => {
-            return (
-              <button
-                key={location[0]}
-                type="button"
+              <Button
+                key={i}
+                className={classes.button}
+                variant="contained"
+                color="secondary"
                 onClick={() => this.clickHandler(location[0], location[1])}
               >
                 {location[0]}
-              </button>
+              </Button>
             )
           })}
-        </div>
-      </div>
+        </Grid>
+        {/* </div> */}
+      </Paper>
     ) : (
-      <div>
-        <div className="container">
-          <img src="https://m.media-amazon.com/images/M/MV5BMTY0ODk2NDY5MV5BMl5BanBnXkFtZTgwNTE4MTg3MjE@._V1_.jpg" />
-          <h1>Hold on...</h1>
-        </div>
-      </div>
+      <Paper className={classes.root}>
+        <img src="https://m.media-amazon.com/images/M/MV5BMTY0ODk2NDY5MV5BMl5BanBnXkFtZTgwNTE4MTg3MjE@._V1_.jpg" />
+        <Typography className={classes.h2} variant="h2">
+          Hold on...
+        </Typography>
+      </Paper>
     )
   }
 }
+
+const styles = theme => ({
+  root: {
+    margin: 50,
+    padding: 50,
+    maxWidth: 700,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: theme.palette.primary.light
+  },
+  button: {
+    justifyContent: 'center',
+    width: 250,
+    margin: 10,
+    [theme.breakpoints.down('xs')]: {
+      width: 250
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: 150,
+      height: 85
+    }
+  },
+  type: {
+    fontFamily: 'Cutive',
+    margin: 20
+  },
+  h2: {
+    textAlign: 'center',
+    fontFamily: 'Cutive',
+    padding: 10,
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '25px'
+    },
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '40px'
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '50px'
+    }
+  },
+  h6: {
+    fontFamily: 'Cutive',
+    margin: 15,
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '15px'
+    },
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '18px'
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '22px'
+    }
+  }
+})
 
 const mapState = state => {
   return {
@@ -84,4 +149,4 @@ const mapDispatch = dispatch => {
   }
 }
 
-export default connect(mapState, mapDispatch)(Crossroads)
+export default connect(mapState, mapDispatch)(withStyles(styles)(Crossroads))

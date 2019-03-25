@@ -1,5 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import reactStringReplace from 'react-string-replace'
+import Grid from '@material-ui/core/Grid'
+import withStyles from '@material-ui/core/styles/withStyles'
+import Typography from '@material-ui/core/Typography'
 
 class Problem extends React.Component {
   constructor(props) {
@@ -9,14 +13,13 @@ class Problem extends React.Component {
       regStr: '',
       goal: [''],
       result: [''],
-      preview: [''],
       message: ''
     }
     this.changeHandler = this.changeHandler.bind(this)
-    this.showResult = this.showResult.bind(this)
     this.submitReg = this.submitReg.bind(this)
     this.isSame = this.isSame.bind(this)
     this.pushToNext = this.pushToNext.bind(this)
+    this.highlighter = this.highlighter.bind(this)
   }
 
   isSame(arr1, arr2) {
@@ -46,10 +49,6 @@ class Problem extends React.Component {
     })
   }
 
-  showResult() {
-    this.setState({preview: this.state.result})
-  }
-
   changeHandler(evt) {
     this.setState({input: evt.target.value})
     this.setState({message: ''})
@@ -61,6 +60,43 @@ class Problem extends React.Component {
     let result = this.state.regStr.match(regEx)
     if (result) {
       this.setState({result})
+    }
+  }
+
+  highlighter() {
+    try {
+      let inputArr = this.state.input.split('/')
+      let groupedInput = `(${inputArr[1]})`
+      let flags = inputArr[2]
+      let groupedRegEx = new RegExp(groupedInput, flags)
+      let highlightedHaystack = reactStringReplace(
+        this.state.regStr,
+        groupedRegEx,
+        (match, i) => (
+          <span key={i} className="highlight">
+            {match}
+          </span>
+        )
+      )
+
+      const sliced = highlightedHaystack.slice(0, 2)
+      const lengthtoSlice = sliced[0].length + inputArr[1].length
+      const end = this.state.regStr.slice(lengthtoSlice)
+      const whole = [...sliced, end]
+
+      if (flags) {
+        if (flags.includes('g')) {
+          return highlightedHaystack
+        } else {
+          return whole
+        }
+      } else {
+        console.log('whole ', whole)
+        return whole
+      }
+    } catch (err) {
+      console.log(err)
+      return this.state.regStr
     }
   }
 
@@ -88,16 +124,23 @@ class Problem extends React.Component {
   }
 
   render() {
+    const {classes} = this.props
     return this.props.haystack ? (
       <div>
-        <div className="container">
-          <div className="haystack">
-            <div className="typewriter">
+        <Grid
+          container
+          wrap="wrap"
+          spacing={24}
+          alignItems="flex-start"
+          className={classes.consoleGrid}
+        >
+          <Grid item className={classes.consoleGridItem}>
+            <Typography className={classes.lessonText}>
               <label>Text block:</label>
-              <div>{this.state.regStr}</div>
-            </div>
-          </div>
-          <div>
+              <div>{this.highlighter()}</div>
+            </Typography>
+          </Grid>
+          <Grid item className={classes.consoleGridItem}>
             <h2 className="message">{this.state.message}</h2>
             <label>
               Remember to wrap your regEx in forward slashes. Ex: /regex/
@@ -108,19 +151,37 @@ class Problem extends React.Component {
               value={this.state.input}
               placeholder="/write your regEx here/"
             />
-          </div>
-          <button onClick={this.showResult}>Try It!</button>
-          <button onClick={this.submitReg}>Follow that lead!</button>
-        </div>
-        <div>
-          <p>The Result of your regEx is: {this.state.preview}</p>
-        </div>
+          </Grid>
+          <Grid item className={classes.consoleGridItem}>
+            <button onClick={this.submitReg}>Follow that lead!</button>
+          </Grid>
+        </Grid>
       </div>
     ) : (
       <div>Hold on one moment...</div>
     )
   }
 }
+
+//STYLING
+const styles = theme => ({
+  lessonText: {
+    fontFamily: 'Cutive',
+    fontSize: '1em',
+    color: '#FFFFFF'
+  },
+  consoleGrid: {
+    backgroundColor: 'pink',
+    padding: '1%',
+    borderRadius: 5
+  },
+  consoleGridItem: {
+    padding: '2%',
+    backgroundColor: '#000000',
+    border: '4mm groove #424242',
+    justifySelf: 'center'
+  }
+})
 
 //Container
 const mapState = state => ({
@@ -129,4 +190,4 @@ const mapState = state => ({
   notallowed: state.game.notallowed
 })
 
-export default connect(mapState)(Problem)
+export default connect(mapState)(withStyles(styles)(Problem))

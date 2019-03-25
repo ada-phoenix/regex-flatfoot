@@ -3,6 +3,10 @@ body {
   background-color: rgb(158, 167, 170);
 }
 
+.highlight {
+  color: greenyellow;
+}
+
 a {
   text-decoration: none;
 }
@@ -21,13 +25,6 @@ form div {
   display: inline-block;
 }
 
-input {
-  padding: 2%;
-  flex: 1;
-  height: 50px;
-  font-size: 2em;
-}
-
 .container {
   display: flex;
   flex: 1;
@@ -37,19 +34,19 @@ input {
   align-items: 'center';
 }
 
-.typewriter div {
+/* .typewriter div {
   /* overflow: hidden; Ensures the content is not revealed until the animation */
-  background-color: black;
+/* background-color: black;
   color: white;
   font-size: 1.5em;
   border-right: 0.15em solid orange; /* The typwriter cursor */
-  font-family: monospace;
+/* font-family: monospace;
   white-space: pre-wrap;
   word-break: break-word;
   /* margin: 0 auto; Gives that scrolling effect as the typing happens */
-  padding-bottom: 3%;
+/* padding-bottom: 3%;
   padding: 2%;
-}
+} */
 
 div.hidden {
   visibility: hidden;
@@ -58,11 +55,11 @@ div.hidden {
 div.visible {
   visibility: visible;
 }
-
+/*
 .clues {
   background-color: rgb(204, 204, 204);
   width: 70vw;
-}
+} */
 
 .haystack {
   width: 50%;

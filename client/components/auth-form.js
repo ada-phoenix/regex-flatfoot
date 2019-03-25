@@ -1,38 +1,92 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
+import Button from '@material-ui/core/Button'
+import TextField from '@material-ui/core/TextField'
+import withStyles from '@material-ui/core/styles/withStyles'
 import {auth} from '../store'
 
 /**
  * COMPONENT
  */
 const AuthForm = props => {
-  const {name, displayName, handleSubmit, error} = props
-
+  const {name, displayName, handleSubmit, error, classes} = props
   return (
     <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="email">
-            <small>Email</small>
-          </label>
-          <input name="email" type="text" />
-        </div>
-        <div>
-          <label htmlFor="password">
-            <small>Password</small>
-          </label>
-          <input name="password" type="password" />
-        </div>
-        <div>
-          <button type="submit">{displayName}</button>
+      <form
+        className={classes.authcontainer}
+        onSubmit={handleSubmit}
+        name={name}
+      >
+        <TextField
+          name="email"
+          type="text"
+          required={true}
+          id="outlined-email-input"
+          label="email"
+          className={classes.textField}
+          margin="normal"
+          variant="outlined"
+          InputLabelProps={{className: classes.label}}
+          InputProps={{className: classes.authinput}}
+        />
+        <TextField
+          name="password"
+          type="password"
+          required={true}
+          id="outlined-password-input"
+          label="password"
+          className={classes.textField}
+          margin="normal"
+          variant="outlined"
+          InputLabelProps={{className: classes.label}}
+          InputProps={{className: classes.authinput}}
+        />
+        <div className={classes.buttcontainer}>
+          <Button
+            className={classes.button}
+            color="secondary"
+            variant="outlined"
+            type="submit"
+          >
+            {displayName}
+          </Button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <a href="/auth/google">{displayName} with Google</a>
+      {/* <a href="/auth/google">{displayName} with Google</a> */}
     </div>
   )
 }
+
+//STYLES
+const styles = theme => ({
+  authcontainer: {
+    display: 'flex',
+    justifyItems: 'center',
+    flexWrap: 'wrap'
+  },
+  buttcontainer: {
+    display: 'flex',
+    justifyItems: 'center',
+    alignItems: 'center'
+  },
+  button: {
+    height: 50
+  },
+  label: {
+    color: theme.palette.primary.main,
+    fontSize: 24,
+    paddingLeft: 35,
+    paddingTop: 35,
+    paddingRight: 0
+  },
+  authinput: {
+    padding: 2,
+    fontSize: 28,
+    color: '#000000'
+  }
+})
 
 /**
  * CONTAINER
@@ -69,8 +123,12 @@ const mapDispatch = dispatch => {
   }
 }
 
-export const Login = connect(mapLogin, mapDispatch)(AuthForm)
-export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
+export const Login = connect(mapLogin, mapDispatch)(
+  withStyles(styles)(AuthForm)
+)
+export const Signup = connect(mapSignup, mapDispatch)(
+  withStyles(styles)(AuthForm)
+)
 
 /**
  * PROP TYPES
