@@ -11,6 +11,7 @@ import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import FolderIcon from '@material-ui/icons/Folder'
 import IconButton from '@material-ui/core/IconButton'
+import {setCasefileBadge} from '../store/effects'
 
 const styles = theme => ({
   margin: {
@@ -20,12 +21,12 @@ const styles = theme => ({
 
 class Casefile extends React.Component {
   state = {
-    open: false,
-    invisible: false
+    open: false
   }
 
   handleClickOpen = () => {
-    this.setState({open: true, invisible: true})
+    this.setState({open: true})
+    this.props.setCasefileBadge(true)
   }
 
   handleClose = () => {
@@ -33,8 +34,7 @@ class Casefile extends React.Component {
   }
 
   render() {
-    const {classes} = this.props
-    const {invisible} = this.state
+    const {classes, invisible} = this.props
 
     return (
       <React.Fragment>
@@ -87,7 +87,14 @@ Casefile.propTypes = {
 }
 
 const mapState = state => ({
-  casefile: state.user.casefile
+  casefile: state.user.casefile,
+  invisible: state.effects.caseFileBadgeInvisible
 })
 
-export default connect(mapState)(withStyles(styles)(Casefile))
+const mapDispatch = dispatch => {
+  return {
+    setCasefileBadge: boolean => dispatch(setCasefileBadge(boolean))
+  }
+}
+
+export default connect(mapState, mapDispatch)(withStyles(styles)(Casefile))

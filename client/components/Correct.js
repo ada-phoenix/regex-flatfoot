@@ -9,6 +9,7 @@ import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import Snackbar from '@material-ui/core/Snackbar'
 import {updateUser} from '../store/user'
+import {setCasefileBadge} from '../store/effects'
 import {correctUpdater} from '../util'
 
 class Correct extends React.Component {
@@ -21,8 +22,8 @@ class Correct extends React.Component {
   }
 
   handleClose = event => {
-    console.log(event)
     this.setState({displayPopUp: false})
+    this.props.setCasefileBadge(false)
   }
 
   whichScreen() {
@@ -163,7 +164,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    updateUser: (userId, nextGame) => dispatch(updateUser(userId, nextGame))
+    updateUser: (userId, nextGame) => dispatch(updateUser(userId, nextGame)),
+    setCasefileBadge: boolean => dispatch(setCasefileBadge(boolean))
   }
 }
 

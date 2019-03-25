@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import {withStyles} from '@material-ui/core'
+import {getAllClusters} from '../store/cluster'
+import axios from 'axios'
 
 const styles = theme => ({
   root: {
@@ -42,6 +44,7 @@ class PostBoss extends React.Component {
     this.state = {
       updatedUser: false
     }
+    this.direction = this.direction.bind(this)
   }
 
   async componentDidMount() {
@@ -54,25 +57,35 @@ class PostBoss extends React.Component {
       : deathUpdater(1, 1, this.props.clusterId)
     await this.props.updateUser(this.props.userId, nextGame)
     this.setState({updatedUser: true})
+    const {data} = await axios.get(`/api/clusters/`)
+    this.clusters = data
   }
 
   componentWillUnmount() {
     this.setState({updatedUser: false})
   }
 
+  direction() {
+    if (this.clusters.length < this.props.clusterId) {
+      this.props.history.push('/noMore')
+    } else {
+      this.props.history.push('/question')
+    }
+  }
+
   render() {
     const {classes} = this.props
+    const boss = this.props.boss
     return this.state.updatedUser && this.props.location.state.won ? (
       <Paper className={classes.root}>
         <Typography className={classes.h2} variant="h2">
-          Another monster behind bars! But this low level ruffian was just a
-          pawn. Stay on the case, ace!
+          {boss.correct}
         </Typography>
         <Button
           className={classes.button}
           variant="contained"
           color="secondary"
-          onClick={() => this.props.history.push('/question')}
+          onClick={this.direction}
         >
           Continue
         </Button>
@@ -80,15 +93,13 @@ class PostBoss extends React.Component {
     ) : (
       <Paper className={classes.root}>
         <Typography className={classes.h2} variant="h2">
-          You died. You're a ghost now. But your spirit won't rest until you
-          bring the Grepino Crime Family to justice. Go back to the beginning
-          and try again.
+          {boss.incorrect}
         </Typography>
         <Button
           className={classes.button}
           variant="contained"
           color="secondary"
-          onClick={() => this.props.history.push('/question')}
+          onClick={this.direction}
         >
           Continue
         </Button>
@@ -102,11 +113,13 @@ const mapState = state => ({
   level: state.user.level || 1,
   levelstage: state.user.levelstage || 1,
   clusterId: state.user.clusterId || 1,
-  userId: state.user.id
+  userId: state.user.id,
+  boss: state.cluster.boss
 })
 
 const mapDispatch = dispatch => ({
-  updateUser: (userId, nextGame) => dispatch(updateUser(userId, nextGame))
+  updateUser: (userId, nextGame) => dispatch(updateUser(userId, nextGame)),
+  getAllClusters: () => dispatch(getAllClusters())
 })
 
 export default connect(mapState, mapDispatch)(withStyles(styles)(PostBoss))
