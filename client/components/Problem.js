@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import reactStringReplace from 'react-string-replace'
 
 class Problem extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class Problem extends React.Component {
     this.submitReg = this.submitReg.bind(this)
     this.isSame = this.isSame.bind(this)
     this.pushToNext = this.pushToNext.bind(this)
+    this.highlighter = this.highlighter.bind(this)
   }
 
   isSame(arr1, arr2) {
@@ -64,6 +66,43 @@ class Problem extends React.Component {
     }
   }
 
+  highlighter() {
+    try {
+      let inputArr = this.state.input.split('/')
+      let groupedInput = `(${inputArr[1]})`
+      let flags = inputArr[2]
+      let groupedRegEx = new RegExp(groupedInput, flags)
+      let highlightedHaystack = reactStringReplace(
+        this.state.regStr,
+        groupedRegEx,
+        (match, i) => (
+          <span key={i} className="highlight">
+            {match}
+          </span>
+        )
+      )
+
+      const sliced = highlightedHaystack.slice(0, 2)
+      const lengthtoSlice = sliced[0].length + inputArr[1].length
+      const end = this.state.regStr.slice(lengthtoSlice)
+      const whole = [...sliced, end]
+
+      if (flags) {
+        if (flags.includes('g')) {
+          return highlightedHaystack
+        } else {
+          return whole
+        }
+      } else {
+        console.log('whole ', whole)
+        return whole
+      }
+    } catch (err) {
+      console.log(err)
+      return this.state.regStr
+    }
+  }
+
   pushToNext() {
     if (this.isSame(this.state.result, this.state.goal)) {
       this.props.history.push(`/correct`)
@@ -94,7 +133,7 @@ class Problem extends React.Component {
           <div className="haystack">
             <div className="typewriter">
               <label>Text block:</label>
-              <div>{this.state.regStr}</div>
+              <div>{this.highlighter()}</div>
             </div>
           </div>
           <div>

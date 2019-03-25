@@ -3,6 +3,10 @@ body {
   background-color: rgb(158, 167, 170);
 }
 
+.highlight {
+  color: greenyellow;
+}
+
 a {
   text-decoration: none;
 }
