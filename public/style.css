@@ -34,19 +34,19 @@ form div {
   align-items: 'center';
 }
 
-.typewriter div {
+/* .typewriter div {
   /* overflow: hidden; Ensures the content is not revealed until the animation */
-  background-color: black;
+/* background-color: black;
   color: white;
   font-size: 1.5em;
   border-right: 0.15em solid orange; /* The typwriter cursor */
-  font-family: monospace;
+/* font-family: monospace;
   white-space: pre-wrap;
   word-break: break-word;
   /* margin: 0 auto; Gives that scrolling effect as the typing happens */
-  padding-bottom: 3%;
+/* padding-bottom: 3%;
   padding: 2%;
-}
+} */
 
 div.hidden {
   visibility: hidden;
