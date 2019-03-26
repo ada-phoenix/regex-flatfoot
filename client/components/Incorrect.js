@@ -14,18 +14,6 @@ class Incorrect extends React.Component {
     super()
   }
 
-  // updater(level, levelstage, clusterId) {
-  //   if (level === 3) {
-  //     clusterId++
-  //   }
-  //   if (level < 3) {
-  //     level++
-  //   } else {
-  //     level = 1
-  //   }
-  //   return {level, levelstage, clusterId}
-  // }
-
   componentDidMount() {
     const previousGame = {
       level: this.props.level,
