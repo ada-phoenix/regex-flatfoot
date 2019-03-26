@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography'
 import Snackbar from '@material-ui/core/Snackbar'
 import {updateUser} from '../store/user'
 import {setCasefileBadge} from '../store/effects'
-import {correctUpdater} from '../util'
+import {correctUpdater, updateCasefile} from '../util'
 
 class Correct extends React.Component {
   constructor() {
@@ -40,12 +40,25 @@ class Correct extends React.Component {
       this.props.levelstage,
       this.props.clusterId
     )
+    const updatedCasefile = updateCasefile(
+      this.props.user.casefile,
+      this.props.game.clue
+    )
+    console.log('CF', updatedCasefile)
+    console.log('CLUE', this.props.game.clue)
+    console.log('CASEFILE', this.props.user.casefile)
     this.props.updateUser(this.props.userId, {
       ...nextGame,
-      clue: this.props.game.clue
+      casefile: updatedCasefile
     })
     this.setState({displayPopUp: true})
   }
+
+  // this.props.updateUser(this.props.userId, {
+  //   ...nextGame,
+  //   clue: this.props.game.clue
+  // })
+  // this.setState({displayPopUp: true})
 
   render() {
     const {classes} = this.props
@@ -158,7 +171,8 @@ const mapState = state => {
     levelstage: state.user.levelstage || 1,
     clusterId: state.user.clusterId || 1,
     game: state.game || {},
-    userId: state.user.id
+    userId: state.user.id,
+    user: state.user
   }
 }
 
