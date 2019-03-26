@@ -188,14 +188,14 @@ const styles = theme => ({
   },
   consoleGridItem: {
     padding: '2%',
-    backgroundColor: '#000000',
+    backgroundColor: '#ffffff',
     border: '4mm groove #424242',
     justifySelf: 'center'
   },
   haystackText: {
     fontFamily: 'Cutive',
     fontSize: '1em',
-    color: '#FFFFFF',
+    color: '#212121',
     whiteSpace: 'pre-wrap',
     wordBreak: 'break-word'
   }

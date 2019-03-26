@@ -13,7 +13,7 @@ const clusterData = [
       ],
       [
         'the boardwalk',
-        'Colorful umbrellas dot the beach like so many broken dreams. A woman wearing a pucca shell necklace asks if you\'d like to buy a whole coconut to drink from. Of course you would, but there isn\'t time. This is a dead trail--better go back and look at your clues again.'
+        "Colorful umbrellas dot the beach like so many broken dreams. A woman wearing a pucca shell necklace asks if you'd like to buy a whole coconut to drink from. Of course you would, but there isn't time. This is a dead trail--better go back and look at your clues again."
       ]
     ]
   }
