@@ -9,6 +9,7 @@ const gameData = [
       'We might have a lead on a shady character we\'ve been watching downtown. His name is Dmytrenko. Can you use a regular expression to find out if his name is mentioned in this note we intercepted?\n\nWrite a regular expression to match the word "dmytrenko".',
     level: 1,
     levelstage: 1,
+    note: '/a/ : matches the string a',
     clusterId: 1,
     hint:
       'Are you using the back slashes? No need to worry about capitalization for now.',
@@ -66,6 +67,7 @@ const gameData = [
       "Dmytrenko put us on to Bambino Grepino's personal assistant, Terry Lemons. He's as handy with a calendar as he is in a streetfight, but does all his scheduling in code. We think he's planning something BIG for the family at the Old Spaghetti Factory. Can you use a regular expression to find every instance of \"fri\" in this memo he sent out to the network?",
     level: 2,
     levelstage: 1,
+    note: 'g : global flag matches every instance',
     clusterId: 1,
     hint:
       'Regular expressions just match patterns of characters. They can find matches that appear in other words. the g flag will find all the matches.',
@@ -122,6 +124,7 @@ const gameData = [
       "Our next culprit is no small-time crook. Dominique Gold runs the Grepino family's entire counterfeit exercise equipment operation. Lucky for us even pros occasionally make mistakes. She left her journal on the bench press at the YMCA. Write a regular expression that matches the word 'dumbbell' and by the way, I spilled coffee on your keyboard this morning so the shift and caps lock keys are broken, I guess you can't use any capital letters. My Bad!",
     level: 3,
     levelstage: 1,
+    note: 'i : case insensitive flag',
     clusterId: 1,
     hint:
       'There is no i in team but um, detective work is kind of a solo activity',

@@ -26,6 +26,9 @@ const Game = db.define('game', {
     type: Sequelize.INTEGER,
     allowNull: false
   },
+  note: {
+    type: Sequelize.TEXT
+  },
   hint: {
     type: Sequelize.TEXT,
     allowNull: false
