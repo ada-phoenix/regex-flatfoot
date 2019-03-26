@@ -15,7 +15,7 @@ const gameData = [
       'Are you using the back slashes? No need to worry about capitalization for now.',
     clue: 'At the parking lot, a seagull winked at me. He knows something.',
     correct:
-      "Good work, Rookie.\nThe boys picked up Dmytrenko and he's singing like a canary! Go checkout the parking lot behind the hotdog stand on Ninth and Grand. He said it's one of their drop off points.",
+      "Good work, Rookie.\nThe boys picked up Dmytrenko and he's singing like a canary! Go checkout the parking lot behind the hotdog stand on Ninth and Grand. He said it\'s one of their drop off points.",
     incorrect:
       "What happened there, Rookie?\nI thought you were the best. Let\'s head back to HQ and see if the boys have anything new for us.",
     sound: '/seagull.wav'
