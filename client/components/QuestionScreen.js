@@ -96,14 +96,14 @@ class QuestionScreen extends React.Component {
             </Typography> */}
           </Grid>
         </Grid>
-        {/* <Grid
+        <Grid
           container
           wrap="wrap"
           spacing={24}
           className={classes.consoleGrid}
         >
           <Problem history={this.props.history} />
-        </Grid> */}
+        </Grid>
       </div>
     ) : (
       <div>
