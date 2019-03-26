@@ -42,6 +42,9 @@ const Game = db.define('game', {
   notallowed: {
     type: Sequelize.ARRAY(Sequelize.STRING),
     defaultValue: []
+  },
+  sound: {
+    type: Sequelize.STRING
   }
 })
 
