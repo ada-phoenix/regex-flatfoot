@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
 import {withStyles} from '@material-ui/core/styles'
 import Avatar from '@material-ui/core/Avatar'
 import Card from '@material-ui/core/Card'
@@ -7,6 +8,7 @@ import CardActions from '@material-ui/core/CardActions'
 import NotesIcon from './NotesIcon'
 import LessonIcon from './LessonIcon'
 import CasefileIcon from './CasefileIcon'
+import HintIcon from './HintIcon'
 
 const styles = {
   card: {
@@ -42,6 +44,7 @@ function ConsoleIcon(props) {
         <NotesIcon />
         <CasefileIcon />
         <LessonIcon />
+        {props.hintVisibility ? <HintIcon /> : <div />}
       </CardActions>
     </Card>
   )
@@ -51,4 +54,12 @@ ConsoleIcon.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export default withStyles(styles)(ConsoleIcon)
+const mapState = state => ({
+  hintVisibility: state.effects.hintVisibility
+})
+
+export default connect(mapState)(withStyles(styles)(ConsoleIcon))
+
+/*
+
+*/

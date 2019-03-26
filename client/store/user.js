@@ -26,9 +26,10 @@ const userWasReset = user => ({type: USER_WAS_RESET, user})
  * THUNK CREATORS
  */
 
-export const updateUser = (userId, nextGame) => async dispatch => {
+export const updateUser = (userId, updateData) => async dispatch => {
   try {
-    const {data} = await axios.put(`/api/users/${userId}`, nextGame)
+    console.log('UPDATE_DATA', updateData)
+    const {data} = await axios.put(`/api/users/${userId}`, updateData)
     dispatch(updatedUser(data))
   } catch (err) {
     console.log(err)

@@ -4,7 +4,7 @@ import axios from 'axios'
 const defaultEffects = {
   caseFileBadgeInvisible: true,
   notes: [],
-  hintVisibility: false
+  hintVisibility: true
 }
 
 // ACTION TYPES

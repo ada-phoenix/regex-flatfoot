@@ -35,19 +35,20 @@ class Correct extends React.Component {
   }
 
   componentDidMount() {
-    let nextGame = correctUpdater(
-      this.props.level,
-      this.props.levelstage,
-      this.props.clusterId
-    )
+    const previousGame = {
+      level: this.props.level,
+      levelstage: this.props.levelstage,
+      clusterId: this.props.clusterId
+    }
+    let nextGame = correctUpdater(...previousGame)
     const updatedCasefile = updateCasefile(
       this.props.user.casefile,
       this.props.game.clue
     )
 
     this.props.updateUser(this.props.userId, {
-      ...nextGame,
-      casefile: updatedCasefile
+      userInfo: {...nextGame, casefile: updatedCasefile},
+      previousGame: previousGame
     })
     this.setState({displayPopUp: true})
   }

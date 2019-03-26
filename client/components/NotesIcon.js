@@ -41,7 +41,7 @@ class NotesIcon extends React.Component {
           onClick={this.handleClickOpen}
           className={classes.margin}
         >
-          <AssignmentIcon fontSize="large" />
+          <AssignmentIcon fontSize="small" />
         </IconButton>
         <Dialog
           fullWidth={true}

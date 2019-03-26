@@ -20,22 +20,26 @@ router.get('/', async (req, res, next) => {
 
 router.put('/:userId', async (req, res, next) => {
   try {
-    let id = parseInt(req.params.userId)
-    const {level, levelstage, clusterId} = req.body
+    const id = parseInt(req.params.userId)
+    console.log(JSON.stringify(req.body))
+    const {userInfo, previousGame} = req.body
+    const {level, levelstage, clusterId} = userInfo
 
     const user = await User.findById(id)
-    const updatedUser = await user.update(req.body)
+    const updatedUser = await user.update(userInfo)
 
     const getGame = await Game.findOne({
       where: {
-        level,
-        levelstage,
-        clusterId
+        ...previousGame
       }
     })
 
     await updatedUser.addGame(getGame)
-    const gamesVisted = await updatedUser.getGames({raw: true})
+    const games = await updatedUser.getGames({raw: true})
+
+    const gameIdList = games.map(game => {
+      return game.id
+    })
 
     const userData = {
       clusterId: updatedUser.clusterId,
@@ -44,7 +48,7 @@ router.put('/:userId', async (req, res, next) => {
       level: updatedUser.level,
       levelstage: updatedUser.levelstage,
       id: updatedUser.id,
-      gamesVisted,
+      gamesVisted: gameIdList,
       casefile: updatedUser.casefile
     }
     res.json(userData)
