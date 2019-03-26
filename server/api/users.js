@@ -21,23 +21,9 @@ router.get('/', async (req, res, next) => {
 router.put('/:userId', async (req, res, next) => {
   try {
     let id = parseInt(req.params.userId)
-    let {level, levelstage, clusterId, casefile} = req.body
+    const {level, levelstage, clusterId} = req.body
 
     const user = await User.findById(id)
-
-    // const updatedInfo = clue
-    //   ? {
-    //       level,
-    //       levelstage,
-    //       clusterId,
-    //       casefile: [...user.casefile, clue]
-    //     }
-    //   : {
-    //       level,
-    //       levelstage,
-    //       clusterId
-    //     }
-
     const updatedUser = await user.update(req.body)
 
     const getGame = await Game.findOne({
@@ -49,7 +35,6 @@ router.put('/:userId', async (req, res, next) => {
     })
 
     await updatedUser.addGame(getGame)
-
     const gamesVisted = await updatedUser.getGames({raw: true})
 
     const userData = {
@@ -62,6 +47,31 @@ router.put('/:userId', async (req, res, next) => {
       gamesVisted,
       casefile: updatedUser.casefile
     }
+    res.json(userData)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.put('/reset/:userId', async (req, res, next) => {
+  try {
+    let id = parseInt(req.params.userId)
+
+    const user = await User.findById(id)
+    const updatedUser = await user.update(req.body)
+
+    updatedUser.setGames([])
+
+    const userData = {
+      clusterId: updatedUser.clusterId,
+      email: updatedUser.email,
+      name: updatedUser.name,
+      level: updatedUser.level,
+      levelstage: updatedUser.levelstage,
+      id: updatedUser.id,
+      casefile: updatedUser.casefile
+    }
+
     res.json(userData)
   } catch (err) {
     next(err)
