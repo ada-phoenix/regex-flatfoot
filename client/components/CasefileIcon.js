@@ -27,6 +27,8 @@ class Casefile extends React.Component {
   handleClickOpen = () => {
     this.setState({open: true})
     this.props.setCasefileBadge(true)
+    let sound = new Audio('/button.mp3')
+    sound.play()
   }
 
   handleClose = () => {

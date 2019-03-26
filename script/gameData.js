@@ -16,7 +16,8 @@ const gameData = [
     correct:
       "Good work, Rookie.\nThe boys picked up Dmytrenko and he's singing like a canary! Go checkout the parking lot behind the hotdog stand on Ninth and Grand. He said it's one of their drop off points.",
     incorrect:
-      "What happened there, Rookie?\nI thought you were the best. Let's head back to HQ and see if the boys have anything new for us."
+      "What happened there, Rookie?\nI thought you were the best. Let\'s head back to HQ and see if the boys have anything new for us.",
+    sound: '/seagull.wav'
   },
   {
     haystack:
@@ -33,9 +34,10 @@ const gameData = [
       'Are you using the back slashes? No need to worry about capitalization for now.',
     clue: 'At the parking lot, a seagull winked at me. He knows something.',
     correct:
-      "Good work, Rookie.\nThe boys picked up Dmytrenko and he's singing like a canary! Go checkout the parking lot behind the hotdog stand on Ninth and Grand. He said it's one of their drop off points.",
+      "Good work, Rookie.\nThe boys picked up Dmytrenko and he\'s singing like a canary! Go checkout the parking lot behind the hotdog stand on Ninth and Grand. He said it\'s one of their drop off points.",
     incorrect:
-      'He slipped through our fingers again!?\nGet it together Rookie! Grab your self a cup of coffee and head back to the station.'
+      'He slipped through our fingers again!?\nGet it together Rookie! Grab your self a cup of coffee and head back to the station.',
+    sound: '/seagull.wav'
   },
   {
     haystack:
@@ -54,7 +56,8 @@ const gameData = [
     correct:
       "Good work, Rookie.\nThe boys picked up Dmytrenko and he's singing like a canary! Go checkout the parking lot behind the hotdog stand on Ninth and Grand. He said it's one of their drop off points.",
     incorrect:
-      "Damnit Rookie!\nYou're on desk duty. Maybe these trails haven't gone completely cold. Go back to the beginning and review the evidence."
+      "Damnit Rookie!\nYou're on desk duty. Maybe these trails haven't gone completely cold. Go back to the beginning and review the evidence.",
+    sound: '/seagull.wav'
   },
   {
     haystack:
@@ -73,7 +76,8 @@ const gameData = [
     correct:
       'Superb work, Rookie!\nThanks to your hard work we were able to set up heavy surveillance for the fourth Friday of the month and nabbed Lemons! Now, head down to the restaurant and see if any of the staff will talk.',
     incorrect:
-      "You're letting a guy named after a sour yellow fruit make fools of us, kid!\nNow head back to the station and see if any other leads have turned up. Something BIG is going down!"
+      "You're letting a guy named after a sour yellow fruit make fools of us, kid!\nNow head back to the station and see if any other leads have turned up. Something BIG is going down!",
+    sound: '/growl.mp3'
   },
   {
     haystack:
@@ -92,7 +96,8 @@ const gameData = [
     correct:
       'Superb work, Rookie!\nThanks to your hard work we were able to set up heavy surveillance for the fourth of the month and nabbed Lemons! Now, head down to the restaurant and see if any of the staff will talk.',
     incorrect:
-      "We're supposed to be putting the squeeze on Lemons, Rookie, not the other way around!\nGet your butt back to the station and your head back in the game!"
+      "We're supposed to be putting the squeeze on Lemons, Rookie, not the other way around!\nGet your butt back to the station and your head back in the game!",
+    sound: '/growl.mp3'
   },
   {
     haystack: 'hospital gospel telegraphe ospreys cosplay goose heron',
@@ -110,7 +115,8 @@ const gameData = [
     correct:
       'Superb work, Rookie!\nThanks to your hard work we were able to set up heavy surveillance for Old Spaghetti Factory on Fourth and nabbed Lemons! Now, head down to the restaurant and see if any of the staff will talk.',
     incorrect:
-      "Damnit Rookie!\nYou're on desk duty. Maybe these trails haven't gone completely cold. Go back to the beginning and review the evidence."
+      "Damnit Rookie!\nYou're on desk duty. Maybe these trails haven't gone completely cold. Go back to the beginning and review the evidence.",
+    sound: '/growl.mp3'
   },
   {
     haystack:
@@ -131,7 +137,8 @@ const gameData = [
       'Good work Rookie!\nWe caught up with Gold on her way to the bodybuilding convention. Just think about all the unsatisfactory workouts that were prevented with your sleuthing. Everyone is going to get so swole! Anyway, Dominique gave us a hot tip on The Grepinos. She said to check out the abandoned subway station on the north side of town.',
     incorrect:
       "What's this? The hotshot rookie can't work around an equipment failure?\nBack in my day we did everything with pen and paper so that excuse ain't gonna fly with me bub! Head back to the station and see if there are any new leads.",
-    notallowed: ['[A-Z]', 'g']
+    notallowed: ['[A-Z]', 'g'],
+    sound: '/drip.mp3'
   },
   {
     haystack:
@@ -152,7 +159,8 @@ const gameData = [
       'Good work Rookie!\nWe caught up with Gold on her way to the bodybuilding convention. Just think about all the unsatisfactory workouts that were prevented with your sleuthing. Everyone is going to get so swole! Anyway, Dominique gave us a hot tip on The Grepinos. She said to check out the abandoned subway station on the north side of town.',
     incorrect:
       "She got away again!\nI know you want a new computer but it's just not in the budget. This is taxpayer money we're dealing with rookie! You need to figure out how to do this without capitalization or we're never going to catch her.",
-    notallowed: ['[A-Z]', 'g']
+    notallowed: ['[A-Z]', 'g'],
+    sound: '/drip.mp3'
   },
   {
     haystack:
@@ -173,7 +181,8 @@ const gameData = [
       'Good work Rookie!\nWe caught up with Gold on her way to the bodybuilding convention. Just think about all the unsatisfactory workouts that were prevented with your sleuthing. Everyone is going to get so swole! Anyway, Dominique gave us a hot tip on The Grepinos. She said to check out the abandoned subway station on the north side of town.',
     incorrect:
       "Damnit Rookie!\nYou're on desk duty. Maybe these trails haven't gone completely cold. Go back to the beginning and review the evidence.",
-    notallowed: ['[A-Z]', 'g']
+    notallowed: ['[A-Z]', 'g'],
+    sound: '/drip.mp3'
   }
 ]
 
