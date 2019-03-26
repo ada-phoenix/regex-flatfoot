@@ -52,7 +52,7 @@ class Casefile extends React.Component {
             invisible={invisible}
             className={classes.margin}
           >
-            <FolderIcon fontSize="large" />
+            <FolderIcon fontSize="small" />
           </Badge>
         </IconButton>
         <Dialog

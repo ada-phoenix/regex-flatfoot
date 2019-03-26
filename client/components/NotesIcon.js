@@ -43,7 +43,7 @@ class NotesIcon extends React.Component {
           onClick={this.handleClickOpen}
           className={classes.margin}
         >
-          <AssignmentIcon fontSize="large" />
+          <AssignmentIcon fontSize="small" />
         </IconButton>
         <Dialog
           fullWidth={true}
@@ -54,18 +54,13 @@ class NotesIcon extends React.Component {
         >
           <DialogTitle>Notes</DialogTitle>
           <DialogContent>
-            <DialogContentText color="primary">
-              /a/ : matches the string a
-            </DialogContentText>
-            <DialogContentText color="primary">
-              i : case insensitive flag
-            </DialogContentText>
-            <DialogContentText color="primary">
-              g : global flag matches every instance
-            </DialogContentText>
-            <DialogContentText color="primary">
-              \d : matches any digit
-            </DialogContentText>
+            {this.props.notes.map(note => {
+              return (
+                <DialogContentText key={note} color="primary">
+                  {note}
+                </DialogContentText>
+              )
+            })}
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
@@ -83,7 +78,7 @@ NotesIcon.propTypes = {
 }
 
 const mapState = state => ({
-  casefile: state.user.casefile
+  notes: state.effects.notes
 })
 
 export default connect(mapState)(withStyles(styles)(NotesIcon))

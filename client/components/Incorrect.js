@@ -14,27 +14,22 @@ class Incorrect extends React.Component {
     super()
   }
 
-  updater(level, levelstage, clusterId) {
-    if (level === 3) {
-      console.log('clusterId ', clusterId)
-      clusterId++
-    }
-    if (level < 3) {
-      level++
-    } else {
-      level = 1
-    }
-    console.log('updated ', {level, clusterId})
-    return {level, levelstage, clusterId}
-  }
-
   componentDidMount() {
+    const previousGame = {
+      level: this.props.level,
+      levelstage: this.props.levelstage,
+      clusterId: this.props.clusterId
+    }
     let nextGame = incorrectUpdater(
-      this.props.level,
-      this.props.levelstage,
-      this.props.clusterId
+      previousGame.level,
+      previousGame.levelstage,
+      previousGame.clusterId
     )
-    this.props.updateUser(this.props.userId, nextGame)
+
+    this.props.updateUser(this.props.userId, {
+      userInfo: {...nextGame},
+      previousGame: previousGame
+    })
   }
 
   render() {
