@@ -3,12 +3,14 @@ import axios from 'axios'
 // INITIAL STATE
 const defaultEffects = {
   caseFileBadgeInvisible: true,
-  notes: []
+  notes: [],
+  hintVisibility: false
 }
 
 // ACTION TYPES
 const SET_CASEFILE_BADGE = 'SET_CASEFILE_BADGE'
 const ADD_NOTE = 'ADD_NOTE'
+const SET_HINT_VISIBILITY = 'SET_HINT_VISIBILITY'
 
 // ACTION CREATORS
 export const setCasefileBadge = boolean => ({
@@ -21,6 +23,11 @@ export const addNote = note => ({
   note
 })
 
+export const setHintVisibility = boolean => ({
+  type: SET_HINT_VISIBILITY,
+  boolean
+})
+
 // THUNK CREATORS
 
 // REDUCER
@@ -30,6 +37,8 @@ export default function(state = defaultEffects, action) {
       return {...state, caseFileBadgeInvisible: action.boolean}
     case ADD_NOTE:
       return {...state, notes: [...state.notes, action.note]}
+    case SET_HINT_VISIBILITY:
+      return {...state, hintVisibility: action.boolean}
     default:
       return state
   }
