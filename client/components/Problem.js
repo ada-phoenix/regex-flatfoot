@@ -142,36 +142,24 @@ class Problem extends React.Component {
   render() {
     const {classes} = this.props
     return this.props.haystack ? (
-      <div>
-        <Grid
-          container
-          wrap="wrap"
-          spacing={24}
-          alignItems="flex-start"
-          className={classes.consoleGrid}
-        >
-          <Grid item className={classes.consoleGridItem}>
-            <Typography className={classes.haystackText}>
-              <label>Text block:</label>
-              <div>{this.highlighter()}</div>
-            </Typography>
-          </Grid>
-          <Grid item className={classes.consoleGridItem}>
-            <h2 className="message">{this.state.message}</h2>
-            <label>
-              Remember to wrap your regEx in forward slashes. Ex: /regex/
-            </label>
-            <input
-              type="text"
-              onChange={this.changeHandler}
-              value={this.state.input}
-              placeholder="/write your regEx here/"
-            />
-          </Grid>
-          <Grid item className={classes.consoleGridItem}>
-            <button onClick={this.submitReg}>Follow that lead!</button>
-          </Grid>
-        </Grid>
+      <div className={classes.textContainer}>
+        <Typography className={classes.haystackText}>
+          <label>Text block:</label>
+          <div>{this.highlighter()}</div>
+        </Typography>
+
+        <div className={classes.buttonsContainer}>
+          <label>
+            Remember to wrap your regEx in forward slashes. Ex: /regex/
+          </label>
+          <input
+            type="text"
+            onChange={this.changeHandler}
+            value={this.state.input}
+            placeholder="/write your regEx here/"
+          />
+          <button onClick={this.submitReg}>Follow that lead!</button>
+        </div>
       </div>
     ) : (
       <div>Hold on one moment...</div>
@@ -181,28 +169,49 @@ class Problem extends React.Component {
 
 //STYLING
 const styles = theme => ({
+  textContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignContent: 'start'
+  },
+  buttonsContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'start',
+    padding: '2%'
+  },
   lessonText: {
     fontFamily: 'Cutive',
     fontSize: '1em',
     color: '#FFFFFF'
   },
   consoleGrid: {
-    backgroundColor: 'pink',
-    padding: '1%',
-    borderRadius: 5
+    padding: '1%'
   },
   consoleGridItem: {
     padding: '2%',
-    backgroundColor: '#ffffff',
-    border: '4mm groove #424242',
-    justifySelf: 'center'
+    border: '2mm groove #9ea7aa',
+    justifySelf: 'center',
+    [theme.breakpoints.down('xs')]: {
+      flex: 1
+    },
+    [theme.breakpoints.down('sm')]: {
+      flex: 1
+    },
+    [theme.breakpoints.up('md')]: {
+      flex: 1
+    },
+    [theme.breakpoints.up('lg')]: {
+      flex: 1
+    }
   },
   haystackText: {
     fontFamily: 'Cutive',
     fontSize: '1em',
     color: '#212121',
     whiteSpace: 'pre-wrap',
-    wordBreak: 'break-word'
+    wordBreak: 'break-word',
+    padding: '2%'
   }
 })
 
