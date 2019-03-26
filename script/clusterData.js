@@ -5,7 +5,7 @@ const clusterData = [
     locations: [
       [
         'the docks',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed leo quam, sollicitudin id aliquet id, dictum sit amet mi. Curabitur egestas turpis nisl, at posuere magna imperdiet id. Donec sit amet ullamcorper tellus. Aenean tincidunt et lectus suscipit tincidunt. Mauris ut facilisis est. Morbi ullamcorper dui non finibus lacinia. Aliquam faucibus tellus eget mi viverra, nec auctor lorem dignissim. Morbi dictum rutrum lacus eu ornare. Ut nisi sem, congue et augue at, porta pretium velit. Nulla facilisi. Vestibulum dictum arcu quis odio fringilla faucibus.'
+        'Hey there\'s that seagull, he did know something! A figure moves out of the darkness... is that... a tiny baby in a suit? It\'s the Bambino Grepino! Don\'t be fooled by his chubby little cheeks and tiny baby hands. That kiddo is a hardened criminal wreaking havoc all over this city. There\'s no pacifier that will pacify his penchant for crime. He needs a time-out in the clink!'
       ],
       [
         'the fairgrounds',
