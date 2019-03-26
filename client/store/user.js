@@ -28,7 +28,6 @@ const userWasReset = user => ({type: USER_WAS_RESET, user})
 
 export const updateUser = (userId, updateData) => async dispatch => {
   try {
-    console.log('UPDATE_DATA', updateData)
     const {data} = await axios.put(`/api/users/${userId}`, updateData)
     dispatch(updatedUser(data))
   } catch (err) {

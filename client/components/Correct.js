@@ -40,7 +40,12 @@ class Correct extends React.Component {
       levelstage: this.props.levelstage,
       clusterId: this.props.clusterId
     }
-    let nextGame = correctUpdater(...previousGame)
+    let nextGame = correctUpdater(
+      previousGame.level,
+      previousGame.levelstage,
+      previousGame.clusterId
+    )
+
     const updatedCasefile = updateCasefile(
       this.props.user.casefile,
       this.props.game.clue
