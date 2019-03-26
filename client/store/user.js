@@ -52,7 +52,7 @@ export const auth = (email, password, method) => async dispatch => {
 
   try {
     dispatch(getUser(res.data))
-    history.push('/question')
+    history.push('/explainEx')
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr)
   }

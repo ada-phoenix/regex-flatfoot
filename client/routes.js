@@ -15,7 +15,8 @@ import {
   Chase,
   PostBoss,
   Home,
-  NoMore
+  NoMore,
+  ExplainEx
 } from './components'
 import {me} from './store'
 
@@ -49,6 +50,7 @@ class Routes extends Component {
             <Route exact path="/chase" component={Chase} />
             <Route exact path="/postboss" component={PostBoss} />
             <Route exact path="/noMore" component={NoMore} />
+            <Route exact path="/explainEx" component={ExplainEx} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
