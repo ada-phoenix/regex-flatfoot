@@ -22,6 +22,7 @@ class QuestionScreen extends React.Component {
   }
 
   filterString(string) {
+    console.log(string.split('*'))
     return string.split('\n').filter(sentence => {
       return sentence
     })
@@ -41,17 +42,18 @@ class QuestionScreen extends React.Component {
   }
 
   render() {
+    let lesson
     if (this.state.gotGame) {
-      console.log(this.filterString(this.props.game.lesson))
+      lesson = this.filterString(this.props.game.lesson)
     }
     const {classes} = this.props
     return this.state.gotGame ? (
-      <div>
+      <div className={classes.container}>
         <Grid
           container
           wrap="wrap"
           spacing={24}
-          alignItems="flex-start"
+          alignItems="stretch"
           className={classes.consoleGrid}
         >
           <Grid
@@ -74,17 +76,16 @@ class QuestionScreen extends React.Component {
           >
             <div className={classes.textBlockSize}>
               <Typing
-                speed={50}
-                startDelay={500}
+                speed={10}
                 hideCursor={true}
                 className={classes.lessonText}
               >
-                {this.filterString(this.props.game.lesson).map(sentence => {
+                {lesson.map((sentence, i) => {
                   return (
-                    <React.Fragment>
-                      <span className={classes.lessonText}>{sentence}</span>
-                      <Delay ms={1000} />
-                      <Reset count={1} delay={500} />
+                    <React.Fragment key={i}>
+                      {sentence}
+                      <Delay ms={300} />
+                      <Reset count={3} delay={300} />
                     </React.Fragment>
                   )
                 })}
@@ -117,6 +118,9 @@ class QuestionScreen extends React.Component {
 
 //STYLES
 const styles = theme => ({
+  container: {
+    width: '90%'
+  },
   consoleGrid: {
     backgroundColor: 'pink',
     padding: '1%',
@@ -127,32 +131,33 @@ const styles = theme => ({
     padding: '2%',
     backgroundColor: '#ffffff',
     border: '4mm groove #424242',
-    justifySelf: 'center'
-  },
-  textBlockSize: {
-    flex: 1,
+    justifySelf: 'center',
     [theme.breakpoints.down('xs')]: {
-      width: 350
+      flex: 1
     },
     [theme.breakpoints.down('sm')]: {
-      width: 767
+      flex: 1
     },
     [theme.breakpoints.up('md')]: {
-      width: 959
+      flex: 2
     },
     [theme.breakpoints.up('lg')]: {
-      width: 1199
+      flex: 3
     }
+  },
+  textBlockSize: {
+    width: '100%',
+    height: '100%',
+    padding: 10,
+    wordBreak: 'break-word',
+    overflowWrap: 'break-word'
   },
   lessonText: {
     fontFamily: 'Cutive',
-    fontSize: '1em',
+    fontSize: '2em',
     color: '#212121',
-    whiteSpace: 'pre-wrap',
-    wordBreak: 'break-word',
-    padding: 5,
-    margin: 5
-  }
+    lineHeight: '1.5'
+  },
 })
 
 /**
