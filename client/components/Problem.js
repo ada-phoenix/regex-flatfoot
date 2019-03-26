@@ -52,9 +52,14 @@ class Problem extends React.Component {
     document.removeEventListener('keydown', this.handleKeyPress)
   }
 
-  handleKeyPress() {
-    let sound = new Audio('/single_key_press.mp3')
-    sound.play()
+  handleKeyPress(e) {
+    console.log(e)
+    if (
+      ![8, 9, 13, 16, 17, 18, 20, 37, 38, 39, 40, 91, 93].includes(e.keyCode)
+    ) {
+      let sound = new Audio('/single_key_press.mp3')
+      sound.play()
+    }
   }
 
   changeHandler(evt) {

@@ -24,6 +24,8 @@ class LessonIcon extends React.Component {
 
   handleClickOpen = () => {
     this.setState({open: true})
+    let sound = new Audio('/button.mp3')
+    sound.play()
   }
 
   handleClose = () => {

@@ -25,6 +25,7 @@ class Boss extends React.Component {
     this.isSame = this.isSame.bind(this)
     this.tick = this.tick.bind(this)
     this.continueFunc = this.continueFunc.bind(this)
+    this.sound = new Audio('/clock.mp3')
   }
 
   isSame(arr1, arr2) {
@@ -42,6 +43,8 @@ class Boss extends React.Component {
 
   componentWillUnmount() {
     clearInterval(this.incrementer)
+    this.sound.pause()
+    this.sound.currentTime = 0
   }
 
   tick() {
@@ -59,6 +62,7 @@ class Boss extends React.Component {
     let date = new Date()
     this.setState({start: date})
     this.incrementer = setInterval(this.tick, 60)
+    this.sound.play()
   }
 
   changeHandler(evt) {
