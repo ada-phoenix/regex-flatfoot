@@ -18,7 +18,7 @@ const styles = theme => ({
   root: {
     margin: 50,
     padding: 50,
-    maxWidth: 900,
+    maxWidth: 800,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -54,7 +54,9 @@ const styles = theme => ({
   },
   flexRow: {
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'space-between'
   },
   explainText: {
     padding: '20px',
