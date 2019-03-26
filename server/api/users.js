@@ -21,24 +21,24 @@ router.get('/', async (req, res, next) => {
 router.put('/:userId', async (req, res, next) => {
   try {
     let id = parseInt(req.params.userId)
-    let {level, levelstage, clusterId, clue} = req.body
+    let {level, levelstage, clusterId, casefile} = req.body
 
     const user = await User.findById(id)
 
-    const updatedInfo = clue
-      ? {
-          level,
-          levelstage,
-          clusterId,
-          casefile: [...user.casefile, clue]
-        }
-      : {
-          level,
-          levelstage,
-          clusterId
-        }
+    // const updatedInfo = clue
+    //   ? {
+    //       level,
+    //       levelstage,
+    //       clusterId,
+    //       casefile: [...user.casefile, clue]
+    //     }
+    //   : {
+    //       level,
+    //       levelstage,
+    //       clusterId
+    //     }
 
-    const updatedUser = await user.update(updatedInfo)
+    const updatedUser = await user.update(req.body)
 
     const getGame = await Game.findOne({
       where: {
