@@ -44,21 +44,13 @@ class Correct extends React.Component {
       this.props.user.casefile,
       this.props.game.clue
     )
-    console.log('CF', updatedCasefile)
-    console.log('CLUE', this.props.game.clue)
-    console.log('CASEFILE', this.props.user.casefile)
+
     this.props.updateUser(this.props.userId, {
       ...nextGame,
       casefile: updatedCasefile
     })
     this.setState({displayPopUp: true})
   }
-
-  // this.props.updateUser(this.props.userId, {
-  //   ...nextGame,
-  //   clue: this.props.game.clue
-  // })
-  // this.setState({displayPopUp: true})
 
   render() {
     const {classes} = this.props

@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import {withStyles} from '@material-ui/core'
-import {updateUser} from '../store/user'
+import {resetUser} from '../store/user'
 
 const styles = theme => ({
   root: {
@@ -46,8 +46,8 @@ class NoMore extends React.Component {
   }
 
   async reset() {
-    let nextGame = {level: 1, levelstage: 1, clusterId: 1}
-    await this.props.updateUser(this.props.userId, nextGame)
+    let nextGame = {level: 1, levelstage: 1, clusterId: 1, casefile: []}
+    await this.props.resetUser(this.props.userId, nextGame)
     this.props.history.push('/question')
   }
 
@@ -85,7 +85,7 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
   return {
-    updateUser: (userId, nextGame) => dispatch(updateUser(userId, nextGame))
+    resetUser: (userId, nextGame) => dispatch(resetUser(userId, nextGame))
   }
 }
 
