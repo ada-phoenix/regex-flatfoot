@@ -117,14 +117,15 @@ class Boss extends React.Component {
         </Paper>
       ) : (
         <Paper className={classes.root}>
-          <Avatar
-            alt="A man seated looking smug"
-            src={boss.picture}
-            className={classes.bigAvatar}
-          />
           <Typography variant="h2" className={classes.h2}>
             {splitStory[0]}
           </Typography>
+          <Avatar
+            alt="A baby in a suit"
+            src={boss.picture}
+            className={classes.bigAvatar}
+          />
+
           <Typography variant="body2" className={classes.type}>
             {splitStory[1]}
           </Typography>
@@ -178,8 +179,8 @@ const styles = theme => ({
   },
   bigAvatar: {
     margin: 10,
-    width: 200,
-    height: 300,
+    width: 250,
+    height: 350,
     borderRadius: 0
   },
   h2: {
