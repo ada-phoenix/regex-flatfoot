@@ -8,6 +8,7 @@ import ConsoleIcon from './ConsoleIcon'
 import Grid from '@material-ui/core/Grid'
 import withStyles from '@material-ui/core/styles/withStyles'
 import Typography from '@material-ui/core/Typography'
+import Typing, {Delay, Reset} from 'react-typing-animation'
 
 /**
  * COMPONENT
@@ -18,6 +19,13 @@ class QuestionScreen extends React.Component {
     this.state = {
       gotGame: false
     }
+  }
+
+  filterString(string) {
+    console.log(string.split('*'))
+    return string.split('\n').filter(sentence => {
+      return sentence
+    })
   }
 
   async componentDidMount() {
@@ -34,14 +42,18 @@ class QuestionScreen extends React.Component {
   }
 
   render() {
+    let lesson
+    if (this.state.gotGame) {
+      lesson = this.filterString(this.props.game.lesson)
+    }
     const {classes} = this.props
     return this.state.gotGame ? (
-      <div>
+      <div className={classes.container}>
         <Grid
           container
           wrap="wrap"
           spacing={24}
-          alignItems="flex-start"
+          alignItems="stretch"
           className={classes.consoleGrid}
         >
           <Grid
@@ -62,30 +74,36 @@ class QuestionScreen extends React.Component {
             lg={9}
             className={classes.consoleGridItem}
           >
-            <Typography
-              paragraph={true}
-              headlineMapping="p"
-              className={classes.lessonText}
-            >
-              {this.props.game.lesson}
-            </Typography>
-            <Typography
-              paragraph={true}
-              headlineMapping="p"
-              className={classes.lessonText}
-            >
+            <div className={classes.textBlockSize}>
+              <Typing
+                speed={10}
+                hideCursor={true}
+                className={classes.lessonText}
+              >
+                {lesson.map((sentence, i) => {
+                  return (
+                    <React.Fragment key={i}>
+                      {sentence}
+                      <Delay ms={300} />
+                      <Reset count={3} delay={300} />
+                    </React.Fragment>
+                  )
+                })}
+              </Typing>
+            </div>
+            {/* <Typography className={classes.lessonText}>
               {this.props.game.question}
-            </Typography>
+            </Typography> */}
           </Grid>
         </Grid>
-        <Grid
+        {/* <Grid
           container
           wrap="wrap"
           spacing={24}
           className={classes.consoleGrid}
         >
           <Problem history={this.props.history} />
-        </Grid>
+        </Grid> */}
       </div>
     ) : (
       <div>
@@ -100,6 +118,9 @@ class QuestionScreen extends React.Component {
 
 //STYLES
 const styles = theme => ({
+  container: {
+    width: '90%'
+  },
   consoleGrid: {
     backgroundColor: 'pink',
     padding: '1%',
@@ -108,17 +129,34 @@ const styles = theme => ({
   },
   consoleGridItem: {
     padding: '2%',
-    backgroundColor: '#000000',
+    backgroundColor: '#ffffff',
     border: '4mm groove #424242',
     justifySelf: 'center',
-    flexGrow: 2
+    [theme.breakpoints.down('xs')]: {
+      flex: 1
+    },
+    [theme.breakpoints.down('sm')]: {
+      flex: 1
+    },
+    [theme.breakpoints.up('md')]: {
+      flex: 2
+    },
+    [theme.breakpoints.up('lg')]: {
+      flex: 3
+    }
+  },
+  textBlockSize: {
+    width: '100%',
+    height: '100%',
+    padding: 10,
+    wordBreak: 'break-word',
+    overflowWrap: 'break-word'
   },
   lessonText: {
     fontFamily: 'Cutive',
-    fontSize: '1em',
-    color: '#FFFFFF',
-    whiteSpace: 'pre-wrap',
-    wordBreak: 'break-word'
+    fontSize: '2em',
+    color: '#212121',
+    lineHeight: '1.5'
   }
 })
 

@@ -79,33 +79,36 @@ class Problem extends React.Component {
   highlighter() {
     try {
       let inputArr = this.state.input.split('/')
-      let groupedInput = `(${inputArr[1]})`
-      let flags = inputArr[2]
-      let groupedRegEx = new RegExp(groupedInput, flags)
-      let highlightedHaystack = reactStringReplace(
-        this.state.regStr,
-        groupedRegEx,
-        (match, i) => (
-          <span key={i} className="highlight">
-            {match}
-          </span>
+      if (inputArr === '') {
+        return this.state.regStr
+      } else {
+        let groupedInput = `(${inputArr[1]})`
+        let flags = inputArr[2]
+        let groupedRegEx = new RegExp(groupedInput, flags)
+        let highlightedHaystack = reactStringReplace(
+          this.state.regStr,
+          groupedRegEx,
+          (match, i) => (
+            <span key={i} className="highlight">
+              {match}
+            </span>
+          )
         )
-      )
 
-      const sliced = highlightedHaystack.slice(0, 2)
-      const lengthtoSlice = sliced[0].length + inputArr[1].length
-      const end = this.state.regStr.slice(lengthtoSlice)
-      const whole = [...sliced, end]
+        const sliced = highlightedHaystack.slice(0, 2)
+        const lengthtoSlice = sliced[0].length + inputArr[1].length
+        const end = this.state.regStr.slice(lengthtoSlice)
+        const whole = [...sliced, end]
 
-      if (flags) {
-        if (flags.includes('g')) {
-          return highlightedHaystack
+        if (flags) {
+          if (flags.includes('g')) {
+            return highlightedHaystack
+          } else {
+            return whole
+          }
         } else {
           return whole
         }
-      } else {
-        console.log('whole ', whole)
-        return whole
       }
     } catch (err) {
       console.log(err)
@@ -190,14 +193,14 @@ const styles = theme => ({
   },
   consoleGridItem: {
     padding: '2%',
-    backgroundColor: '#000000',
+    backgroundColor: '#ffffff',
     border: '4mm groove #424242',
     justifySelf: 'center'
   },
   haystackText: {
     fontFamily: 'Cutive',
     fontSize: '1em',
-    color: '#FFFFFF',
+    color: '#212121',
     whiteSpace: 'pre-wrap',
     wordBreak: 'break-word'
   }
