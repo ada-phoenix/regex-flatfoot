@@ -4,7 +4,7 @@ const gameData = [
       'kajdymrpULoDYtlspnsbbwgghhqqqrnekoqwpeoriUT\nlkahsDKHtrenmlskoshdtGDLDYmtrkodytrenKoqkkshdjjkkd\nenkokodytrenKoqkkshdjjkkdDYMTrnkenk\noDYtlspqrnekoqwpeoriUriUTlkahsDKHtrendmytrenkomlsko\nshdtGDLDYmtrkovbnnsbbwgghhqqWDOLqqbbwgg\nhhULoDYtlspnsbbwgnekoqwpeoriUriUTlkahsDKHt\nrenmleoriUTlkahsDKHtrenmlskoshdt',
     needle: ['dmytrenko'],
     lesson:
-      "Welcome, Rookie.\nBletchley Academy of Decryption tells us that you're their best new grad, and we need your help.\nWe've intercepted an encoded message from the Grepino crime family. They are famous for their complex codes, but we think you can decode their messages using **regular expressions.**\nHave you heard of regular expressions - aka regEx?\nClever programmers use Regular Expressions to match character combinations in text.\nThe simplest regular expression is just the character or word you want to match. For example, /doughnut/ would match the word \"doughnut\" in the sentence, \"I'd love a doughnut.\"\nNow let's get crackin'!\nDon't forget to wrap your regular expressions in forward slashes /like this/!",
+      'The simplest regular expression is just the character or word you want to match. For example, /doughnut/ would match the word "doughnut" in the sentence, "I\'d love a doughnut."',
     question:
       'We might have a lead on a shady character we\'ve been watching downtown. His name is Dmytrenko. Can you use a regular expression to find out if his name is mentioned in this note we intercepted?\n\nWrite a regular expression to match the word "dmytrenko".',
     level: 1,
@@ -16,7 +16,7 @@ const gameData = [
     correct:
       "Good work, Rookie.\nThe boys picked up Dmytrenko and he's singing like a canary! Go checkout the parking lot behind the hotdog stand on Ninth and Grand. He said it's one of their drop off points.",
     incorrect:
-      "What happened there, Rookie?\nI thought you were the best. Let\'s head back to HQ and see if the boys have anything new for us.",
+      "What happened there, Rookie?\nI thought you were the best. Let's head back to HQ and see if the boys have anything new for us.",
     sound: '/seagull.wav'
   },
   {
@@ -34,7 +34,7 @@ const gameData = [
       'Are you using the back slashes? No need to worry about capitalization for now.',
     clue: 'At the parking lot, a seagull winked at me. He knows something.',
     correct:
-      "Good work, Rookie.\nThe boys picked up Dmytrenko and he\'s singing like a canary! Go checkout the parking lot behind the hotdog stand on Ninth and Grand. He said it\'s one of their drop off points.",
+      "Good work, Rookie.\nThe boys picked up Dmytrenko and he's singing like a canary! Go checkout the parking lot behind the hotdog stand on Ninth and Grand. He said it's one of their drop off points.",
     incorrect:
       'He slipped through our fingers again!?\nGet it together Rookie! Grab your self a cup of coffee and head back to the station.',
     sound: '/seagull.wav'
@@ -66,7 +66,7 @@ const gameData = [
     lesson:
       'Dmytrenko was just a low-level street tough. But he\'s agreed to play ball and has given us some primo intel on another one of the Grepino family\'s encryption tricks.\n\nSometimes they use the same pattern of characters multiple times in a message to convey important information.\n\nRegular expressions have optional flags that appear outside of the slashes and make them even more powerful! \n\nHere, we need to use the global flag, "g". This flag allows us to do a "global" search of the text and find every instance that matches, not just the first one!\n\nFor example, the regex /cat/g will find three matches of "cat" in the phrase, "My fat cat catches cat naps".\n\n',
     question:
-      "Dmytrenko put us on to Bambino Grepino's personal assistant, Terry Lemons. He's as handy with a calendar as he is in a streetfight, but does all his scheduling in code. We think he's planning something BIG for the family at the Old Spaghetti Factory. Can you use a regular expression to find every instance of \"fri\" in this memo he sent out to the network?",
+      "Dmytrenko put us on to Bambino Grepino's personal assistant, Terry Lemons. He's as handy with a calendar as he is in a streetfight, but does all his scheduling in code. We think he's planning something BIG for the family at the Old Spaghetti Factory. \n\nCan you use a regular expression to find every instance of \"fri\" in this memo he sent out to the network?",
     level: 2,
     levelstage: 1,
     clusterId: 1,
@@ -105,7 +105,7 @@ const gameData = [
     lesson:
       'The g flag allows us to do a "global" search of some text and find every instance of a regex that matches, not just the first one!\n\nFor example, the regex /cat/g will find three matches of "cat" in the phrase, "My fat cat catches cat naps".\n\n',
     question:
-      'Okay, Rookie. We have just discovered that Lemons has cloned the DNA of the once-thought-extinct passenger pigeon. He\'s using these winged soldiers to gather the family for this meeting. Imagine, using pigeons for crime! Is nothing sacred?\n\nLucky for us, we\'ve got an agent on the inside. Meet Feathers. She brought us this rolled up note. Can you use a regular expression to find all the instances of the word "osp"?',
+      'Okay, Rookie. We have just discovered that Lemons has cloned the DNA of the once-thought-extinct passenger pigeon. He\'s using these winged soldiers to gather the family for this meeting. Imagine, using pigeons for crime! Is nothing sacred?Lucky for us, we\'ve got an agent on the inside. Meet Feathers. She brought us this rolled up note. \n\nCan you use a regular expression to find all the instances of the word "osp"?',
     level: 2,
     levelstage: 3,
     clusterId: 1,
@@ -125,7 +125,7 @@ const gameData = [
     lesson:
       "Remember the g flag? What a tricky little minx. Well g has an associate, the i flag. i stands for ignore case. Wait! Stop! Where are you going? The i flag doesn't mean ignore your important casework. It means ignore case sensitivity in your searches (get your head on straight kid, yikes). \n\n\nWhile the regEx /knife/ would only match the exact word 'knife', adding the i flag like so, /knife/i, matches the word with any combination of upper and lowercase letters  such as 'KNIFE, Knife, knife or kNiFe.' Look at all those knives! I'd better get them down to the evidence locker and you'd better get back to work!",
     question:
-      "Our next culprit is no small-time crook. Dominique Gold runs the Grepino family's entire counterfeit exercise equipment operation. Lucky for us even pros occasionally make mistakes. She left her journal on the bench press at the YMCA. Write a regular expression that matches the word 'dumbbell' and by the way, I spilled coffee on your keyboard this morning so the shift and caps lock keys are broken, I guess you can't use any capital letters. My Bad!",
+      "Our next culprit is no small-time crook. Dominique Gold runs the Grepino family's entire counterfeit exercise equipment operation. Lucky for us even pros occasionally make mistakes; she left her journal on the bench press at the YMCA. Oh by the way, I spilled coffee on your keyboard this morning so the shift and caps lock keys are broken, I guess you can't use any capital letters. My Bad!\n\nWrite a regular expression that matches the word 'dumbbell using no capital letters.",
     level: 3,
     levelstage: 1,
     clusterId: 1,
@@ -147,7 +147,7 @@ const gameData = [
     lesson:
       'If you need to match any case, use the i flag after your second forward slash. For example /knife/i would match "KNIFE, knife or KnIfE."',
     question:
-      "Lucky for you Dom slipped up again. She left the ingredients to her counterfeit Muscle Milk at the vitamin store. Can you search the ingredient list for Hexametaphosphate? Too much of it could be bad news for her customers. Oh by the way you're computer is still broken so no capital letters. Somebody from IT should fix it next week... or next month? That department is always so busy.",
+      "Lucky for you Dom slipped up again. She left the ingredients to her counterfeit Muscle Milk at the vitamin store. Oh by the way you're computer is still broken so no capital letters. Somebody from IT should fix it next week... or next month? That department is always so busy.\n\nCan you search her ingredient list for Hexametaphosphate?",
     level: 3,
     levelstage: 2,
     clusterId: 1,
@@ -169,7 +169,7 @@ const gameData = [
     lesson:
       'If you need to match any case, use the i flag after your second forward slash. For example /knife/i would match "KNIFE, knife or KnIfE."',
     question:
-      "Dom keeps slipping through our fingers but luckily for us she's left a trail of angry customers. Disgruntled citizen Justin Blaze came down to the precinct this morning to complain about her resistance bands: 'They offer absolutely no resistance! My delts and quads are languishing bro! You may as well call them status quo bands! Anyway she left this letter at my gym, maybe it'll help you guys catch her.' Search the note for the word 'Meathead.' Sorry, still no capital letters.",
+      "Dom keeps slipping through our fingers but luckily for us she's left a trail of angry customers. Disgruntled citizen Justin Blaze came down to the precinct this morning to complain about her resistance bands: 'They offer absolutely no resistance! My delts and quads are languishing bro! You may as well call them status quo bands! Anyway she left this letter at my gym, maybe it'll help you guys catch her.' \n\nSearch the note for the word 'Meathead.' Sorry, still no capital letters.",
     level: 3,
     levelstage: 3,
     clusterId: 1,
