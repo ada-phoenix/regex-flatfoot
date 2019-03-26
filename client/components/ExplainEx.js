@@ -111,13 +111,12 @@ class ExplainEx extends React.Component {
         </Typography>
 
         <div className={classes.flexRow}>
-          <IconButton
-            aria-label="Notes"
+          <AssignmentIcon
+            fontSize="large"
             color="secondary"
             className={classes.margin}
-          >
-            <AssignmentIcon fontSize="large" />
-          </IconButton>
+          />
+
           <Typography className={classes.subtitle2} variant="subtitle2">
             Click the clipboard icon to see your notes. These are short synopsis
             of what you've learned so far.
@@ -125,13 +124,11 @@ class ExplainEx extends React.Component {
         </div>
 
         <div className={classes.flexRow}>
-          <IconButton
-            aria-label="Casefile"
+          <FolderIcon
+            fontSize="large"
             color="secondary"
             className={classes.margin}
-          >
-            <FolderIcon fontSize="large" />
-          </IconButton>
+          />
           <Typography className={classes.subtitle2} variant="subtitle2">
             Click the folder icon to take a look at your casefile. This is where
             all of your clues are stored. You'll see a green dot next to the
@@ -141,13 +138,11 @@ class ExplainEx extends React.Component {
         </div>
 
         <div className={classes.flexRow}>
-          <IconButton
-            aria-label="Lesson"
+          <SubjectIcon
+            fontSize="large"
             color="secondary"
             className={classes.margin}
-          >
-            <SubjectIcon fontSize="large" />
-          </IconButton>
+          />
           <Typography className={classes.subtitle2} variant="subtitle2">
             Click the text icon to see your current lesson. You might find
             yourself reaching for this on a particularly tricky piece of
