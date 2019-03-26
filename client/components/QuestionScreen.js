@@ -96,14 +96,14 @@ class QuestionScreen extends React.Component {
             </Typography> */}
           </Grid>
         </Grid>
-        {/* <Grid
+        <Grid
           container
           wrap="wrap"
           spacing={24}
           className={classes.consoleGrid}
         >
           <Problem history={this.props.history} />
-        </Grid> */}
+        </Grid>
       </div>
     ) : (
       <div>
@@ -157,7 +157,7 @@ const styles = theme => ({
     fontSize: '2em',
     color: '#212121',
     lineHeight: '1.5'
-  },
+  }
 })
 
 /**
