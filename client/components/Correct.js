@@ -56,6 +56,13 @@ class Correct extends React.Component {
       previousGame: previousGame
     })
     this.setState({displayPopUp: true})
+    this.sound = new Audio(this.props.game.sound)
+    this.sound.play()
+  }
+
+  componentWillUnmount() {
+    this.sound.pause()
+    this.sound.currentTime = 0
   }
 
   render() {

@@ -12,7 +12,7 @@ import HintIcon from './HintIcon'
 
 const styles = {
   card: {
-    maxWidth: 250,
+    width: 250,
     border: '4mm groove #424242',
     borderRadius: 5,
     background: 'linear-gradient(45deg, #1b1b1b, #6d6d6d)',

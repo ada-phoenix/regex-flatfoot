@@ -59,6 +59,13 @@ class PostBoss extends React.Component {
     this.setState({updatedUser: true})
     const {data} = await axios.get(`/api/clusters/`)
     this.clusters = data
+    if (this.props.location.state.won) {
+      let sound = new Audio('/jail.mp3')
+      sound.play()
+    } else {
+      let sound = new Audio('/explosion.mp3')
+      sound.play()
+    }
   }
 
   componentWillUnmount() {
