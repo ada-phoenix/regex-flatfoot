@@ -47,7 +47,7 @@ const gameData = [
     lesson:
       'The simplest regular expression is just the character or word you want to match. For example, /doughnut/ would match the word "doughnut" in the sentence, "I\'d love a doughnut."',
     question:
-      "We found Dmytrenko's poetry journal at the reptile zoo. Turns out the guy has a rich inner life and loves lizards.\nUse a regular expression to see if he mentions the stolen money anywhere in this awful poem.",
+      "We found Dmytrenko's poetry journal at the reptile zoo. Turns out the guy has a rich inner life and loves lizards.\nUse a regular expression to see if he mentions the stolen 'money' anywhere in this awful poem.",
     level: 1,
     levelstage: 3,
     clusterId: 1,
