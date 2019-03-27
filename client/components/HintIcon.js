@@ -14,6 +14,14 @@ import HelpOutline from '@material-ui/icons/HelpOutline'
 const styles = theme => ({
   margin: {
     margin: theme.spacing.unit
+  },
+  title: {
+    color: '#7cb342',
+    fontFamily: 'Cutive',
+    fontSize: '2em'
+  },
+  text: {
+    color: '#424242'
   }
 })
 
@@ -41,7 +49,7 @@ class HintIcon extends React.Component {
           color="primary"
           className={classes.margin}
         >
-          <HelpOutline fontSize="small" />
+          <HelpOutline fontSize="large" color="secondary" />
         </IconButton>
         <Dialog
           fullWidth={true}
@@ -50,14 +58,16 @@ class HintIcon extends React.Component {
           onClose={this.handleClose}
           aria-labelledby="open-casefile"
         >
-          <DialogTitle>Hint</DialogTitle>
+          <DialogTitle disableTypography={true} className={classes.title}>
+            Hint
+          </DialogTitle>
           <DialogContent>
-            <DialogContentText color="primary">
+            <DialogContentText className={classes.text}>
               {this.props.hint}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleClose} className={classes.text}>
               X
             </Button>
           </DialogActions>

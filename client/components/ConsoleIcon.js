@@ -32,6 +32,15 @@ const styles = {
     height: '100%',
     borderRadius: 0,
     border: '10px solid #212121'
+  },
+  iconContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignContent: 'center',
+    justifyContent: 'center'
+  },
+  icon: {
+    flex: 1
   }
 }
 
@@ -44,11 +53,11 @@ function ConsoleIcon(props) {
         src="https://theartsdesk.com/sites/default/files/images/stories/TV/Lis_Ferla/THE_BLETCHLEY_CIRCLE_SERIES2_EP1_05.JPG"
         className={classes.bigAvatar}
       />
-      <CardActions>
-        <NotesIcon />
-        <CasefileIcon />
-        <LessonIcon />
-        {props.hintVisibility ? <HintIcon /> : <div />}
+      <CardActions className={classes.iconContainer}>
+        <NotesIcon className={classes.icon} />
+        <CasefileIcon className={classes.icon} />
+        <LessonIcon className={classes.icon} />
+        {props.hintVisibility ? <HintIcon className={classes.icon} /> : <div />}
       </CardActions>
     </Card>
   )

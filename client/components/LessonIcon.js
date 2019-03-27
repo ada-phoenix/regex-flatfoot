@@ -51,7 +51,7 @@ class LessonIcon extends React.Component {
           color="primary"
           className={classes.margin}
         >
-          <SubjectIcon fontSize="small" />
+          <SubjectIcon fontSize="large" />
         </IconButton>
         <Dialog
           fullWidth={true}

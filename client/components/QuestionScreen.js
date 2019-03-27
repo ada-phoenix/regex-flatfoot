@@ -96,8 +96,6 @@ class QuestionScreen extends React.Component {
             md={4}
             lg={3}
             className={classes.outerGridItem}
-            alignItems="center"
-            justify="center"
           >
             <div className={classes.consoleDiv}>
               <ConsoleIcon className={classes.consoleContent} />
