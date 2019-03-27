@@ -55,7 +55,6 @@ class Problem extends React.Component {
   }
 
   handleKeyPress(e) {
-    console.log(e)
     if (
       ![8, 9, 13, 16, 17, 18, 20, 37, 38, 39, 40, 91, 93].includes(e.keyCode)
     ) {
@@ -223,7 +222,7 @@ const styles = theme => ({
     }
   },
   grayHighlight: {
-    backgroundColor: '#cfd8dc'
+    backgroundColor: '#3C3C3C'
   },
   label: {
     color: theme.palette.primary.main,

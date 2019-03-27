@@ -2,7 +2,6 @@ import React from 'react'
 import history from '../history'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import {blueGrey} from 'material-ui/styles/colors'
 import {withStyles} from '@material-ui/core/styles'
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/Button'
@@ -111,11 +110,22 @@ class Boss extends React.Component {
           <Typography variant="h3" className={classes.h3}>
             {boss.question}
           </Typography>
-          <Typography variant="h4" className={classes.h4}>
-            {boss.haystack}
+          <Typography variant="h4" className={classes.haystackText}>
+            <span className={classes.grayHighlight}>{boss.haystack}</span>
           </Typography>
           <form onSubmit={this.submitReg}>
-            <TextField value={this.state.input} onChange={this.changeHandler} />
+            <TextField
+              name="text"
+              type="text"
+              id="outlined-text-input"
+              className={classes.textField}
+              margin="normal"
+              variant="outlined"
+              value={this.state.input}
+              InputProps={{className: classes.userInput}}
+              onChange={this.changeHandler}
+              autoComplete="off"
+            />
             <Button
               type="submit"
               className={classes.button}
@@ -170,6 +180,20 @@ const styles = theme => ({
     alignItems: 'center',
     backgroundColor: theme.palette.primary.light
   },
+  grayHighlight: {
+    backgroundColor: '#3C3C3C'
+  },
+  haystackText: {
+    fontFamily: 'Arial, Helvetica, sans-serif',
+    fontSize: '1em',
+    lineHeight: '1.5',
+    color: '#ffffff',
+    whiteSpace: 'pre-line',
+    wordBreak: 'break-word',
+    paddingLeft: '15px',
+    paddingRight: '10px',
+    paddingTop: '5px'
+  },
   container: {
     display: 'flex',
     flexDirection: 'column',
@@ -186,12 +210,6 @@ const styles = theme => ({
   type: {
     fontFamily: 'Cutive',
     padding: 10
-  },
-  h4: {
-    padding: 10,
-    margin: 10,
-    backgroundColor: 'black',
-    color: 'white'
   },
   bigAvatar: {
     margin: 10,
@@ -226,6 +244,24 @@ const styles = theme => ({
     [theme.breakpoints.up('md')]: {
       fontSize: '40px'
     }
+  },
+  label: {
+    color: theme.palette.primary.main,
+    textAlign: 'center',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '10px'
+    },
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '12px'
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '22px'
+    }
+  },
+  userInput: {
+    padding: 2,
+    fontSize: 28,
+    color: '#000000'
   }
 })
 
