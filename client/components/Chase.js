@@ -17,25 +17,46 @@ const styles = theme => ({
     backgroundColor: theme.palette.primary.light
   },
   button: {
-    margin: 50,
-    justifyContent: 'center'
-  },
-  subtitle2: {
-    margin: 25
+    justifyContent: 'center',
+    width: 250,
+    margin: 10,
+    [theme.breakpoints.down('xs')]: {
+      width: 250
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: 150,
+      height: 85
+    }
   },
   type: {
-    fontFamily: 'Cutive'
+    fontFamily: 'Cutive',
+    margin: 20
   },
   h2: {
     textAlign: 'center',
+    fontFamily: 'Cutive',
+    padding: 10,
     [theme.breakpoints.down('xs')]: {
-      fontSize: '30px'
+      fontSize: '25px'
     },
     [theme.breakpoints.up('sm')]: {
-      fontSize: '50px'
+      fontSize: '40px'
     },
     [theme.breakpoints.up('md')]: {
-      fontSize: '70px'
+      fontSize: '50px'
+    }
+  },
+  h6: {
+    fontFamily: 'Cutive',
+    margin: 15,
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '15px'
+    },
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '18px'
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '22px'
     }
   }
 })
@@ -50,7 +71,7 @@ class Chase extends React.Component {
         <Typography className={classes.h2} variant="h2">
           You arrive at {location}
         </Typography>
-        <Typography className={classes.subtitle2} variant="subtitle2">
+        <Typography className={classes.h6} variant="h6">
           {story}
         </Typography>
         <Button
@@ -69,7 +90,7 @@ class Chase extends React.Component {
         <Typography className={classes.h2} variant="h2">
           You arrive at {location}
         </Typography>
-        <Typography className={classes.subtitle2} variant="subtitle2">
+        <Typography className={classes.h6} variant="h6">
           {story}
         </Typography>
         <Button

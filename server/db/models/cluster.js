@@ -12,7 +12,7 @@ const Cluster = db.define('cluster', {
     type: Sequelize.STRING
   },
   locations: {
-    type: Sequelize.ARRAY(Sequelize.STRING)
+    type: Sequelize.ARRAY(Sequelize.TEXT)
   }
 })
 
