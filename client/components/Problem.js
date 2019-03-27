@@ -142,7 +142,7 @@ class Problem extends React.Component {
   render() {
     const {classes} = this.props
     return this.props.haystack ? (
-      <div className={classes.textContainer}>
+      <div className={classes.container}>
         <Typography className={classes.haystackText}>
           <label>Text block:</label>
           <div>{this.highlighter()}</div>
@@ -169,41 +169,23 @@ class Problem extends React.Component {
 
 //STYLING
 const styles = theme => ({
-  textContainer: {
+  container: {
     display: 'flex',
     flexDirection: 'row',
-    alignContent: 'start'
+    alignContent: 'start',
+    flexWrap: 'wrap'
   },
   buttonsContainer: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'start',
-    padding: '2%'
+    padding: '2%',
+    flex: 1
   },
   lessonText: {
     fontFamily: 'Cutive',
     fontSize: '1em',
     color: '#FFFFFF'
-  },
-  consoleGrid: {
-    padding: '1%'
-  },
-  consoleGridItem: {
-    padding: '2%',
-    border: '2mm groove #9ea7aa',
-    justifySelf: 'center',
-    [theme.breakpoints.down('xs')]: {
-      flex: 1
-    },
-    [theme.breakpoints.down('sm')]: {
-      flex: 1
-    },
-    [theme.breakpoints.up('md')]: {
-      flex: 1
-    },
-    [theme.breakpoints.up('lg')]: {
-      flex: 1
-    }
   },
   haystackText: {
     fontFamily: 'Cutive',
@@ -211,7 +193,7 @@ const styles = theme => ({
     color: '#212121',
     whiteSpace: 'pre-wrap',
     wordBreak: 'break-word',
-    padding: '2%'
+    width: '75%'
   }
 })
 

@@ -22,7 +22,7 @@ class QuestionScreen extends React.Component {
     this.state = {
       gotGame: false,
       displayButton: false,
-      displayQuestion: false
+      displayQuestion: true
     }
   }
 
@@ -67,25 +67,27 @@ class QuestionScreen extends React.Component {
           wrap="wrap"
           spacing={24}
           alignItems="stretch"
-          className={classes.consoleGrid}
+          className={classes.outerGrid}
         >
           <Grid
             item
             xs={12}
-            sm={12}
+            sm={6}
             md={4}
             lg={3}
-            className={classes.consoleGridItem}
+            className={classes.outerGridItem}
           >
-            <ConsoleIcon />
+            <div className={classes.consoleDiv}>
+              <ConsoleIcon className={classes.consoleContent} />
+            </div>
           </Grid>
           <Grid
             item
             xs={12}
-            sm={12}
+            sm={6}
             md={8}
             lg={9}
-            className={classes.consoleGridItem}
+            className={classes.outerGridItem}
           >
             <div className={classes.textBlockSize}>
               {this.state.displayQuestion ? (
@@ -102,7 +104,7 @@ class QuestionScreen extends React.Component {
                     sm={12}
                     md="auto"
                     lg={12}
-                    className={classes.consoleGridItem}
+                    className={classes.innerGridItem}
                   >
                     <Typography>
                       {question.map((sentence, i) => {
@@ -124,7 +126,7 @@ class QuestionScreen extends React.Component {
                     sm={12}
                     md="auto"
                     lg={12}
-                    className={classes.consoleGridItem}
+                    className={classes.innerGridItem}
                   >
                     <Problem history={this.props.history} />
                   </Grid>
@@ -132,12 +134,13 @@ class QuestionScreen extends React.Component {
               ) : (
                 <React.Fragment>
                   <Typing
-                    speed={10}
+                    speed={15}
                     hideCursor={true}
                     onFinishedTyping={() => {
                       this.displayButton()
                     }}
                     className={classes.lessonText}
+                    variant="body2"
                   >
                     {lesson.map((sentence, i) => {
                       return (
@@ -188,42 +191,44 @@ const styles = theme => ({
   },
   container: {
     width: '90%',
-    height: '200%',
     backgroundColor: theme.palette.primary.light
   },
-  consoleGrid: {
+  outerGrid: {
     padding: '1%'
   },
-  consoleGridItem: {
-    padding: '2%',
-    border: '2mm groove #9ea7aa',
+  consoleDiv: {
+    display: 'flex',
+    alignContent: 'center',
+    justifyContent: 'center',
+    padding: '10px'
+  },
+  outerGridItem: {
+    // border: '2mm groove #9ea7aa',
     justifySelf: 'center',
-    midWidth: 250,
-    [theme.breakpoints.down('xs')]: {
-      flex: 1
-    },
-    [theme.breakpoints.down('sm')]: {
-      flex: 1
-    },
-    [theme.breakpoints.up('md')]: {
-      flex: 2
-    },
-    [theme.breakpoints.up('lg')]: {
-      flex: 3
-    }
+    minHeight: 350
+  },
+  innerGridItem: {
+    // border: '2mm groove #9ea7aa',
+    justifySelf: 'center'
   },
   textBlockSize: {
-    width: '100%',
-    height: '100%',
     padding: 10,
     wordBreak: 'break-word',
     overflowWrap: 'break-word'
   },
   lessonText: {
     fontFamily: 'Cutive',
-    fontSize: '2em',
     color: '#212121',
-    lineHeight: '1.5'
+    lineHeight: '1.5',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1em'
+    },
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '1em'
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '2em'
+    }
   },
   questionText: {
     fontFamily: 'Cutive',

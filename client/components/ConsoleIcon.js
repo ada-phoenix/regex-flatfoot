@@ -10,7 +10,11 @@ import CasefileIcon from './CasefileIcon'
 
 const styles = {
   card: {
-    width: 250,
+    alignSelf: 'center',
+    justifySelf: 'center',
+    flexBasis: 250,
+    maxWidth: 250,
+    minWidth: 250,
     border: '4mm groove #424242',
     borderRadius: 5,
     background: 'linear-gradient(45deg, #1b1b1b, #6d6d6d)',
@@ -21,7 +25,6 @@ const styles = {
     paddingTop: '56.25%'
   },
   bigAvatar: {
-    margin: 0,
     width: '100%',
     height: '100%',
     borderRadius: 0,
