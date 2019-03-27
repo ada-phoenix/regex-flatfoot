@@ -39,6 +39,7 @@ class QuestionScreen extends React.Component {
 
   displayButton() {
     this.setState({displayButton: true})
+    this.skip()
   }
 
   buttonClick() {
