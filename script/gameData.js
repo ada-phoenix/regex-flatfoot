@@ -127,7 +127,7 @@ const gameData = [
     lesson:
       "Remember the g flag? What a tricky little minx. Well g has an associate, the i flag. i stands for ignore case. Wait! Stop! Where are you going? The i flag doesn't mean ignore your important casework. It means ignore case sensitivity in your searches (get your head on straight kid, yikes). \n\n\nWhile the regEx /knife/ would only match the exact word 'knife', adding the i flag like so, /knife/i, matches the word with any combination of upper and lowercase letters  such as 'KNIFE, Knife, knife or kNiFe.' Look at all those knives! I'd better get them down to the evidence locker and you'd better get back to work!",
     question:
-      "Our next culprit is no small-time crook. Dominique Gold runs the Grepino family's entire counterfeit exercise equipment operation. Lucky for us even pros occasionally make mistakes; she left her journal on the bench press at the YMCA. Oh by the way, I spilled coffee on your keyboard this morning so the shift and caps lock keys are broken, I guess you can't use any capital letters. My Bad!\n\nWrite a regular expression that matches the word 'dumbbell using no capital letters.",
+      "Our next culprit is no small-time crook. Dominique Gold runs the Grepino family's entire counterfeit exercise equipment operation. Lucky for us even pros occasionally make mistakes; she left her journal on the bench press at the YMCA. Oh by the way, I spilled coffee on your keyboard this morning so the shift and caps lock keys are broken, I guess you can't use any capital letters. My Bad!\n\nWrite a regular expression that matches the word 'dumbbell' using no capital letters.",
     level: 3,
     levelstage: 1,
     note: 'i : case insensitive flag',
