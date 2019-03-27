@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import {withStyles} from '@material-ui/core'
+import Loading from './Loading'
 
 class Crossroads extends React.Component {
   constructor() {
@@ -69,12 +70,7 @@ class Crossroads extends React.Component {
         {/* </div> */}
       </Paper>
     ) : (
-      <Paper className={classes.root}>
-        <img src="https://m.media-amazon.com/images/M/MV5BMTY0ODk2NDY5MV5BMl5BanBnXkFtZTgwNTE4MTg3MjE@._V1_.jpg" />
-        <Typography className={classes.h2} variant="h2">
-          Hold on...
-        </Typography>
-      </Paper>
+      <Loading />
     )
   }
 }
