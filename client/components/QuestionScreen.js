@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import Loading from './Loading'
 import Prompt from './Prompt'
 import Problem from './Problem'
 import {getGame} from '../store/game'
@@ -179,12 +180,7 @@ class QuestionScreen extends React.Component {
         </Grid>
       </Paper>
     ) : (
-      <div>
-        <div className="container">
-          <img src="https://m.media-amazon.com/images/M/MV5BMTY0ODk2NDY5MV5BMl5BanBnXkFtZTgwNTE4MTg3MjE@._V1_.jpg" />
-          <h1>Hold on...</h1>
-        </div>
-      </div>
+      <Loading />
     )
   }
 }
@@ -288,3 +284,12 @@ export default connect(mapState, mapDispatch)(
 QuestionScreen.propTypes = {
   // email: PropTypes.string
 }
+
+/*
+<div>
+  <div className="container">
+    <img src="https://m.media-amazon.com/images/M/MV5BMTY0ODk2NDY5MV5BMl5BanBnXkFtZTgwNTE4MTg3MjE@._V1_.jpg" />
+    <h1>Hold on...</h1>
+  </div>
+</div>
+*/
