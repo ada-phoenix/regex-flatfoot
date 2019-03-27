@@ -58,7 +58,9 @@ class Problem extends React.Component {
       ![8, 9, 13, 16, 17, 18, 20, 37, 38, 39, 40, 91, 93].includes(e.keyCode)
     ) {
       let sound = new Audio('/single_key_press.mp3')
-      sound.play()
+      if (this.props.sound) {
+        sound.play()
+      }
     }
   }
 
@@ -217,7 +219,8 @@ const styles = theme => ({
 const mapState = state => ({
   haystack: state.game.haystack,
   needle: state.game.needle,
-  notallowed: state.game.notallowed
+  notallowed: state.game.notallowed,
+  sound: state.effects.sound
 })
 
 export default connect(mapState)(withStyles(styles)(Problem))

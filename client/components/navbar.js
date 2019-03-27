@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import Button from '@material-ui/core/Button'
 import {logout} from '../store'
+import SoundIcon from './SoundIcon'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <nav>
@@ -11,9 +12,10 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         <a href="#" onClick={handleClick}>
           Logout
         </a>
+        <SoundIcon />
       </div>
     ) : (
-      <div />
+      <SoundIcon />
     )}
   </nav>
 )
