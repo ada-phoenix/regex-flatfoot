@@ -62,10 +62,14 @@ class PostBoss extends React.Component {
     this.clusters = data
     if (this.props.location.state.won) {
       let sound = new Audio('/jail.mp3')
-      sound.play()
+      if (this.props.sound) {
+        sound.play()
+      }
     } else {
       let sound = new Audio('/explosion.mp3')
-      sound.play()
+      if (this.props.sound) {
+        sound.play()
+      }
     }
   }
 
@@ -126,7 +130,8 @@ const mapState = state => ({
   levelstage: state.user.levelstage || 1,
   clusterId: state.user.clusterId || 1,
   userId: state.user.id,
-  boss: state.cluster.boss
+  boss: state.cluster.boss,
+  sound: state.effects.sound
 })
 
 const mapDispatch = dispatch => ({

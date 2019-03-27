@@ -22,7 +22,9 @@ class SoundIcon extends React.Component {
     this.setState({clicked: !this.state.clicked})
     this.props.setSound()
     let sound = new Audio('/button.mp3')
-    sound.play()
+    if (this.props.sound) {
+      sound.play()
+    }
   }
 
   render() {

@@ -57,7 +57,9 @@ class Correct extends React.Component {
     })
     this.setState({displayPopUp: true})
     this.sound = new Audio(this.props.game.sound)
-    this.sound.play()
+    if (this.props.sound) {
+      this.sound.play()
+    }
   }
 
   componentWillUnmount() {
@@ -177,7 +179,8 @@ const mapState = state => {
     clusterId: state.user.clusterId || 1,
     game: state.game || {},
     userId: state.user.id,
-    user: state.user
+    user: state.user,
+    sound: state.effects.sound
   }
 }
 

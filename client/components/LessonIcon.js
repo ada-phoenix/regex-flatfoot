@@ -25,7 +25,9 @@ class LessonIcon extends React.Component {
   handleClickOpen = () => {
     this.setState({open: true})
     let sound = new Audio('/button.mp3')
-    sound.play()
+    if (this.props.sound) {
+      sound.play()
+    }
   }
 
   handleClose = () => {
@@ -75,7 +77,8 @@ LessonIcon.propTypes = {
 
 const mapState = state => ({
   game: state.game,
-  lesson: state.game.lesson
+  lesson: state.game.lesson,
+  sound: state.effects.sound
 })
 
 export default connect(mapState)(withStyles(styles)(LessonIcon))

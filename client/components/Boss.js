@@ -65,7 +65,9 @@ class Boss extends React.Component {
     let date = new Date()
     this.setState({start: date})
     this.incrementer = setInterval(this.tick, 60)
-    this.sound.play()
+    if (this.props.sound) {
+      this.sound.play()
+    }
   }
 
   changeHandler(evt) {
@@ -230,7 +232,8 @@ const styles = theme => ({
 })
 
 const mapState = state => ({
-  boss: state.cluster.boss
+  boss: state.cluster.boss,
+  sound: state.effects.sound
 })
 
 export default connect(mapState)(withStyles(styles)(Boss))

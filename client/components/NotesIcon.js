@@ -25,7 +25,9 @@ class NotesIcon extends React.Component {
   handleClickOpen = () => {
     this.setState({open: true})
     let sound = new Audio('/button.mp3')
-    sound.play()
+    if (this.props.sound) {
+      sound.play()
+    }
   }
 
   handleClose = () => {
@@ -78,7 +80,8 @@ NotesIcon.propTypes = {
 }
 
 const mapState = state => ({
-  notes: state.effects.notes
+  notes: state.effects.notes,
+  sound: state.effects.sound
 })
 
 export default connect(mapState)(withStyles(styles)(NotesIcon))

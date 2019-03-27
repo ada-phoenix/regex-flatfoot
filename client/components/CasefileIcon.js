@@ -28,7 +28,9 @@ class Casefile extends React.Component {
     this.setState({open: true})
     this.props.setCasefileBadge(true)
     let sound = new Audio('/button.mp3')
-    sound.play()
+    if (this.props.sound) {
+      sound.play()
+    }
   }
 
   handleClose = () => {
@@ -90,7 +92,8 @@ Casefile.propTypes = {
 
 const mapState = state => ({
   casefile: state.user.casefile,
-  invisible: state.effects.caseFileBadgeInvisible
+  invisible: state.effects.caseFileBadgeInvisible,
+  sound: state.effects.sound
 })
 
 const mapDispatch = dispatch => {
