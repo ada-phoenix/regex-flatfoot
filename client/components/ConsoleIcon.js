@@ -9,6 +9,7 @@ import NotesIcon from './NotesIcon'
 import LessonIcon from './LessonIcon'
 import CasefileIcon from './CasefileIcon'
 import HintIcon from './HintIcon'
+import Tooltip from '@material-ui/core/Tooltip'
 
 const styles = {
   card: {
