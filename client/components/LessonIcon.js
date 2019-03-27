@@ -14,6 +14,14 @@ import SubjectIcon from '@material-ui/icons/Subject'
 const styles = theme => ({
   margin: {
     margin: theme.spacing.unit
+  },
+  title: {
+    color: '#7cb342',
+    fontFamily: 'Cutive',
+    fontSize: '2em'
+  },
+  text: {
+    color: '#424242'
   }
 })
 
@@ -52,14 +60,16 @@ class LessonIcon extends React.Component {
           onClose={this.handleClose}
           aria-labelledby="open-casefile"
         >
-          <DialogTitle>Lesson</DialogTitle>
+          <DialogTitle disableTypography={true} className={classes.title}>
+            Lesson
+          </DialogTitle>
           <DialogContent>
-            <DialogContentText color="primary">
+            <DialogContentText className={classes.text}>
               {this.props.lesson}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleClose} className={classes.text}>
               X
             </Button>
           </DialogActions>

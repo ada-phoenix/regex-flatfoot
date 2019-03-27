@@ -155,6 +155,7 @@ class Problem extends React.Component {
             name="text"
             type="text"
             id="outlined-text-input"
+            autoComplete="off"
             label="/write your regEx here/"
             className={classes.textField}
             margin="normal"
