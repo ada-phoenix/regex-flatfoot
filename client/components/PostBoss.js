@@ -79,8 +79,12 @@ class PostBoss extends React.Component {
   }
 
   direction() {
-    if (this.clusters.length <= this.props.clusterId) {
-      this.props.history.push('/noMore')
+    if (this.props.location.state.won) {
+      if (this.clusters.length <= this.props.clusterId) {
+        this.props.history.push('/noMore')
+      } else {
+        this.props.history.push('/question')
+      }
     } else {
       this.props.history.push('/question')
     }
