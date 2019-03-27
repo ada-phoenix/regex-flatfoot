@@ -25,7 +25,7 @@ class QuestionScreen extends React.Component {
     this.state = {
       gotGame: false,
       displayButton: false,
-      displayQuestion: true
+      displayQuestion: false
     }
   }
 
