@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import Prompt from './Prompt'
 import Problem from './Problem'
 import {getGame} from '../store/game'
+import {addNote, setHintVisibility} from '../store/effects'
 import ConsoleIcon from './ConsoleIcon'
 import Grid from '@material-ui/core/Grid'
 import withStyles from '@material-ui/core/styles/withStyles'
@@ -47,6 +48,14 @@ class QuestionScreen extends React.Component {
       level: this.props.level,
       stage: this.props.stage
     })
+    if (!this.props.notes.includes(this.props.game.note)) {
+      this.props.addNote(this.props.game.note)
+    }
+    if (this.props.user.gamesVisted.includes(this.props.game.id)) {
+      this.props.setHintVisibility(true)
+    } else {
+      this.props.setHintVisibility(false)
+    }
     this.setState({gotGame: true})
   }
 
@@ -255,13 +264,17 @@ const mapState = state => {
     level: state.user.level || 1,
     stage: state.user.levelstage || 1,
     clusterId: state.user.clusterId || 1,
-    game: state.game || {}
+    game: state.game || {},
+    notes: state.effects.notes,
+    user: state.user
   }
 }
 
 const mapDispatch = dispatch => {
   return {
-    fetchGame: currGame => dispatch(getGame(currGame))
+    fetchGame: currentGame => dispatch(getGame(currentGame)),
+    addNote: note => dispatch(addNote(note)),
+    setHintVisibility: boolean => dispatch(setHintVisibility(boolean))
   }
 }
 

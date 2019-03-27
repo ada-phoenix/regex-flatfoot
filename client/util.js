@@ -28,4 +28,18 @@ export function clusterUpdater(level, levelstage, clusterId) {
   return {level, levelstage, clusterId}
 }
 
-export default {correctUpdater, incorrectUpdater, deathUpdater, clusterUpdater}
+export function updateCasefile(casefile, clue) {
+  const updatedCasefile = casefile
+  if (!casefile.includes(clue)) {
+    updatedCasefile.push(clue)
+  }
+  return updatedCasefile
+}
+
+export default {
+  correctUpdater,
+  incorrectUpdater,
+  deathUpdater,
+  clusterUpdater,
+  updateCasefile
+}

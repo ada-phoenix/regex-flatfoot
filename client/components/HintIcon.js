@@ -9,7 +9,7 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import IconButton from '@material-ui/core/IconButton'
-import SubjectIcon from '@material-ui/icons/Subject'
+import HelpOutline from '@material-ui/icons/HelpOutline'
 
 const styles = theme => ({
   margin: {
@@ -17,15 +17,13 @@ const styles = theme => ({
   }
 })
 
-class LessonIcon extends React.Component {
+class HintIcon extends React.Component {
   state = {
     open: false
   }
 
   handleClickOpen = () => {
     this.setState({open: true})
-    let sound = new Audio('/button.mp3')
-    sound.play()
   }
 
   handleClose = () => {
@@ -43,7 +41,7 @@ class LessonIcon extends React.Component {
           color="primary"
           className={classes.margin}
         >
-          <SubjectIcon fontSize="small" />
+          <HelpOutline fontSize="small" />
         </IconButton>
         <Dialog
           fullWidth={true}
@@ -52,10 +50,10 @@ class LessonIcon extends React.Component {
           onClose={this.handleClose}
           aria-labelledby="open-casefile"
         >
-          <DialogTitle>Lesson</DialogTitle>
+          <DialogTitle>Hint</DialogTitle>
           <DialogContent>
             <DialogContentText color="primary">
-              {this.props.lesson}
+              {this.props.hint}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -69,13 +67,13 @@ class LessonIcon extends React.Component {
   }
 }
 
-LessonIcon.propTypes = {
+HintIcon.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
 const mapState = state => ({
   game: state.game,
-  lesson: state.game.lesson
+  hint: state.game.hint
 })
 
-export default connect(mapState)(withStyles(styles)(LessonIcon))
+export default connect(mapState)(withStyles(styles)(HintIcon))

@@ -20,37 +20,27 @@ router.get('/', async (req, res, next) => {
 
 router.put('/:userId', async (req, res, next) => {
   try {
-    let id = parseInt(req.params.userId)
-    let {level, levelstage, clusterId, clue} = req.body
+    const id = parseInt(req.params.userId)
+    console.log(JSON.stringify(req.body))
+    const {userInfo, previousGame} = req.body
+    const {level, levelstage, clusterId} = userInfo
 
     const user = await User.findById(id)
+    const updatedUser = await user.update(userInfo)
 
-    const updatedInfo = clue
-      ? {
-          level,
-          levelstage,
-          clusterId,
-          casefile: [...user.casefile, clue]
+    if (previousGame) {
+      const getGame = await Game.findOne({
+        where: {
+          ...previousGame
         }
-      : {
-          level,
-          levelstage,
-          clusterId
-        }
+      })
+      await updatedUser.addGame(getGame)
+    }
+    const games = await updatedUser.getGames({raw: true})
 
-    const updatedUser = await user.update(updatedInfo)
-
-    const getGame = await Game.findOne({
-      where: {
-        level,
-        levelstage,
-        clusterId
-      }
+    const gameIdList = games.map(game => {
+      return game.id
     })
-
-    await updatedUser.addGame(getGame)
-
-    const gamesVisted = await updatedUser.getGames({raw: true})
 
     const userData = {
       clusterId: updatedUser.clusterId,
@@ -59,9 +49,35 @@ router.put('/:userId', async (req, res, next) => {
       level: updatedUser.level,
       levelstage: updatedUser.levelstage,
       id: updatedUser.id,
-      gamesVisted,
+      gamesVisted: gameIdList,
       casefile: updatedUser.casefile
     }
+    res.json(userData)
+  } catch (err) {
+    next(err)
+  }
+})
+
+router.put('/reset/:userId', async (req, res, next) => {
+  try {
+    let id = parseInt(req.params.userId)
+
+    const user = await User.findById(id)
+    const updatedUser = await user.update(req.body)
+
+    updatedUser.setGames([])
+
+    const userData = {
+      clusterId: updatedUser.clusterId,
+      email: updatedUser.email,
+      name: updatedUser.name,
+      level: updatedUser.level,
+      levelstage: updatedUser.levelstage,
+      id: updatedUser.id,
+      gamesVisted: [],
+      casefile: updatedUser.casefile
+    }
+
     res.json(userData)
   } catch (err) {
     next(err)

@@ -29,6 +29,7 @@ const styles = theme => ({
   },
   h2: {
     textAlign: 'center',
+    margin: 30,
     [theme.breakpoints.down('xs')]: {
       fontSize: '30px'
     },
@@ -55,7 +56,11 @@ class PostBoss extends React.Component {
           this.props.clusterId
         )
       : deathUpdater(1, 1, this.props.clusterId)
-    await this.props.updateUser(this.props.userId, nextGame)
+
+    await this.props.updateUser(this.props.userId, {
+      userInfo: {...nextGame},
+      previousGame: null
+    })
     this.setState({updatedUser: true})
     const {data} = await axios.get(`/api/clusters/`)
     this.clusters = data
@@ -73,7 +78,7 @@ class PostBoss extends React.Component {
   }
 
   direction() {
-    if (this.clusters.length < this.props.clusterId) {
+    if (this.clusters.length <= this.props.clusterId) {
       this.props.history.push('/noMore')
     } else {
       this.props.history.push('/question')
@@ -102,6 +107,10 @@ class PostBoss extends React.Component {
         <Typography className={classes.h2} variant="h2">
           {boss.incorrect}
         </Typography>
+        <img
+          src="https://media.giphy.com/media/aTf4PONtSYB1e/giphy.gif"
+          alt="cartoon ghost"
+        />
         <Button
           className={classes.button}
           variant="contained"
