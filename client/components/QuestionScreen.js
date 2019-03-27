@@ -285,11 +285,3 @@ QuestionScreen.propTypes = {
   // email: PropTypes.string
 }
 
-/*
-<div>
-  <div className="container">
-    <img src="https://m.media-amazon.com/images/M/MV5BMTY0ODk2NDY5MV5BMl5BanBnXkFtZTgwNTE4MTg3MjE@._V1_.jpg" />
-    <h1>Hold on...</h1>
-  </div>
-</div>
-*/
