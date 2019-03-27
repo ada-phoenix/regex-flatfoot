@@ -156,21 +156,28 @@ class Problem extends React.Component {
               <div>{this.highlighter()}</div>
             </Typography>
           </Grid>
-          <Grid item className={classes.consoleGridItem}>
-            <h2 className="message">{this.state.message}</h2>
-            <label>
-              Remember to wrap your regEx in forward slashes. Ex: /regex/
-            </label>
-            <input
-              type="text"
-              onChange={this.changeHandler}
-              value={this.state.input}
-              placeholder="/write your regEx here/"
-            />
-          </Grid>
-          <Grid item className={classes.consoleGridItem}>
-            <button onClick={this.submitReg}>Follow that lead!</button>
-          </Grid>
+          <form onSubmit={this.submitReg}>
+            <React.Fragment>
+              <Grid item className={classes.consoleGridItem}>
+                <h2 className="message">{this.state.message}</h2>
+                <label>
+                  Remember to wrap your regEx in forward slashes. Ex: /regex/
+                </label>
+
+                <input
+                  type="text"
+                  onChange={this.changeHandler}
+                  value={this.state.input}
+                  placeholder="/write your regEx here/"
+                />
+              </Grid>
+              <Grid item className={classes.consoleGridItem}>
+                <button onClick={this.submitReg} type="submit">
+                  Follow that lead!
+                </button>
+              </Grid>
+            </React.Fragment>
+          </form>
         </Grid>
       </div>
     ) : (

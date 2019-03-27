@@ -29,6 +29,7 @@ const styles = theme => ({
   },
   h2: {
     textAlign: 'center',
+    margin: 30,
     [theme.breakpoints.down('xs')]: {
       fontSize: '30px'
     },
@@ -73,7 +74,7 @@ class PostBoss extends React.Component {
   }
 
   direction() {
-    if (this.clusters.length < this.props.clusterId) {
+    if (this.clusters.length <= this.props.clusterId) {
       this.props.history.push('/noMore')
     } else {
       this.props.history.push('/question')
@@ -102,6 +103,10 @@ class PostBoss extends React.Component {
         <Typography className={classes.h2} variant="h2">
           {boss.incorrect}
         </Typography>
+        <img
+          src="https://media.giphy.com/media/aTf4PONtSYB1e/giphy.gif"
+          alt="cartoon ghost"
+        />
         <Button
           className={classes.button}
           variant="contained"

@@ -13,6 +13,7 @@ import LessonIcon from './LessonIcon'
 import IconButton from '@material-ui/core/IconButton'
 import AssignmentIcon from '@material-ui/icons/Assignment'
 import SubjectIcon from '@material-ui/icons/Subject'
+import HelpOutline from '@material-ui/icons/HelpOutline'
 
 const styles = theme => ({
   root: {
@@ -149,6 +150,19 @@ class ExplainEx extends React.Component {
             Click the text icon to see your current lesson. You might find
             yourself reaching for this on a particularly tricky piece of
             encryption.
+          </Typography>
+        </div>
+
+        <div className={classes.flexRow}>
+          <HelpOutline
+            fontSize="large"
+            color="secondary"
+            className={classes.margin}
+          />
+          <Typography className={classes.subtitle2} variant="subtitle2">
+            If you see this question mark, you've hit a rough patch and you're
+            replaying a level. That's ok! You can click the question mark icon
+            for a hint.
           </Typography>
         </div>
 
