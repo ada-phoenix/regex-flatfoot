@@ -27,6 +27,7 @@ const styles = theme => ({
     fontFamily: 'Cutive'
   },
   h2: {
+    fontFamily: 'Cutive',
     textAlign: 'center',
     [theme.breakpoints.down('xs')]: {
       fontSize: '30px'

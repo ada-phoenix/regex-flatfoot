@@ -15,7 +15,7 @@ const gameData = [
       'Are you using the back slashes? No need to worry about capitalization for now.',
     clue: 'At the parking lot, a seagull winked at me. He knows something.',
     correct:
-      "Good work, Rookie.\nThe boys picked up Dmytrenko and he's singing like a canary! Go checkout the parking lot behind the hotdog stand on Ninth and Grand. He said it\'s one of their drop off points.",
+      "Good work, Rookie.\nThe boys picked up Dmytrenko and he's singing like a canary! Go checkout the parking lot behind the hotdog stand on Ninth and Grand. He said it's one of their drop off points.",
     incorrect:
       "What happened there, Rookie?\nI thought you were the best. Let's head back to HQ and see if the boys have anything new for us.",
     sound: '/seagull.wav'
@@ -47,7 +47,7 @@ const gameData = [
     lesson:
       'The simplest regular expression is just the character or word you want to match. For example, /doughnut/ would match the word "doughnut" in the sentence, "I\'d love a doughnut."',
     question:
-      "We found Dmytrenko's poetry journal at the reptile zoo. Turns out the guy has a rich inner life and loves lizards. Use a regular expression to see if he mentions the stolen money anywhere in this awful poem.",
+      "We found Dmytrenko's poetry journal at the reptile zoo. Turns out the guy has a rich inner life and loves lizards.\nUse a regular expression to see if he mentions the stolen money anywhere in this awful poem.",
     level: 1,
     levelstage: 3,
     clusterId: 1,
@@ -55,7 +55,7 @@ const gameData = [
       'Are you using the back slashes? No need to worry about capitalization for now.',
     clue: 'At the parking lot, a seagull winked at me. He knows something.',
     correct:
-      "Good work, Rookie.\nThe boys picked up Dmytrenko and he's singing like a canary! Go checkout the parking lot behind the hotdog stand on Ninth and Grand. He said it\'s one of their drop off points.",
+      "Good work, Rookie.\nThe boys picked up Dmytrenko and he's singing like a canary! Go checkout the parking lot behind the hotdog stand on Ninth and Grand. He said it's one of their drop off points.",
     incorrect:
       "Damnit Rookie!\nYou're on desk duty. Maybe these trails haven't gone completely cold. Go back to the beginning and review the evidence.",
     sound: '/seagull.wav'
@@ -172,7 +172,7 @@ const gameData = [
     lesson:
       'If you need to match any case, use the i flag after your second forward slash. For example /knife/i would match "KNIFE, knife or KnIfE."',
     question:
-      "Dom keeps slipping through our fingers but luckily for us she's left a trail of angry customers. Disgruntled citizen Justin Blaze came down to the precinct this morning to complain about her resistance bands: 'They offer absolutely no resistance! My delts and quads are languishing bro! You may as well call them status quo bands! Anyway she left this letter at my gym, maybe it'll help you guys catch her.' \n\nSearch the note for the word 'Meathead.' Sorry, still no capital letters.",
+      "Dom keeps slipping through our fingers but luckily for us she's left a trail of angry customers. Disgruntled citizen Justin Blaze came down to the precinct this morning to complain about her resistance bands: 'They offer absolutely no resistance! My delts and quads are languishing bro! You may as well call them status quo bands! Anyway she left this letter at my gym, maybe it'll help you guys catch her.' \n\nSearch the note for the word 'Meathead' Sorry, still no capital letters.",
     level: 3,
     levelstage: 3,
     clusterId: 1,
