@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
+import {red} from '@material-ui/core/colors'
 
 class Boss extends React.Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class Boss extends React.Component {
     this.isSame = this.isSame.bind(this)
     this.tick = this.tick.bind(this)
     this.continueFunc = this.continueFunc.bind(this)
+    this.handleKeyPress = this.handleKeyPress.bind(this)
     this.sound = new Audio('/clock.mp3')
   }
 
@@ -50,7 +52,8 @@ class Boss extends React.Component {
   tick() {
     const boss = this.props.boss
     let currentTime = new Date() - this.state.start
-    this.setState({elapsed: currentTime})
+    let minus30 = Math.abs(currentTime - boss.time)
+    this.setState({elapsed: minus30})
 
     if (currentTime > boss.time) {
       history.push(`/postboss`, {won: false})
@@ -86,6 +89,13 @@ class Boss extends React.Component {
     }
   }
 
+  handleKeyPress(e) {
+    console.log(e)
+    if (e.keyCode === 13) {
+      this.submitReg(e)
+    }
+  }
+
   render() {
     const {classes} = this.props
     const boss = this.props.boss
@@ -96,7 +106,7 @@ class Boss extends React.Component {
       this.state.continue ? (
         <Paper className={classes.root}>
           <Typography variant="h2" className={classes.h2}>
-            Countdown: {seconds} seconds
+            Countdown: <span className={classes.red}>{seconds}</span> seconds
           </Typography>
           <Typography variant="h3" className={classes.h3}>
             {boss.question}
@@ -104,16 +114,19 @@ class Boss extends React.Component {
           <Typography variant="h4" className={classes.h4}>
             {boss.haystack}
           </Typography>
-          <TextField value={this.state.input} onChange={this.changeHandler} />
-          <Button
-            className={classes.button}
-            variant="contained"
-            color="secondary"
-            type="button"
-            onClick={this.submitReg}
-          >
-            Decode!
-          </Button>
+          <form onSubmit={this.submitReg}>
+            <TextField value={this.state.input} onChange={this.changeHandler} />
+            <Button
+              type="submit"
+              className={classes.button}
+              variant="contained"
+              color="secondary"
+              type="button"
+              onClick={this.submitReg}
+            >
+              Decode!
+            </Button>
+          </form>
         </Paper>
       ) : (
         <Paper className={classes.root}>
@@ -162,6 +175,9 @@ const styles = theme => ({
     flexDirection: 'column',
     padding: 10,
     alignItems: 'center'
+  },
+  red: {
+    color: red[500]
   },
   button: {
     padding: 15,
