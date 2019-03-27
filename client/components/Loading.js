@@ -48,7 +48,7 @@ class Loading extends React.Component {
           Be Patient
         </Typography>
         <Typography className={classes.subtitle2} variant="subtitle2">
-          We've got the dot our i's and cross out t's
+          We've got to dot our i's and cross our t's
         </Typography>
       </Paper>
     )

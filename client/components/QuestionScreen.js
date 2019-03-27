@@ -25,8 +25,10 @@ class QuestionScreen extends React.Component {
     this.state = {
       gotGame: false,
       displayButton: false,
-      displayQuestion: true
+      displayQuestion: false,
+      view: 'skipViewable'
     }
+    this.skip = this.skip.bind(this)
   }
 
   filterString(string) {
@@ -63,6 +65,10 @@ class QuestionScreen extends React.Component {
     this.setState({gotGame: true})
   }
 
+  skip() {
+    this.setState({displayQuestion: true, view: 'skipHidden'})
+  }
+
   componentWillUnmount() {
     this.setState({gotGame: false})
   }
@@ -94,6 +100,15 @@ class QuestionScreen extends React.Component {
             <div className={classes.consoleDiv}>
               <ConsoleIcon className={classes.consoleContent} />
             </div>
+            <Button
+              variant="contained"
+              color="secondary"
+              type="button"
+              className={this.state.view}
+              onClick={this.skip}
+            >
+              Skip Lesson
+            </Button>
           </Grid>
           <Grid
             item
@@ -296,4 +311,3 @@ export default connect(mapState, mapDispatch)(
 QuestionScreen.propTypes = {
   // email: PropTypes.string
 }
-
