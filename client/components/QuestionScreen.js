@@ -96,19 +96,23 @@ class QuestionScreen extends React.Component {
             md={4}
             lg={3}
             className={classes.outerGridItem}
+            alignItems="center"
+            justify="center"
           >
             <div className={classes.consoleDiv}>
               <ConsoleIcon className={classes.consoleContent} />
             </div>
-            <Button
-              variant="contained"
-              color="secondary"
-              type="button"
-              className={this.state.view}
-              onClick={this.skip}
-            >
-              Skip Lesson
-            </Button>
+            <div className={classes.skipbutton}>
+              <Button
+                variant="contained"
+                color="secondary"
+                type="button"
+                className={this.state.view}
+                onClick={this.skip}
+              >
+                Skip Lesson
+              </Button>
+            </div>
           </Grid>
           <Grid
             item
@@ -219,8 +223,21 @@ const styles = theme => ({
     alignSelf: 'center',
     justifySelf: 'center'
   },
+  skipbutton: {
+    display: 'flex',
+    padding: 15,
+    margin: 10,
+    alignContent: 'center',
+    justifyContent: 'center'
+  },
   container: {
+    margin: 50,
+    padding: 25,
     width: '90%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: theme.palette.primary.light
   },
   outerGrid: {
@@ -229,8 +246,7 @@ const styles = theme => ({
   consoleDiv: {
     display: 'flex',
     alignContent: 'center',
-    justifyContent: 'center',
-    padding: '10px'
+    justifyContent: 'center'
   },
   outerGridItem: {
     justifySelf: 'center',
