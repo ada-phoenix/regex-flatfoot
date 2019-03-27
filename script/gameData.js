@@ -35,7 +35,7 @@ const gameData = [
       'Are you using the back slashes? No need to worry about capitalization for now.',
     clue: 'At the parking lot, a seagull winked at me. He knows something.',
     correct:
-      "Good work, Rookie.\nThe boys picked up Dmytrenko and he's singing like a canary! Go checkout the parking lot behind the hotdog stand on Ninth and Grand. He said it\'s one of their drop off points.",
+      "Good work, Rookie.\nThe boys picked up Dmytrenko and he's singing like a canary! Go checkout the parking lot behind the hotdog stand on Ninth and Grand. He said it's one of their drop off points.",
     incorrect:
       'He slipped through our fingers again!?\nGet it together Rookie! Grab your self a cup of coffee and head back to the station.',
     sound: '/seagull.wav'
@@ -67,7 +67,7 @@ const gameData = [
     lesson:
       'Dmytrenko was just a low-level street tough. But he\'s agreed to play ball and has given us some primo intel on another one of the Grepino family\'s encryption tricks.\n\nSometimes they use the same pattern of characters multiple times in a message to convey important information.\n\nRegular expressions have optional flags that appear outside of the slashes and make them even more powerful! \n\nHere, we need to use the global flag, "g". This flag allows us to do a "global" search of the text and find every instance that matches, not just the first one!\n\nFor example, the regex /cat/g will find three matches of "cat" in the phrase, "My fat cat catches cat naps".\n\n',
     question:
-      "Dmytrenko put us on to Bambino Grepino's personal assistant, Terry Lemons. He's as handy with a calendar as he is in a streetfight, but does all his scheduling in code. We think he's planning something BIG for the family at the Old Spaghetti Factory. \n\nCan you use a regular expression to find every instance of \"fri\" in this memo he sent out to the network?",
+      "Dmytrenko put us on to Bambino Grepino's personal assistant, Terry Lemons. He's as handy with a calendar as he is in a streetfight, but does all his scheduling in code. We think he's planning something BIG for the family at the Old Spaghetti Factory.\n\nCan you use a regular expression to find every instance of \"fri\" in this memo he sent out to the network?",
     level: 2,
     levelstage: 1,
     note: 'g : global flag matches every instance',

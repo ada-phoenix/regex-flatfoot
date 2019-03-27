@@ -4,6 +4,8 @@ import reactStringReplace from 'react-string-replace'
 import Grid from '@material-ui/core/Grid'
 import withStyles from '@material-ui/core/styles/withStyles'
 import Typography from '@material-ui/core/Typography'
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
 
 class Problem extends React.Component {
   constructor(props) {
@@ -142,43 +144,36 @@ class Problem extends React.Component {
   render() {
     const {classes} = this.props
     return this.props.haystack ? (
-      <div>
-        <Grid
-          container
-          wrap="wrap"
-          spacing={24}
-          alignItems="flex-start"
-          className={classes.consoleGrid}
-        >
-          <Grid item className={classes.consoleGridItem}>
-            <Typography className={classes.haystackText}>
-              <label>Text block:</label>
-              <div>{this.highlighter()}</div>
-            </Typography>
-          </Grid>
-          <form onSubmit={this.submitReg}>
-            <React.Fragment>
-              <Grid item className={classes.consoleGridItem}>
-                <h2 className="message">{this.state.message}</h2>
-                <label>
-                  Remember to wrap your regEx in forward slashes. Ex: /regex/
-                </label>
+      <div className={classes.container}>
+        <Typography className={classes.haystackText}>
+          <span className={classes.grayHighlight}>{this.highlighter()}</span>
+        </Typography>
 
-                <input
-                  type="text"
-                  onChange={this.changeHandler}
-                  value={this.state.input}
-                  placeholder="/write your regEx here/"
-                />
-              </Grid>
-              <Grid item className={classes.consoleGridItem}>
-                <button onClick={this.submitReg} type="submit">
-                  Follow that lead!
-                </button>
-              </Grid>
-            </React.Fragment>
-          </form>
-        </Grid>
+        <div className={classes.buttonsContainer}>
+          <h2 className="message">{this.state.message}</h2>
+          <TextField
+            name="text"
+            type="text"
+            id="outlined-text-input"
+            label="/write your regEx here/"
+            className={classes.textField}
+            margin="normal"
+            variant="outlined"
+            value={this.state.input}
+            InputLabelProps={{className: classes.label}}
+            InputProps={{className: classes.userInput}}
+            onChange={this.changeHandler}
+          />
+          <Button
+            className={classes.button}
+            color="secondary"
+            variant="contained"
+            type="button"
+            onClick={this.submitReg}
+          >
+            Follow that lead!
+          </Button>
+        </div>
       </div>
     ) : (
       <div>Hold on one moment...</div>
@@ -188,28 +183,71 @@ class Problem extends React.Component {
 
 //STYLING
 const styles = theme => ({
+  container: {
+    display: 'flex',
+    alignContent: 'start',
+    flexWrap: 'wrap',
+    paddingLeft: '15px',
+    paddingRight: '10px',
+    paddingTop: '5px'
+  },
+  buttonsContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignContent: 'start',
+    flex: 1
+  },
   lessonText: {
     fontFamily: 'Cutive',
     fontSize: '1em',
     color: '#FFFFFF'
   },
-  consoleGrid: {
-    backgroundColor: 'pink',
-    padding: '1%',
-    borderRadius: 5
-  },
-  consoleGridItem: {
-    padding: '2%',
-    backgroundColor: '#ffffff',
-    border: '4mm groove #424242',
-    justifySelf: 'center'
-  },
   haystackText: {
-    fontFamily: 'Cutive',
+    fontFamily: 'Arial, Helvetica, sans-serif',
     fontSize: '1em',
-    color: '#212121',
-    whiteSpace: 'pre-wrap',
-    wordBreak: 'break-word'
+    lineHeight: '1.5',
+    color: '#ffffff',
+    whiteSpace: 'pre-line',
+    wordBreak: 'break-word',
+    paddingLeft: '15px',
+    paddingRight: '10px',
+    paddingTop: '5px',
+    [theme.breakpoints.down('xs')]: {
+      width: '100%'
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: '100%'
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '60%'
+    }
+  },
+  grayHighlight: {
+    backgroundColor: '#cfd8dc'
+  },
+  label: {
+    color: theme.palette.primary.main,
+    textAlign: 'center',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '10px'
+    },
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '12px'
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '22px'
+    }
+  },
+  userInput: {
+    padding: 2,
+    fontSize: 28,
+    color: '#000000'
+  },
+  button: {
+    flex: 1
+  },
+  textField: {
+    flex: 1
   }
 })
 

@@ -8,8 +8,12 @@ import {addNote, setHintVisibility} from '../store/effects'
 import ConsoleIcon from './ConsoleIcon'
 import Grid from '@material-ui/core/Grid'
 import withStyles from '@material-ui/core/styles/withStyles'
+import Paper from '@material-ui/core/Paper'
+import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Typing, {Delay, Reset} from 'react-typing-animation'
+import ArrowRightRounded from '@material-ui/icons/ArrowRightRounded'
+import Divider from '@material-ui/core/Divider'
 
 /**
  * COMPONENT
@@ -18,15 +22,24 @@ class QuestionScreen extends React.Component {
   constructor() {
     super()
     this.state = {
-      gotGame: false
+      gotGame: false,
+      displayButton: false,
+      displayQuestion: false
     }
   }
 
   filterString(string) {
-    console.log(string.split('*'))
     return string.split('\n').filter(sentence => {
       return sentence
     })
+  }
+
+  displayButton() {
+    this.setState({displayButton: true})
+  }
+
+  buttonClick() {
+    this.setState({displayQuestion: true, displayButton: false})
   }
 
   async componentDidMount() {
@@ -51,69 +64,120 @@ class QuestionScreen extends React.Component {
   }
 
   render() {
-    let lesson
+    let lesson, question
     if (this.state.gotGame) {
       lesson = this.filterString(this.props.game.lesson)
+      question = this.filterString(this.props.game.question)
     }
     const {classes} = this.props
     return this.state.gotGame ? (
-      <div className={classes.container}>
+      <Paper className={classes.container}>
         <Grid
           container
           wrap="wrap"
           spacing={24}
           alignItems="stretch"
-          className={classes.consoleGrid}
+          className={classes.outerGrid}
         >
           <Grid
             item
             xs={12}
-            sm={12}
-            md="auto"
+            sm={6}
+            md={4}
             lg={3}
-            className={classes.consoleGridItem}
+            className={classes.outerGridItem}
           >
-            <ConsoleIcon />
+            <div className={classes.consoleDiv}>
+              <ConsoleIcon className={classes.consoleContent} />
+            </div>
           </Grid>
           <Grid
             item
             xs={12}
-            sm={12}
-            md="auto"
+            sm={6}
+            md={8}
             lg={9}
-            className={classes.consoleGridItem}
+            className={classes.outerGridItem}
           >
             <div className={classes.textBlockSize}>
-              <Typing
-                speed={10}
-                hideCursor={true}
-                className={classes.lessonText}
-              >
-                {lesson.map((sentence, i) => {
-                  return (
-                    <React.Fragment key={i}>
-                      {sentence}
-                      <Delay ms={300} />
-                      <Reset count={3} delay={300} />
-                    </React.Fragment>
-                  )
-                })}
-              </Typing>
+              {this.state.displayQuestion ? (
+                <Paper className={classes.innerPaper}>
+                  <Grid
+                    container
+                    direction="column"
+                    spacing={24}
+                    justify="space-evenly"
+                    className={classes.innerGrid}
+                  >
+                    <Grid item xs={12} sm={12} md="auto" lg={12}>
+                      <Typography className={classes.questionType}>
+                        {question.map((sentence, i) => {
+                          let textStyle
+                          i === question.length - 1
+                            ? (textStyle = classes.boldQuestionText)
+                            : (textStyle = classes.questionText)
+                          return (
+                            <Typography className={textStyle}>
+                              {sentence}
+                            </Typography>
+                          )
+                        })}
+                      </Typography>
+                    </Grid>
+                    <Divider variant="middle" />
+                    <Grid
+                      item
+                      xs={12}
+                      sm={12}
+                      md="auto"
+                      lg={12}
+                      className={classes.innerGridItem}
+                    >
+                      <Problem history={this.props.history} />
+                    </Grid>
+                  </Grid>
+                </Paper>
+              ) : (
+                <div>
+                  <Typing
+                    speed={15}
+                    hideCursor={true}
+                    onFinishedTyping={() => {
+                      this.displayButton()
+                    }}
+                    className={classes.lessonText}
+                    variant="body2"
+                  >
+                    {lesson.map((sentence, i) => {
+                      return (
+                        <React.Fragment key={i}>
+                          {sentence}
+                          <Delay ms={300} />
+                          <Reset count={3} delay={300} />
+                        </React.Fragment>
+                      )
+                    })}
+                  </Typing>
+                  {this.state.displayButton ? (
+                    <Button
+                      className={classes.button}
+                      variant="contained"
+                      color="secondary"
+                      type="button"
+                      onClick={() => this.buttonClick()}
+                    >
+                      Get Cracking!
+                      <ArrowRightRounded className={classes.icon} />
+                    </Button>
+                  ) : (
+                    <div />
+                  )}
+                </div>
+              )}
             </div>
-            {/* <Typography className={classes.lessonText}>
-              {this.props.game.question}
-            </Typography> */}
           </Grid>
         </Grid>
-        <Grid
-          container
-          wrap="wrap"
-          spacing={24}
-          className={classes.consoleGrid}
-        >
-          <Problem history={this.props.history} />
-        </Grid>
-      </div>
+      </Paper>
     ) : (
       <div>
         <div className="container">
@@ -127,45 +191,68 @@ class QuestionScreen extends React.Component {
 
 //STYLES
 const styles = theme => ({
+  button: {
+    padding: 15,
+    margin: 50,
+    alignSelf: 'center',
+    justifySelf: 'center'
+  },
   container: {
-    width: '90%'
+    width: '90%',
+    backgroundColor: theme.palette.primary.light
   },
-  consoleGrid: {
-    backgroundColor: 'pink',
-    padding: '1%',
-    border: '4mm groove #424242',
-    borderRadius: 5
+  outerGrid: {
+    padding: '1%'
   },
-  consoleGridItem: {
-    padding: '2%',
-    backgroundColor: '#ffffff',
-    border: '4mm groove #424242',
+  consoleDiv: {
+    display: 'flex',
+    alignContent: 'center',
+    justifyContent: 'center',
+    padding: '10px'
+  },
+  outerGridItem: {
     justifySelf: 'center',
-    [theme.breakpoints.down('xs')]: {
-      flex: 1
-    },
-    [theme.breakpoints.down('sm')]: {
-      flex: 1
-    },
-    [theme.breakpoints.up('md')]: {
-      flex: 2
-    },
-    [theme.breakpoints.up('lg')]: {
-      flex: 3
-    }
+    minHeight: 350
+  },
+  innerGrid: {
+    minHeight: 350
+  },
+  questionType: {
+    paddingLeft: '15px',
+    paddingRight: '10px',
+    paddingTop: '15px'
   },
   textBlockSize: {
-    width: '100%',
-    height: '100%',
     padding: 10,
     wordBreak: 'break-word',
     overflowWrap: 'break-word'
   },
   lessonText: {
     fontFamily: 'Cutive',
-    fontSize: '2em',
     color: '#212121',
-    lineHeight: '1.5'
+    lineHeight: '1.5',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1em'
+    },
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '1em'
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '2em'
+    }
+  },
+  questionText: {
+    fontFamily: 'Cutive',
+    fontSize: '1em',
+    color: '#212121',
+    lineHeight: '2'
+  },
+  boldQuestionText: {
+    fontFamily: 'Cutive',
+    fontSize: '1em',
+    lineHeight: '2.5',
+    fontWeight: 'bold',
+    color: 'red'
   }
 })
 
