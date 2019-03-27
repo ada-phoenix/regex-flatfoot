@@ -24,7 +24,7 @@ class QuestionScreen extends React.Component {
     this.state = {
       gotGame: false,
       displayButton: false,
-      displayQuestion: false
+      displayQuestion: true
     }
   }
 
@@ -51,11 +51,14 @@ class QuestionScreen extends React.Component {
     if (!this.props.notes.includes(this.props.game.note)) {
       this.props.addNote(this.props.game.note)
     }
-    if (this.props.user.gamesVisted.includes(this.props.game.id)) {
-      this.props.setHintVisibility(true)
-    } else {
-      this.props.setHintVisibility(false)
+    if (this.props.user.gamesVisted) {
+      if (this.props.user.gamesVisted.includes(this.props.game.id)) {
+        this.props.setHintVisibility(true)
+      } else {
+        this.props.setHintVisibility(false)
+      }
     }
+
     this.setState({gotGame: true})
   }
 
