@@ -14,6 +14,14 @@ import IconButton from '@material-ui/core/IconButton'
 const styles = theme => ({
   margin: {
     margin: theme.spacing.unit
+  },
+  title: {
+    color: '#7cb342',
+    fontFamily: 'Cutive',
+    fontSize: '2em'
+  },
+  text: {
+    color: '#424242'
   }
 })
 
@@ -52,18 +60,20 @@ class NotesIcon extends React.Component {
           onClose={this.handleClose}
           aria-labelledby="open-casefile"
         >
-          <DialogTitle>Notes</DialogTitle>
+          <DialogTitle disableTypography={true} className={classes.title}>
+            Notes
+          </DialogTitle>
           <DialogContent>
             {this.props.notes.map(note => {
               return (
-                <DialogContentText key={note} color="primary">
+                <DialogContentText key={note} className={classes.text}>
                   {note}
                 </DialogContentText>
               )
             })}
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleClose} className={classes.text}>
               X
             </Button>
           </DialogActions>

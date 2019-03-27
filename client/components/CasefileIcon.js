@@ -16,6 +16,14 @@ import {setCasefileBadge} from '../store/effects'
 const styles = theme => ({
   margin: {
     margin: theme.spacing.unit
+  },
+  title: {
+    color: '#7cb342',
+    fontFamily: 'Cutive',
+    fontSize: '2em'
+  },
+  text: {
+    color: '#424242'
   }
 })
 
@@ -62,11 +70,13 @@ class Casefile extends React.Component {
           onClose={this.handleClose}
           aria-labelledby="open-casefile"
         >
-          <DialogTitle>Casefile</DialogTitle>
+          <DialogTitle disableTypography={true} className={classes.title}>
+            Casefile
+          </DialogTitle>
           <DialogContent>
             {this.props.casefile.map((clue, i) => {
               return (
-                <DialogContentText key={clue} color="primary">
+                <DialogContentText key={clue} className={classes.text}>
                   {`${i + 1}) `}
                   {clue}
                 </DialogContentText>
@@ -74,7 +84,7 @@ class Casefile extends React.Component {
             })}
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleClose} className={classes.text}>
               X
             </Button>
           </DialogActions>

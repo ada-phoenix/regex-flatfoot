@@ -142,7 +142,7 @@ class QuestionScreen extends React.Component {
                   </Grid>
                 </Paper>
               ) : (
-                <div>
+                <div className={classes.anotherDiv}>
                   <Typing
                     speed={15}
                     hideCursor={true}
@@ -190,6 +190,14 @@ class QuestionScreen extends React.Component {
 
 //STYLES
 const styles = theme => ({
+  anotherDiv: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignContent: 'center',
+    justifySelf: 'center',
+    alignSelf: 'center'
+  },
   button: {
     padding: 15,
     margin: 50,
@@ -211,6 +219,7 @@ const styles = theme => ({
   },
   outerGridItem: {
     justifySelf: 'center',
+    alignContent: 'center',
     minHeight: 350
   },
   innerGrid: {
