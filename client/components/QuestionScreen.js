@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Typing, {Delay, Reset} from 'react-typing-animation'
 import ArrowRightRounded from '@material-ui/icons/ArrowRightRounded'
+import Divider from '@material-ui/core/Divider'
 
 /**
  * COMPONENT
@@ -22,7 +23,7 @@ class QuestionScreen extends React.Component {
     this.state = {
       gotGame: false,
       displayButton: false,
-      displayQuestion: true
+      displayQuestion: false
     }
   }
 
@@ -91,48 +92,44 @@ class QuestionScreen extends React.Component {
           >
             <div className={classes.textBlockSize}>
               {this.state.displayQuestion ? (
-                <Grid
-                  container
-                  direction="column"
-                  spacing={24}
-                  alignItems="stretch"
-                  justify="center"
-                >
+                <Paper className={classes.innerPaper}>
                   <Grid
-                    item
-                    xs={12}
-                    sm={12}
-                    md="auto"
-                    lg={12}
-                    className={classes.innerGridItem}
+                    container
+                    direction="column"
+                    spacing={24}
+                    justify="space-evenly"
+                    className={classes.innerGrid}
                   >
-                    <Typography>
-                      {question.map((sentence, i) => {
-                        let textStyle
-                        i === question.length - 1
-                          ? (textStyle = classes.boldQuestionText)
-                          : (textStyle = classes.questionText)
-                        return (
-                          <Typography className={textStyle}>
-                            {sentence}
-                          </Typography>
-                        )
-                      })}
-                    </Typography>
+                    <Grid item xs={12} sm={12} md="auto" lg={12}>
+                      <Typography className={classes.questionType}>
+                        {question.map((sentence, i) => {
+                          let textStyle
+                          i === question.length - 1
+                            ? (textStyle = classes.boldQuestionText)
+                            : (textStyle = classes.questionText)
+                          return (
+                            <Typography className={textStyle}>
+                              {sentence}
+                            </Typography>
+                          )
+                        })}
+                      </Typography>
+                    </Grid>
+                    <Divider variant="middle" />
+                    <Grid
+                      item
+                      xs={12}
+                      sm={12}
+                      md="auto"
+                      lg={12}
+                      className={classes.innerGridItem}
+                    >
+                      <Problem history={this.props.history} />
+                    </Grid>
                   </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={12}
-                    md="auto"
-                    lg={12}
-                    className={classes.innerGridItem}
-                  >
-                    <Problem history={this.props.history} />
-                  </Grid>
-                </Grid>
+                </Paper>
               ) : (
-                <React.Fragment>
+                <div>
                   <Typing
                     speed={15}
                     hideCursor={true}
@@ -160,13 +157,13 @@ class QuestionScreen extends React.Component {
                       type="button"
                       onClick={() => this.buttonClick()}
                     >
-                      Get Crackin'\!
+                      Get Cracking!
                       <ArrowRightRounded className={classes.icon} />
                     </Button>
                   ) : (
                     <div />
                   )}
-                </React.Fragment>
+                </div>
               )}
             </div>
           </Grid>
@@ -187,7 +184,9 @@ class QuestionScreen extends React.Component {
 const styles = theme => ({
   button: {
     padding: 15,
-    margin: 50
+    margin: 50,
+    alignSelf: 'center',
+    justifySelf: 'center'
   },
   container: {
     width: '90%',
@@ -203,13 +202,16 @@ const styles = theme => ({
     padding: '10px'
   },
   outerGridItem: {
-    // border: '2mm groove #9ea7aa',
     justifySelf: 'center',
     minHeight: 350
   },
-  innerGridItem: {
-    // border: '2mm groove #9ea7aa',
-    justifySelf: 'center'
+  innerGrid: {
+    minHeight: 350
+  },
+  questionType: {
+    paddingLeft: '15px',
+    paddingRight: '10px',
+    paddingTop: '15px'
   },
   textBlockSize: {
     padding: 10,

@@ -4,6 +4,8 @@ import reactStringReplace from 'react-string-replace'
 import Grid from '@material-ui/core/Grid'
 import withStyles from '@material-ui/core/styles/withStyles'
 import Typography from '@material-ui/core/Typography'
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
 
 class Problem extends React.Component {
   constructor(props) {
@@ -144,21 +146,33 @@ class Problem extends React.Component {
     return this.props.haystack ? (
       <div className={classes.container}>
         <Typography className={classes.haystackText}>
-          <label>Text block:</label>
-          <div>{this.highlighter()}</div>
+          <span className={classes.grayHighlight}>{this.highlighter()}</span>
         </Typography>
 
         <div className={classes.buttonsContainer}>
-          <label>
-            Remember to wrap your regEx in forward slashes. Ex: /regex/
-          </label>
-          <input
+          <h2 className="message">{this.state.message}</h2>
+          <TextField
+            name="text"
             type="text"
-            onChange={this.changeHandler}
+            id="outlined-text-input"
+            label="/write your regEx here/"
+            className={classes.textField}
+            margin="normal"
+            variant="outlined"
             value={this.state.input}
-            placeholder="/write your regEx here/"
+            InputLabelProps={{className: classes.label}}
+            InputProps={{className: classes.userInput}}
+            onChange={this.changeHandler}
           />
-          <button onClick={this.submitReg}>Follow that lead!</button>
+          <Button
+            className={classes.button}
+            color="secondary"
+            variant="contained"
+            type="button"
+            onClick={this.submitReg}
+          >
+            Follow that lead!
+          </Button>
         </div>
       </div>
     ) : (
@@ -171,15 +185,16 @@ class Problem extends React.Component {
 const styles = theme => ({
   container: {
     display: 'flex',
-    flexDirection: 'row',
     alignContent: 'start',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    paddingLeft: '15px',
+    paddingRight: '10px',
+    paddingTop: '5px'
   },
   buttonsContainer: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'start',
-    padding: '2%',
+    alignContent: 'start',
     flex: 1
   },
   lessonText: {
@@ -188,12 +203,51 @@ const styles = theme => ({
     color: '#FFFFFF'
   },
   haystackText: {
-    fontFamily: 'Cutive',
+    fontFamily: 'Arial, Helvetica, sans-serif',
     fontSize: '1em',
-    color: '#212121',
-    whiteSpace: 'pre-wrap',
+    lineHeight: '1.5',
+    color: '#ffffff',
+    whiteSpace: 'pre-line',
     wordBreak: 'break-word',
-    width: '75%'
+    paddingLeft: '15px',
+    paddingRight: '10px',
+    paddingTop: '5px',
+    [theme.breakpoints.down('xs')]: {
+      width: '100%'
+    },
+    [theme.breakpoints.up('sm')]: {
+      width: '100%'
+    },
+    [theme.breakpoints.up('md')]: {
+      width: '60%'
+    }
+  },
+  grayHighlight: {
+    backgroundColor: '#cfd8dc'
+  },
+  label: {
+    color: theme.palette.primary.main,
+    textAlign: 'center',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '10px'
+    },
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '12px'
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '22px'
+    }
+  },
+  userInput: {
+    padding: 2,
+    fontSize: 28,
+    color: '#000000'
+  },
+  button: {
+    flex: 1
+  },
+  textField: {
+    flex: 1
   }
 })
 
