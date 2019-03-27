@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import {withStyles} from '@material-ui/core'
 import {resetUser} from '../store/user'
+import {setCasefileBadge} from '../store/effects'
 
 const styles = theme => ({
   root: {
@@ -48,6 +49,7 @@ class NoMore extends React.Component {
   async reset() {
     let nextGame = {level: 1, levelstage: 1, clusterId: 1, casefile: []}
     await this.props.resetUser(this.props.userId, nextGame)
+    this.props.setCasefileBadge(true)
     this.props.history.push('/question')
   }
 
@@ -79,13 +81,15 @@ class NoMore extends React.Component {
 //Container
 const mapState = state => {
   return {
-    userId: state.user.id
+    userId: state.user.id,
+    caseFileBadgeInvisible: state.effects.caseFileBadgeInvisible
   }
 }
 
 const mapDispatch = dispatch => {
   return {
-    resetUser: (userId, nextGame) => dispatch(resetUser(userId, nextGame))
+    resetUser: (userId, nextGame) => dispatch(resetUser(userId, nextGame)),
+    setCasefileBadge: boolean => dispatch(setCasefileBadge(boolean))
   }
 }
 
