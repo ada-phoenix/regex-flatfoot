@@ -28,13 +28,14 @@ router.put('/:userId', async (req, res, next) => {
     const user = await User.findById(id)
     const updatedUser = await user.update(userInfo)
 
-    const getGame = await Game.findOne({
-      where: {
-        ...previousGame
-      }
-    })
-
-    await updatedUser.addGame(getGame)
+    if (previousGame) {
+      const getGame = await Game.findOne({
+        where: {
+          ...previousGame
+        }
+      })
+      await updatedUser.addGame(getGame)
+    }
     const games = await updatedUser.getGames({raw: true})
 
     const gameIdList = games.map(game => {
@@ -73,6 +74,7 @@ router.put('/reset/:userId', async (req, res, next) => {
       level: updatedUser.level,
       levelstage: updatedUser.levelstage,
       id: updatedUser.id,
+      gamesVisted: [],
       casefile: updatedUser.casefile
     }
 

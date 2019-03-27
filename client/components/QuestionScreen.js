@@ -35,7 +35,7 @@ class QuestionScreen extends React.Component {
       level: this.props.level,
       stage: this.props.stage
     })
-    if (this.props.game.note) {
+    if (!this.props.notes.includes(this.props.game.note)) {
       this.props.addNote(this.props.game.note)
     }
     if (this.props.user.gamesVisted.includes(this.props.game.id)) {

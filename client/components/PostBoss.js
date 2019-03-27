@@ -56,7 +56,11 @@ class PostBoss extends React.Component {
           this.props.clusterId
         )
       : deathUpdater(1, 1, this.props.clusterId)
-    await this.props.updateUser(this.props.userId, nextGame)
+
+    await this.props.updateUser(this.props.userId, {
+      userInfo: {...nextGame},
+      previousGame: null
+    })
     this.setState({updatedUser: true})
     const {data} = await axios.get(`/api/clusters/`)
     this.clusters = data
