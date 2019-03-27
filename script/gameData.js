@@ -168,7 +168,7 @@ const gameData = [
   {
     haystack:
       "Mr Grepino, I'm so tired of working with these MEATHEADS! I'm sure by now I've proven myself a VALUABLE asset to your crime family. How about I take over the bodega shakedown division of your crime syndicate? Or EVEN the illegal dachshund racing division? I honestly can't take another fitness freak complaining that our jump ropes are too short.",
-    needle: ['Meathead'],
+    needle: ['MEATHEAD'],
     lesson:
       'If you need to match any case, use the i flag after your second forward slash. For example /knife/i would match "KNIFE, knife or KnIfE."',
     question:
