@@ -5,11 +5,11 @@ const clusterData = [
     locations: [
       [
         'the docks',
-        "Hey there\'s that seagull, he did know something! A figure moves out of the darkness... is that... a tiny baby in a suit? It\'s the Bambino Grepino! Don\'t be fooled by his chubby little cheeks and tiny baby hands. That kiddo is a hardened criminal wreaking havoc all over this city. There\'s no pacifier that will pacify his penchant for crime. He needs a time-out in the clink!"
+        "Hey there's that seagull, he did know something! A figure moves out of the darkness... is that... a tiny baby in a suit? It's little baby GREP! Don't be fooled by his chubby little cheeks and tiny baby hands. That kiddo is a hardened criminal wreaking havoc all over this city. There's no pacifier that will pacify his penchant for crime. He needs a time-out in the clink!"
       ],
       [
         'the fairgrounds',
-        'The scent of corndogs hangs heavy in the air. You see a woman wearing a t-shirt that says "I\'d Rather Be Drinking Wine and Petting My Saint Bernard." She tries to get you to buy enough tickets for a ride on the Gravitron, but there\'s no time! No sign of the Grepinos anywhere--better retrace your steps!'
+        'The scent of corndogs hangs heavy in the air. You see a woman wearing a t-shirt that says "I\'d Rather Be Drinking Wine and Petting My Saint Bernard." She tries to get you to buy enough tickets for a ride on the Gravitron, but there\'s no time! No sign of the GREP Syndicate anywhere--better retrace your steps!'
       ],
       [
         'the boardwalk',
