@@ -65,9 +65,9 @@ const gameData = [
       "Wedding is on Saturday the fourth. Advise guests: No outsiders or friends. We're still working through that stolen shipment of Idaho golds so be prepared to feast on french fries and fritatas. Note, this event is being secured by Guards-In-Charge, so be ready to be frisked before entry.",
     needle: ['fri', 'fri', 'fri', 'fri'],
     lesson:
-      'Dmytrenko was just a low-level street tough. But he\'s agreed to play ball and has given us some primo intel on another one of the Grepino family\'s encryption tricks.\n\nSometimes they use the same pattern of characters multiple times in a message to convey important information.\n\nRegular expressions have optional flags that appear outside of the slashes and make them even more powerful! \n\nHere, we need to use the global flag, "g". This flag allows us to do a "global" search of the text and find every instance that matches, not just the first one!\n\nFor example, the regex /cat/g will find three matches of "cat" in the phrase, "My fat cat catches cat naps".\n\n',
+      'Dmytrenko was just a low-level street tough. But he\'s agreed to play ball and has given us some primo intel on another one of the GREP Crime Syndicate\'s encryption tricks.\n\nSometimes they use the same pattern of characters multiple times in a message to convey important information.\n\nRegular expressions have optional flags that appear outside of the slashes and make them even more powerful! \n\nHere, we need to use the global flag, "g". This flag allows us to do a "global" search of the text and find every instance that matches, not just the first one!\n\nFor example, the regex /cat/g will find three matches of "cat" in the phrase, "My fat cat catches cat naps".\n\n',
     question:
-      "Dmytrenko put us on to Bambino Grepino's personal assistant, Terry Lemons. He's as handy with a calendar as he is in a streetfight, but does all his scheduling in code. We think he's planning something BIG for the family at the Old Spaghetti Factory.\n\nCan you use a regular expression to find every instance of \"fri\" in this memo he sent out to the network?",
+      "Dmytrenko put us on to little baby GREP's personal assistant, Terry Lemons. He's as handy with a calendar as he is in a streetfight, but does all his scheduling in code. We think he's planning something BIG for the family at the Old Spaghetti Factory.\n\nCan you use a regular expression to find every instance of \"fri\" in this memo he sent out to the network?",
     level: 2,
     levelstage: 1,
     note: 'g : global flag matches every instance',
@@ -127,7 +127,7 @@ const gameData = [
     lesson:
       "Remember the g flag? What a tricky little minx. Well g has an associate, the i flag. i stands for ignore case. Wait! Stop! Where are you going? The i flag doesn't mean ignore your important casework. It means ignore case sensitivity in your searches (get your head on straight kid, yikes). \n\n\nWhile the regEx /knife/ would only match the exact word 'knife', adding the i flag like so, /knife/i, matches the word with any combination of upper and lowercase letters  such as 'KNIFE, Knife, knife or kNiFe.' Look at all those knives! I'd better get them down to the evidence locker and you'd better get back to work!",
     question:
-      "Our next culprit is no small-time crook. Dominique Gold runs the Grepino family's entire counterfeit exercise equipment operation. Lucky for us even pros occasionally make mistakes; she left her journal on the bench press at the YMCA. Oh by the way, I spilled coffee on your keyboard this morning so the shift and caps lock keys are broken, I guess you can't use any capital letters. My Bad!\n\nWrite a regular expression that matches the word 'dumbbell' using no capital letters.",
+      "Our next culprit is no small-time crook. Dominique Gold runs the GREP Crime Syndicate's entire counterfeit exercise equipment operation. Lucky for us even pros occasionally make mistakes; she left her journal on the bench press at the YMCA. Oh by the way, I spilled coffee on your keyboard this morning so the shift and caps lock keys are broken, I guess you can't use any capital letters. My Bad!\n\nWrite a regular expression that matches the word 'dumbbell' using no capital letters.",
     level: 3,
     levelstage: 1,
     note: 'i : case insensitive flag',
@@ -137,7 +137,7 @@ const gameData = [
     clue:
       'No wonder this subway station was abandoned. Ooph, look at all this water damage.',
     correct:
-      'Good work Rookie!\nWe caught up with Gold on her way to the bodybuilding convention. Just think about all the unsatisfactory workouts that were prevented with your sleuthing. Everyone is going to get so swole! Anyway, Dominique gave us a hot tip on The Grepinos. She said to check out the abandoned subway station on the north side of town.',
+      'Good work Rookie!\nWe caught up with Gold on her way to the bodybuilding convention. Just think about all the unsatisfactory workouts that were prevented with your sleuthing. Everyone is going to get so swole! Anyway, Dominique gave us a hot tip on the GREP Syndicate. She said to check out the abandoned subway station on the north side of town.',
     incorrect:
       "What's this? The hotshot rookie can't work around an equipment failure?\nBack in my day we did everything with pen and paper so that excuse ain't gonna fly with me bub! Head back to the station and see if there are any new leads.",
     notallowed: ['[A-Z]', 'g'],
@@ -159,7 +159,7 @@ const gameData = [
     clue:
       'No wonder this subway station was abandoned. Ooph, look at all this water damage.',
     correct:
-      'Good work Rookie!\nWe caught up with Gold on her way to the bodybuilding convention. Just think about all the unsatisfactory workouts that were prevented with your sleuthing. Everyone is going to get so swole! Anyway, Dominique gave us a hot tip on The Grepinos. She said to check out the abandoned subway station on the north side of town.',
+      'Good work Rookie!\nWe caught up with Gold on her way to the bodybuilding convention. Just think about all the unsatisfactory workouts that were prevented with your sleuthing. Everyone is going to get so swole! Anyway, Dominique gave us a hot tip on the GREP Syndicate. She said to check out the abandoned subway station on the north side of town.',
     incorrect:
       "She got away again!\nI know you want a new computer but it's just not in the budget. This is taxpayer money we're dealing with rookie! You need to figure out how to do this without capitalization or we're never going to catch her.",
     notallowed: ['[A-Z]', 'g'],
@@ -167,7 +167,7 @@ const gameData = [
   },
   {
     haystack:
-      "Mr Grepino, I'm so tired of working with these MEATHEADS! I'm sure by now I've proven myself a VALUABLE asset to your crime family. How about I take over the bodega shakedown division of your crime syndicate? Or EVEN the illegal dachshund racing division? I honestly can't take another fitness freak complaining that our jump ropes are too short.",
+      "Criminy boss, I'm so tired of working with these MEATHEADS! I'm sure by now I've proven myself a VALUABLE asset to your crime family. How about I take over the bodega shakedown division of your crime syndicate? Or EVEN the illegal dachshund racing division? I honestly can't take another fitness freak complaining that our jump ropes are too short.",
     needle: ['MEATHEAD'],
     lesson:
       'If you need to match any case, use the i flag after your second forward slash. For example /knife/i would match "KNIFE, knife or KnIfE."',
@@ -181,7 +181,7 @@ const gameData = [
     clue:
       'No wonder this subway station was abandoned. Ooph, look at all this water damage.',
     correct:
-      'Good work Rookie!\nWe caught up with Gold on her way to the bodybuilding convention. Just think about all the unsatisfactory workouts that were prevented with your sleuthing. Everyone is going to get so swole! Anyway, Dominique gave us a hot tip on The Grepinos. She said to check out the abandoned subway station on the north side of town.',
+      'Good work Rookie!\nWe caught up with Gold on her way to the bodybuilding convention. Just think about all the unsatisfactory workouts that were prevented with your sleuthing. Everyone is going to get so swole! Anyway, Dominique gave us a hot tip on the GREP Syndicate. She said to check out the abandoned subway station on the north side of town.',
     incorrect:
       "Damnit Rookie!\nYou're on desk duty. Maybe these trails haven't gone completely cold. Go back to the beginning and review the evidence.",
     notallowed: ['[A-Z]', 'g'],

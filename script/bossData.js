@@ -14,7 +14,7 @@ const bossData = [
     correct:
       'Another monster behind bars! But this low level ruffian was just a pawn. Stay on the case, ace!',
     incorrect:
-      "You died. You're a ghost now. But your spirit won't rest until you bring the Grepino Crime Family to justice. Go back to the beginning and try again.",
+      "You died. You're a ghost now. But your spirit won't rest until you bring the GREP Crime Syndicate to justice. Go back to the beginning and try again.",
     clusterId: 1
   }
 ]
