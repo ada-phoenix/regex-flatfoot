@@ -95,14 +95,14 @@ class ExplainEx extends React.Component {
             <Typography className={classes.subtitle2} variant="subtitle2">
               "Bletchley Academy of Decryption tells us that you're their best
               new grad, and we need your help. We've intercepted an encoded
-              message from the Grepino crime family. They are famous for their
+              message from the GREP Crime Syndicate. They are famous for their
               complex codes, but we think you can decode their messages using
               regular expressions. Have you heard of regular expressions - aka
               regEx? Clever programmers use Regular Expressions to match
               character combinations in text. The simplest regular expression is
               just the character or word you want to match. For example,
               /doughnut/ would match the word "doughnut" in the sentence, "I'd
-              love a doughnut."{' '}
+              love a doughnut."
             </Typography>
           </div>
         </div>
