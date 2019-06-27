@@ -33,7 +33,7 @@ class Home extends React.Component {
           </p>
           <p>
             You start out as a Rookie code breaker, on the trail of the infamous
-            Grepino crime family. As you move through the game, you will decrypt
+            GREP Crime Syndicate. As you move through the game, you will decrypt
             messages with regular expressions, collect clues, and ultimately
             bring these no-good scoundrels to justice!
           </p>

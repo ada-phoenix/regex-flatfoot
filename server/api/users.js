@@ -25,7 +25,7 @@ router.put('/:userId', async (req, res, next) => {
     const {userInfo, previousGame} = req.body
     const {level, levelstage, clusterId} = userInfo
 
-    const user = await User.findById(id)
+    const user = await User.findByPk(id)
     const updatedUser = await user.update(userInfo)
 
     if (previousGame) {
@@ -62,7 +62,7 @@ router.put('/reset/:userId', async (req, res, next) => {
   try {
     let id = parseInt(req.params.userId)
 
-    const user = await User.findById(id)
+    const user = await User.findByPk(id)
     const updatedUser = await user.update(req.body)
 
     updatedUser.setGames([])

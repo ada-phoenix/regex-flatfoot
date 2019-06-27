@@ -19,9 +19,9 @@ async function seed() {
     {name: 'murphy', email: 'murphy@email.com', password: '123'}
   ])
 
-  const cody = await User.findById(1)
-  const murphy = await User.findById(2)
-  const ourGame = await Game.findById(1)
+  const cody = await User.findByPk(1)
+  const murphy = await User.findByPk(2)
+  const ourGame = await Game.findByPk(1)
 
   await cody.setGames(ourGame)
   await murphy.setGames(ourGame)
